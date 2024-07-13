@@ -4,10 +4,11 @@
   "license": "MIT",
   "scripts": {},
   "private": true,
-  "dependencies": {},
   "devDependencies": {
-    "@nx/js": "18.2.4",
-    "nx": "18.2.4"
+    "@nx/js": "19.4.3",
+    "@nx/node": "19.4.3",
+    "nx": "19.4.3",
+    "prettier": "^3.3.2"
   },
   "workspaces": [
     "packages/*"
