@@ -1,5 +1,9 @@
 {
   "extends": "nx/presets/npm.json",
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
-  "nxCloudAccessToken": "OWI2YzgxYTgtZWMzZi00MWFiLWE4YjYtM2Q4MjRjMGNjOTg0fHJlYWQtd3JpdGU="
+  "nxCloudAccessToken": "OWI2YzgxYTgtZWMzZi00MWFiLWE4YjYtM2Q4MjRjMGNjOTg0fHJlYWQtd3JpdGU=",
+  "workspaceLayout": {
+    "appsDir": "packages",
+    "libsDir": "packages"
+  }
 }
