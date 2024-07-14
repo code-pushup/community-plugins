@@ -1,0 +1,27 @@
+{
+  "name": "testing-utils",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "testing/src",
+  "projectType": "library",
+  "tags": ["scope:testing"],
+  "targets": {
+    "build": {
+      "executor": "@nx/esbuild:esbuild",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/testing",
+        "main": "testing/src/index.ts",
+        "tsConfig": "testing/tsconfig.lib.json",
+        "assets": ["testing/*.md"],
+        "format": ["esm"]
+      }
+    },
+    "test": {
+      "executor": "@nx/vite:test",
+      "outputs": ["{options.reportsDirectory}"],
+      "options": {
+        "reportsDirectory": "../coverage/testing"
+      }
+    }
+  }
+}

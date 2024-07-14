@@ -1,0 +1,33 @@
+{
+  "name": "bundle-size",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/bundle-size/src",
+  "projectType": "library",
+  "tags": ["scope:plugin"],
+  "targets": {
+    "build": {
+      "executor": "@nx/rollup:rollup",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/bundle-size",
+        "main": "packages/bundle-size/src/index.ts",
+        "tsConfig": "packages/bundle-size/tsconfig.lib.json",
+        "assets": [
+          {
+            "glob": "packages/bundle-size/src/*.md",
+            "input": "packages/bundle-size/src",
+            "output": "/"
+          }
+        ],
+        "format": ["esm"]
+      }
+    },
+    "test": {
+      "executor": "@nx/vite:test",
+      "outputs": ["{options.reportsDirectory}"],
+      "options": {
+        "reportsDirectory": "../../coverage/packages/bundle-size"
+      }
+    }
+  }
+}

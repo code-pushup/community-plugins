@@ -1,0 +1,8 @@
+{
+  "name": "bundle-size",
+  "version": "0.0.1",
+  "dependencies": {
+    "@code-pushup/models": "^0.47.0"
+  },
+  "private": true
+}
