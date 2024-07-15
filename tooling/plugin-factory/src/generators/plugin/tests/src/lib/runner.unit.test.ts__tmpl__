@@ -1,0 +1,12 @@
+import {describe, expect, it} from "vitest";
+import {<%= propertyName %>Runner} from "./runner";
+
+describe('<%= propertyName %>Runner', () => {
+
+    it('should have slug of "<%= fileName %>"', async () => {
+        const runnerFunction = <%= propertyName %>Runner({timeout: 0});
+        const auditOutputs = await runnerFunction(undefined);
+        expect(auditOutputs.at(0)?.slug).toBe('<%= fileName %>-audit');
+    });
+
+});

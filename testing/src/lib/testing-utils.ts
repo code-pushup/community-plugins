@@ -1,6 +1,6 @@
 import {readFile, rm, writeFile} from "fs/promises";
 import {join, relative, resolve} from "path";
-import {AuditReport, CoreConfig, PluginReport, Report} from "@code-pushup/models";
+import {AuditOutput, AuditReport, CoreConfig, PluginReport, Report} from "@code-pushup/models";
 import {formatFiles, generateFiles} from "@nx/devkit";
 import {ensureDirectoryExists, executeProcess, objectToCliArgs, ProcessResult, readJsonFile} from "@code-pushup/utils";
 import {createTree} from "nx/src/generators/testing-utils/create-tree";
@@ -10,7 +10,7 @@ export function omitVariableAuditData({
                                           value,
                                           displayValue,
                                           ...auditReport
-                                      }: AuditReport) {
+                                      }: AuditReport | AuditOutput) {
     return auditReport;
 }
 

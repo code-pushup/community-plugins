@@ -39,6 +39,7 @@
       "options": {
         "buildTargetName": "build"
       }
-    }
+    },
+    "./tooling/plugin-factory/src/index.ts"
   ]
 }

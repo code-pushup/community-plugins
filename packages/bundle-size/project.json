@@ -28,6 +28,9 @@
       "options": {
         "reportsDirectory": "../../coverage/packages/bundle-size"
       }
+    },
+    "code-pushup": {
+      "command": "npx code-pushup collect"
     }
   }
 }

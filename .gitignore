@@ -4,6 +4,7 @@
 dist
 tmp
 /out-tsc
+.code-pushup
 
 # dependencies
 node_modules

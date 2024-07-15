@@ -1,0 +1,5 @@
+import { <%= propertyName %>Plugin } from './lib/<%= fileName %>-plugin';
+
+export default <%= propertyName %>Plugin;
+export {<%= propertyName %>Plugin} from "./lib/<%= fileName %>-plugin";
+export type { <%= className %>PluginConfig } from './lib/<%= fileName %>-plugin';

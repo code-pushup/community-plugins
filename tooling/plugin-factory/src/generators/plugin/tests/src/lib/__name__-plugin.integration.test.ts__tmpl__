@@ -1,0 +1,16 @@
+import {describe, expect, it} from "vitest";
+import {executePlugin} from "@code-pushup/core";
+import {pluginReportSchema} from "@code-pushup/models";
+import <%= propertyName %>Plugin from "./<%= fileName %>-plugin";
+import {omitVariablePluginData} from "testing-utils";
+
+describe('<%= propertyName %>Plugin', () => {
+
+    it('should execute correctly and return valid audit outputs', async () => {
+       const pluginReport =  await executePlugin(<%= propertyName %>Plugin())
+        expect(() => pluginReportSchema.parse(pluginReport)).not.toThrow();
+        expect(omitVariablePluginData(pluginReport)).toMatchSnapshot();
+    });
+
+});
+
