@@ -1,13 +1,16 @@
 import {
-    addProjectConfiguration,
     formatFiles,
-    generateFiles, names, readJson, readProjectConfiguration,
-    Tree, updateJson, updateProjectConfiguration,
+    generateFiles,
+    names,
+    readProjectConfiguration,
+    Tree,
+    updateJson,
+    updateProjectConfiguration, workspaceRoot,
 } from '@nx/devkit';
-import * as path from 'path';
+import {relative, join} from 'path';
 import {PluginGeneratorSchema} from './schema';
 import {libraryGenerator} from '@nx/js';
-import {updateProjectConfig} from "@nx/node/src/generators/setup-docker/setup-docker";
+import {updateFile} from "@nx/plugin/testing";
 
 export async function pluginGenerator(
     tree: Tree,
@@ -21,6 +24,7 @@ export async function pluginGenerator(
         tags: "scope:plugin",
         linter: 'eslint',
         unitTestRunner: skipTest ? 'none' : 'vitest',
+        testEnvironment: 'node',
         bundler: 'esbuild'
     });
 
@@ -29,26 +33,34 @@ export async function pluginGenerator(
 
     const pCfg = readProjectConfiguration(tree, name)
     await updateProjectConfiguration(tree, name, {
-        root: projectRoot,
-        sourceRoot: `${projectRoot}/src`,
-        projectType: 'library',
+        ...pCfg,
         targets: {
             ...pCfg.targets,
             "code-pushup": {
                 "command": `npx @code-pushup/cli collect --config ${projectRoot}/code-pushup.config.ts --onlyPlugins=${pluginNames.fileName}`,
-            },
+            }
         }
     });
+
+    updateJson(tree, `${projectRoot}/package.json`, ({type, main, ...rest}) => rest);
+
     // clean irrelevant files
     tree.delete(`${projectRoot}/src/lib/${name}.ts`);
     tree.delete(`${projectRoot}/src/lib/${name}.spec.ts`);
 
     if (!options?.skipTest) {
+        // delete existing vite.config.json
+        tree.delete(`${projectRoot}/vite.config.ts`);
+
         // rename existing tsconfig.spec.json
         tree.rename(`${projectRoot}/tsconfig.spec.json`, `${projectRoot}/tsconfig.test.json`);
         // update tsconfig references for renamed tsconfig.test.json
         updateJson(tree, `${projectRoot}/tsconfig.json`, (json) => ({
             ...json,
+            compilerOptions: {
+                ...json.compilerOptions,
+                module: "ESNext"
+            },
             references: json.references.map((ref: any) => ({
                 ...ref,
                 path: ref.path === './tsconfig.spec.json' ? './tsconfig.test.json' : ref.path
@@ -59,21 +71,53 @@ export async function pluginGenerator(
         updateJson(tree, `${projectRoot}/tsconfig.test.json`, (json) => ({
             ...json,
             include: [
-                './mock/**/*.ts',
+                "vite.config.unit.ts",
+                "vite.config.integration.ts",
+                "mocks/**/*.ts",
                 ...json.include
             ]
         }));
 
+        // add test targets
+        const pCfg = readProjectConfiguration(tree, name)
+        await updateProjectConfiguration(tree, name, {
+            ...pCfg,
+            targets: {
+                ...Object.fromEntries(Object.entries(pCfg.targets)
+                    .filter(([targetName]) => targetName !== 'test')),
+                build: {
+                  ...pCfg.targets.build,
+                    options: {
+                        ...pCfg.targets.build.options,
+                        format: ['esm']
+                    }
+                },
+                "unit-test": {
+                    "executor": "@nx/vite:test",
+                    "options": {
+                        "config": `${projectRoot}/vite.config.unit.ts`
+                    }
+                },
+                "integration-test": {
+                    "executor": "@nx/vite:test",
+                    "options": {
+                        "config": `${projectRoot}/vite.config.integration.ts`
+                    }
+                },
+            }
+        });
+
         // add plugin test logic
-        generateFiles(tree, path.join(__dirname, 'tests'), projectRoot, {
+        generateFiles(tree, join(__dirname, 'tests'), projectRoot, {
             ...pluginNames,
+            relativeToRoot: relative(projectRoot, workspaceRoot),
             categoryName: formattedCategoryName,
             tmpl: ''
         });
     }
 
     // add plugin logic
-    generateFiles(tree, path.join(__dirname, 'files'), projectRoot, {
+    generateFiles(tree, join(__dirname, 'files'), projectRoot, {
         ...pluginNames,
         categoryName: formattedCategoryName,
         tmpl: ''

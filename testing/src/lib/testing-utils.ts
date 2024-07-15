@@ -20,12 +20,13 @@ export function omitVariablePluginData({
                                            version,
                                            audits,
                                            ...pluginReport
-                                       }: PluginReport) {
+                                       }: PluginReport, options?: {
+    omitAuditData: boolean
+}) {
+    const { omitAuditData } = options ?? {};
     return {
         ...pluginReport,
-        audits: audits.map(
-            pluginReport.slug === 'lighthouse' ? omitVariableAuditData : p => p,
-        ) as AuditReport[],
+        audits: audits.map(plugin => omitAuditData ? omitVariableAuditData(plugin) : plugin) as AuditReport[],
     } as PluginReport;
 }
 
@@ -35,10 +36,12 @@ export function omitVariableReportData({
                                            duration,
                                            version,
                                            ...report
-                                       }: Report) {
+                                       }: Report, options?: {
+    omitAuditData: boolean
+}) {
     return ({
         ...report,
-        plugins: report.plugins.map(omitVariablePluginData),
+        plugins: report.plugins.map(plugin => omitVariablePluginData(plugin, options)),
     });
 }
 

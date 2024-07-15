@@ -31,6 +31,18 @@
     },
     "code-pushup": {
       "command": "npx code-pushup collect"
+    },
+    "unit-test": {
+      "executor": "@nx/vite:test",
+      "options": {
+        "config": "./packages/bundle-size/vite.config.unit.ts"
+      }
+    },
+    "integration-test": {
+      "executor": "@nx/vite:test",
+      "options": {
+        "config": "./packages/bundle-size/vite.config.integration.ts"
+      }
     }
   }
 }

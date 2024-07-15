@@ -17,6 +17,7 @@
     "paths": {
       "bundle-size": ["packages/bundle-size/src/index.ts"],
       "e2e-bundle-size": ["e2e/bundle-size/src/index.ts"],
+      "plugin-cool": ["packages/plugin-cool/src/index.ts"],
       "plugin-factory": ["tooling/plugin-factory/src/index.ts"],
       "testing-utils": ["testing/src/index.ts"]
     }

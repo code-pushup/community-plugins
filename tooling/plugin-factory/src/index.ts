@@ -17,13 +17,13 @@ export const createNodes: CreateNodes = [
                         "unit-test": {
                             executor: "@nx/vite:test",
                             options: {
-                                config: "packages/cli/vite.config.unit.ts"
+                                config: `packages/${projectConfiguration.name}/vite.config.unit.ts`
                             }
                         },
                         "integration-test": {
                             executor: "@nx/vite:test",
                             options: {
-                                config: "packages/cli/vite.config.integration.ts"
+                                config: `packages/${projectConfiguration.name}/vite.config.integration.ts`
                             }
                         },
                     }
