@@ -2,7 +2,7 @@ import {describe, expect, it} from "vitest";
 import {pluginReportSchema} from "@code-pushup/models";
 import {executePlugin} from "@code-pushup/core";
 import {omitVariablePluginData} from "testing-utils";
-import bundleSizePlugin from "./plugin";
+import bundleSizePlugin from "./bundle-size-plugin";
 
 describe('bundleSizePlugin', () => {
 

@@ -1,5 +1,5 @@
-import bundleSizePlugin from "./lib/plugin";
+import bundleSizePlugin from "./lib/bundle-size-plugin";
 
 export default bundleSizePlugin;
-export {bundleSizePlugin} from "./lib/plugin";
-export {BundleSizePluginOptions} from "./lib/plugin";
+export {bundleSizePlugin} from "./lib/bundle-size-plugin";
+export {BundleSizePluginOptions} from "./lib/bundle-size-plugin";
