@@ -1,0 +1,18 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`bundleSizePlugin > should create valid bundle-size plugin configuration 1`] = `
+{
+  "audits": [
+    {
+      "description": "Bundle size audit",
+      "slug": "bundle-size",
+      "title": "Bundle size",
+    },
+  ],
+  "description": "Bundle size plugin for Code PushUp",
+  "icon": "folder-css",
+  "runner": [Function],
+  "slug": "bundle-size",
+  "title": "Bundle size",
+}
+`;
