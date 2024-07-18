@@ -21,12 +21,12 @@
     "skipE2e": {
       "type": "boolean",
       "description": "Skip setup of e2e tests",
-      "default": true
+      "default": false
     },
     "skipTest": {
       "type": "boolean",
       "description": "Skip setup of unit and integration tests",
-      "default": true
+      "default": false
     }
   },
   "required": ["name"]
