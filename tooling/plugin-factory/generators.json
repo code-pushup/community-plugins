@@ -4,6 +4,11 @@
       "factory": "./src/generators/plugin/generator",
       "schema": "./src/generators/plugin/schema.json",
       "description": "plugin generator"
+    },
+    "e2e-plugin": {
+      "factory": "./src/generators/e2e-plugin/generator",
+      "schema": "./src/generators/e2e-plugin/schema.json",
+      "description": "e2e-plugin generator"
     }
   }
 }

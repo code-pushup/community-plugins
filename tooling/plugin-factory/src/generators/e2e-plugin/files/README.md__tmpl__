@@ -1,0 +1,5 @@
+# `<%= pluginSlug %>` Plugin
+
+## Running e2e tests
+
+Run `nx e2e e2e-<%= projectName %>` to execute the unit tests via [Vitest](https://vitest.dev/).

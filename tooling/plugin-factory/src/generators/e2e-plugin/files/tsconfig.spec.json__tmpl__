@@ -11,9 +11,8 @@
     ]
   },
   "include": [
-    "vite.config.unit.ts",
-    "vite.config.integration.ts",
-    "mocks/**/*.ts",
+    "src/**/*.ts",
+    "mock/**/*.ts",
     "vite.config.ts",
     "vitest.config.ts",
     "src/**/*.test.ts",

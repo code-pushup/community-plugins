@@ -1,0 +1,7 @@
+import { <%= pluginFnName %> } from './dist/packages/<%= pluginFileName %>';
+
+export default {
+    plugins: [
+        <%= pluginFnName %>()
+    ]
+}
