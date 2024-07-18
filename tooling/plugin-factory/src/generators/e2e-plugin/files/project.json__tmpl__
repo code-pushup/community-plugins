@@ -6,7 +6,7 @@
   "tags": ["type:e2e"],
   "implicitDependencies": ["<%= pluginName %>"],
   "targets": {
-    "test": {
+    "e2e": {
       "dependsOn": ["^build"],
       "executor": "@nx/vite:test",
       "outputs": ["{options.reportsDirectory}"],

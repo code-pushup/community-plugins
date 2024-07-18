@@ -31,7 +31,7 @@ describe('collect data for <%= pluginSlug %> plugin', () => {
 
         const report: Report = await readReportJson(baseDir);
         expect(() => reportSchema.parse(report)).not.toThrow();
-        expect(omitVariableReportData(report)).toMatchSnapshot();
+        expect(omitVariableReportData(report, {omitAuditData:true})).toMatchSnapshot();
     });
 
     it('should run <%= pluginSlug %> plugin with the correct slug and audits in report.json', async () => {
