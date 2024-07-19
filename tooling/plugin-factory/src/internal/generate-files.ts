@@ -1,4 +1,4 @@
-import {CategoryConfig, CoreConfig, PersistConfig, UploadConfig} from "@code-pushup/models";
+import {CategoryConfig, CategoryRef, CoreConfig, PersistConfig, UploadConfig} from "@code-pushup/models";
 import {resolve} from "path";
 import {readFile} from "fs/promises";
 import {generateFiles, Tree} from "@nx/devkit";
@@ -8,17 +8,14 @@ export async function addCodePushupConfigFile(tree: Tree, targetFolder: string, 
     configFile: {
         format?: 'ts';
         name?: string[];
+        fileImports?: string[];
         config?: CoreConfig;
     }
     plugins: {
         importPath?: string;
         exportName?: string;
     }[],
-    categories?: {
-        slug: string;
-        title?: string;
-        refs: { pluginSlug: string; auditSlug: string;  }[];
-    }[];
+    categories?: string[];
     upload?: UploadConfig,
     persist?: PersistConfig,
 }): Promise<void> {
@@ -35,13 +32,15 @@ export async function addCodePushupConfigFile(tree: Tree, targetFolder: string, 
     const {
         format = 'ts',
         config,
-        name: configFileName
+        name: configFileName,
+        fileImports,
     } =  configFile ?? {};
 
     const codePushupConfigPath = resolve(
         targetFolder,
         `${configFileName ?? 'code-pushup.config'}.${format}`,
     );
+
     try {
         await readFile(codePushupConfigPath);
         console.log(`File ${codePushupConfigPath} already exists`);
@@ -50,26 +49,20 @@ export async function addCodePushupConfigFile(tree: Tree, targetFolder: string, 
         console.log(`Error creating file ${codePushupConfigPath}`);
     }
 
-    const {fileImports, pluginConfigCalls} = (plugins ?? []).reduce((acc, plugin, idx) => {
+    const {pluginFileImports, pluginConfigCalls} = (plugins ?? []).reduce((acc, plugin, idx) => {
         const { exportName = `plugin${idx}`, importPath} = plugin;
         return {
-            fileImports: acc.fileImports.concat(`import ${exportName} from "${importPath}";`),
+            pluginFileImports: acc.pluginFileImports.concat(`import ${exportName} from "${importPath}";`),
             pluginConfigCalls: acc.pluginConfigCalls.concat(`${exportName}()`)
         }
-    }, {fileImports: [], pluginConfigCalls: []});
-
-    const categoriesConfig = (categories ?? []).length && categories.map(({slug, title, refs}) => [{
-        slug,
-        title: title ?? slug,
-        refs: (refs ?? []).map(({pluginSlug, auditSlug}) => ({plugin: pluginSlug, type: 'audit' , slug: auditSlug, weight: 1}))
-    }] satisfies CategoryConfig[]);
+    }, {pluginFileImports: [], pluginConfigCalls: []});
 
     generateFiles(tree, 'tooling/plugin-factory/src/internal/files/code-pushup-config', targetFolder, {
-        fileImports: [
-            'import { CoreConfig } from "@code-pushup/models";'
-        ].concat(fileImports).join('\n'),
+        fileImports: (fileImports ?? []).concat(
+            'import { CoreConfig } from "@code-pushup/models";',
+        ).concat(pluginFileImports).join('\n'),
         pluginsConfig: pluginConfigCalls && `[${pluginConfigCalls.join(',\n')}]`,
-        categoriesConfig: categoriesConfig && `${categoriesConfig.map(formatObjectToFormattedJsString).join(',\n')}`,
+        categoriesConfig: categories && `[${categories.join(',\n')}]`,
         persistConfig: persist && JSON.stringify(persist, null,   2),
         updateConfig: upload && JSON.stringify(upload, null,   2),
         tmpl: ''
@@ -80,7 +73,7 @@ export async function addCodePushupConfigFile(tree: Tree, targetFolder: string, 
 
 
 // return a formatted JSON object with the same keys as the input object but remove the " for the properties
-function formatObjectToFormattedJsString(jsonObj: { [key: string]: any }): string {
+export function formatObjectToFormattedJsString(jsonObj: { [key: string]: any }): string {
     // Convert JSON object to a string with indentation
     const jsonString = JSON.stringify(jsonObj, null, 4);
 

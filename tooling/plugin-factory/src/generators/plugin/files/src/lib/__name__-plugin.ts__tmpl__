@@ -1,5 +1,6 @@
 import {PluginConfig} from "@code-pushup/models";
 import {<%= propertyName %>Runner} from "./runner";
+import { AUDITS } from "./constants";
 
 export default <%= propertyName %>Plugin;
 
@@ -13,12 +14,6 @@ export function <%= propertyName %>Plugin(options?: <%= className %>PluginConfig
         description: '<%= name %> plugin for Code PushUp',
         icon: "folder",
         runner: <%= propertyName %>Runner(),
-        audits: [
-            {
-                slug: '<%= fileName %>-audit',
-                title: '<%= name %> Audit',
-                description: `<%= name %> audit ${options?.opt1 ?? ''}`,
-            },
-        ],
+        audits: AUDITS,
     };
 }

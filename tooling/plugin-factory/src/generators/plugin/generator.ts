@@ -12,7 +12,7 @@ import {relative, join} from 'path';
 import {PluginGeneratorSchema} from './schema';
 import {libraryGenerator} from '@nx/js';
 import e2ePluginGenerator from '../e2e-plugin/generator';
-import {addCodePushupConfigFile} from "../../internal/generate-files";
+import {addCodePushupConfigFile, formatObjectToFormattedJsString} from "../../internal/generate-files";
 
 export async function pluginGenerator(
     tree: Tree,
@@ -143,11 +143,22 @@ export async function pluginGenerator(
         tmpl: '',
     });
 
-
     // add code-pushup config file
+    const categories = (categoryName && categoryName !== '') && [
+        {
+            slug: categoryName,
+            title: categoryName,
+            refs: [
+                `+...${pluginNames.propertyName}AuditRefs+`
+            ]
+        }
+    ].map(formatObjectToFormattedJsString)
+        // remove quotes around the `spreading object` syntax
+        .map(v => v.replace(/"\+/g, '').replace(/\+"/g, ''));
     addCodePushupConfigFile(tree, projectRoot, {
         configFile: {
-            format: 'ts'
+            format: 'ts',
+            fileImports: [`import { ${pluginNames.propertyName}AuditRefs } from './src';`],
         },
         plugins: [
             {
@@ -155,18 +166,7 @@ export async function pluginGenerator(
                 exportName: `${pluginNames.propertyName}Plugin`
             }
         ],
-        categories: (categoryName && categoryName !== '') && [
-              {
-                slug: categoryName,
-                title: categoryName,
-                refs: [
-                    {
-                        pluginSlug: pluginNames.fileName,
-                        auditSlug: `${pluginNames.fileName}-audit`
-                    }
-                ]
-            }
-        ]
+        categories
     });
 
     await formatFiles(tree);

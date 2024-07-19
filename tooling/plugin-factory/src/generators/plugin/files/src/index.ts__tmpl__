@@ -1,5 +1,6 @@
 import { <%= propertyName %>Plugin } from './lib/<%= fileName %>-plugin';
 
 export default <%= propertyName %>Plugin;
+export { AUDITS as <%= propertyName %>Audits, AUDIT_REFS as <%= propertyName %>AuditRefs } from "./lib/constants";
 export {<%= propertyName %>Plugin} from "./lib/<%= fileName %>-plugin";
 export type { <%= className %>PluginConfig } from './lib/<%= fileName %>-plugin';
