@@ -15,8 +15,7 @@
     },
     "categoryName": {
       "type": "string",
-      "description": "Category name",
-      "x-prompt": "What category name your plugins would fit into?"
+      "description": "Category name"
     },
     "skipE2e": {
       "type": "boolean",

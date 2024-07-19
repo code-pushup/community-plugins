@@ -140,16 +140,16 @@ export async function addCodePushupConfigFile(options?: {
     pluginStrings,
   } = options ?? {};
 
-  const filePath = resolve(
+  const codePushupConfigPath = resolve(
     targetFolder,
     `${fileName ?? 'code-pushup.config'}.${format}`,
   );
   try {
-    const existingFile = await readFile(filePath);
-    console.log(`File ${filePath} already exists`);
+    const existingFile = await readFile(codePushupConfigPath);
+    console.log(`File ${codePushupConfigPath} already exists`);
     return;
   } catch (error) {
-    console.log(`Create file ${filePath}`);
+    console.log(`Create file ${codePushupConfigPath}`);
   }
 
   ensureDirectoryExists(targetFolder);
@@ -164,7 +164,7 @@ export async function addCodePushupConfigFile(options?: {
     });*/
 
   await writeFile(
-    filePath,
+    codePushupConfigPath,
     `
     ${(fileImports ?? []).concat('import {CoreConfig} from "@code-pushup/models";').join('\n')}
     const config: CoreConfig = ${JSON.stringify(

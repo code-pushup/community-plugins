@@ -1,0 +1,8 @@
+<%- fileImports %>
+
+export default {
+    <% if (persistConfig) { %>persist: <%- persistConfig %>,<% } %>
+    <% if (updateConfig) { %>update: <%- updateConfig %>,<% } %>
+    <% if (pluginsConfig) { %>plugins: <%- pluginsConfig %>,<% } %>
+    <% if (categoriesConfig) { %>categories: <%- categoriesConfig %><% } %>
+} satisfies CoreConfig;
