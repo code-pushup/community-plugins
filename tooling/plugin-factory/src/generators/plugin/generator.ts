@@ -158,7 +158,7 @@ export async function pluginGenerator(
     addCodePushupConfigFile(tree, projectRoot, {
         configFile: {
             format: 'ts',
-            fileImports: [`import { ${pluginNames.propertyName}AuditRefs } from './src';`],
+            fileImports: categoryName ? [`import { ${pluginNames.propertyName}AuditRefs } from './src';`] : [],
         },
         plugins: [
             {
