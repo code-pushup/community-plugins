@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/schema",
+  "$id": "PluginFactoryGeneratorSchema",
+  "title": "Plugin Generator Options",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      },
+      "x-prompt": "What name would you like to use?"
+    },
+    "categoryName": {
+      "type": "string",
+      "description": "Category name"
+    },
+    "skipE2e": {
+      "type": "boolean",
+      "description": "Skip setup of e2e tests",
+      "default": false
+    },
+    "skipTest": {
+      "type": "boolean",
+      "description": "Skip setup of unit and integration tests",
+      "default": false
+    }
+  },
+  "required": ["name"]
+}

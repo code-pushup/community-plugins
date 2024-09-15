@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/schema",
+  "$id": "E2EPluginFactoryGeneratorSchema",
+  "title": "E2E Plugin Generator Options",
+  "type": "object",
+  "properties": {
+    "pluginName": {
+      "type": "string",
+      "description": "",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      },
+      "x-prompt": "What plugin would you like to e2e test?"
+    },
+    "skipTest": {
+      "type": "boolean",
+      "description": "Skip setup of e2e and integration tests",
+      "default": true
+    }
+  },
+  "required": ["pluginName"]
+}

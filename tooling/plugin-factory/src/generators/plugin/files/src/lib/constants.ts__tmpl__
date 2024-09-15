@@ -1,0 +1,9 @@
+export const PLUGIN_SLUG = '<%= fileName %>';
+export const AUDITS = [
+    {
+        slug: '<%= fileName %>-audit',
+        title: '<%= name %> Audit',
+        description: '<%= name %> audit to generate metric to describe the current state',
+    }
+];
+export const AUDIT_REFS: CategoryRef[] = AUDITS.map(({slug}) => ({ plugin: PLUGIN_SLUG, type: 'audit', slug, weight: 1 }));

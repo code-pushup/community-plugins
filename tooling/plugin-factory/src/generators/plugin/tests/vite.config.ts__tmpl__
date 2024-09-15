@@ -1,0 +1,10 @@
+/// <reference types="vitest" />
+import {defineConfig} from 'vite';
+import {nxViteTsPaths} from "@nx/vite/plugins/nx-tsconfig-paths.plugin";
+
+// NOTE: This is a Vite config file. It is used to configure the Vite build tool with path.
+// Originally it should life in vite.config.unit.ts, but it is moved here to "hackfix" Nx and vite plugin.
+// @TODO remove hack fix when nx-vite plugin is updated.
+export default defineConfig({
+    plugins: [nxViteTsPaths()]
+});

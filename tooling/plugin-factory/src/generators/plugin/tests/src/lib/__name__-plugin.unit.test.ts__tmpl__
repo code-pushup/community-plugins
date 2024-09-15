@@ -1,0 +1,13 @@
+import {describe, expect, it} from "vitest";
+import {pluginConfigSchema} from "@code-pushup/models";
+import <%= propertyName %>Plugin from "./<%= fileName %>-plugin";
+
+describe('<%= propertyName %>Plugin', () => {
+
+    it('should create valid <%= fileName %> plugin configuration', async () => {
+      const <%= propertyName %>PluginConfig = <%= propertyName %>Plugin({});
+        expect(() => pluginConfigSchema.parse(<%= propertyName %>PluginConfig)).not.toThrow();
+        expect(<%= propertyName %>PluginConfig).toMatchSnapshot();
+    });
+
+});

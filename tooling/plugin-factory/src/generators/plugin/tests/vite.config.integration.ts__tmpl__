@@ -1,0 +1,23 @@
+/// <reference types="vitest" />
+import { defineConfig } from 'vite';
+
+export default defineConfig({
+  cacheDir: '<%= relativeToRoot %>/node_modules/.vite/<%= fileName %>',
+  test: {
+    reporters: ['basic'],
+    globals: true,
+    cache: {
+      dir: '<%= relativeToRoot %>/node_modules/.vitest',
+    },
+    pool: 'threads',
+    poolOptions: { threads: { singleThread: true } },
+    coverage: {
+      reporter: ['text', 'lcov'],
+      reportsDirectory: '<%= relativeToRoot %>/coverage/<%= fileName %>/integration-tests',
+      exclude: ['mocks/**', '**/types.ts'],
+    },
+    environment: 'node',
+    include: ['src/**/*.integration.test.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
+    globalSetup: ['<%= relativeToRoot %>/global-setup.ts']
+  },
+});

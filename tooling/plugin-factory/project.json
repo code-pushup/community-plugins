@@ -1,0 +1,48 @@
+{
+  "name": "plugin-factory",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "tooling/plugin-factory/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/tooling/plugin-factory",
+        "main": "tooling/plugin-factory/src/index.ts",
+        "tsConfig": "tooling/plugin-factory/tsconfig.lib.json",
+        "assets": [
+          "tooling/plugin-factory/*.md",
+          {
+            "input": "./tooling/plugin-factory/src",
+            "glob": "**/!(*.ts)",
+            "output": "./src"
+          },
+          {
+            "input": "./tooling/plugin-factory/src",
+            "glob": "**/*.d.ts",
+            "output": "./src"
+          },
+          {
+            "input": "./tooling/plugin-factory",
+            "glob": "generators.json",
+            "output": "."
+          },
+          {
+            "input": "./tooling/plugin-factory",
+            "glob": "executors.json",
+            "output": "."
+          }
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "tooling/plugin-factory/jest.config.ts"
+      }
+    }
+  }
+}
