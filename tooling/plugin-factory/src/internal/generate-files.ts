@@ -1,13 +1,7 @@
-import {
-  CategoryConfig,
-  CategoryRef,
-  CoreConfig,
-  PersistConfig,
-  UploadConfig,
-} from '@code-pushup/models';
-import { resolve } from 'path';
-import { readFile } from 'fs/promises';
-import { generateFiles, Tree } from '@nx/devkit';
+import {CoreConfig, PersistConfig, UploadConfig,} from '@code-pushup/models';
+import {resolve} from 'path';
+import {readFile} from 'fs/promises';
+import {generateFiles, Tree} from '@nx/devkit';
 
 export async function addCodePushupConfigFile(
   tree: Tree,
@@ -28,13 +22,11 @@ export async function addCodePushupConfigFile(
     persist?: PersistConfig;
   },
 ): Promise<void> {
-  console.log('addCodePushupConfigFile: ', options);
 
   const { configFile, plugins, categories, persist, upload } = options ?? {};
 
   const {
     format = 'ts',
-    config,
     name: configFileName,
     fileImports,
   } = configFile ?? {};

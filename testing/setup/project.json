@@ -1,0 +1,26 @@
+{
+  "name": "setup",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "testing/setup/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/esbuild:esbuild",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/testing/setup",
+        "main": "testing/setup/src/index.ts",
+        "tsConfig": "testing/setup/tsconfig.lib.json",
+        "assets": ["testing/setup/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["testing/setup/**/*.ts"]
+      }
+    }
+  },
+  "tags": ["scope:shared", "type:testing"]
+}

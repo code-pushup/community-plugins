@@ -21,7 +21,7 @@ export async function pluginGenerator(
   tree: Tree,
   options: PluginGeneratorSchema,
 ) {
-  const { name, skipTest, skipE2e, categoryName } = options;
+  const { name, skipTest, categoryName } = options;
   const projectRoot = `./packages/${name}`;
 
   await libraryGenerator(tree, {
@@ -72,7 +72,7 @@ export async function pluginGenerator(
         ...json.compilerOptions,
         module: 'ESNext',
       },
-      references: json.references.map((ref: any) => ({
+      references: json.references.map((ref) => ({
         ...ref,
         path:
           ref.path === './tsconfig.spec.json'

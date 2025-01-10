@@ -1,11 +1,13 @@
 {
-  "name": "testing-utils",
+  "name": "file-size",
   "version": "0.0.1",
   "dependencies": {
     "@code-pushup/models": "^0.47.0",
-    "@nx/devkit": "19.4.3",
+    "memfs": "^4.11.1",
+    "vitest": "^1.3.1",
+    "@code-pushup/core": "^0.47.0",
     "@code-pushup/utils": "^0.47.0",
-    "nx": "19.4.3"
+    "vite": "^5.0.0"
   },
   "private": true
 }

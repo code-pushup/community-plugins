@@ -1,13 +1,12 @@
-import { CreateNodes, CreateNodesContext, readJsonFile } from '@nx/devkit';
+import { CreateNodes, readJsonFile } from '@nx/devkit';
 import { dirname } from 'node:path';
 
 export const createNodes: CreateNodes = [
   '**/project.json',
-  (projectConfigurationFile: string, opts, context: CreateNodesContext) => {
+  (projectConfigurationFile: string) => {
     const projectConfiguration = readJsonFile(projectConfigurationFile);
     const root = dirname(projectConfigurationFile);
 
-    console.log('projectConfiguration', projectConfiguration);
     return {
       projects: {
         [root]: {
