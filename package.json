@@ -50,6 +50,10 @@
     "@code-pushup/core": "^0.47.0",
     "@code-pushup/models": "^0.47.0",
     "@code-pushup/utils": "^0.47.0",
-    "@nx/devkit": "19.4.3"
+    "@nx/devkit": "19.4.3",
+    "ansis": "^3.8.1",
+    "knip": "^5.42.0",
+    "memfs": "^4.17.0",
+    "zod": "^3.24.1"
   }
 }
