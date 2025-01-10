@@ -5,14 +5,13 @@
   "projectType": "library",
   "targets": {
     "build": {
-      "executor": "@nx/esbuild:esbuild",
+      "executor": "@nx/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/packages/plugin-knip",
         "main": "packages/plugin-knip/src/index.ts",
         "tsConfig": "packages/plugin-knip/tsconfig.lib.json",
-        "assets": ["packages/plugin-knip/*.md"],
-        "esbuildConfig": "esbuild.config.js"
+        "assets": ["packages/plugin-knip/*.md"]
       }
     },
     "lint": {

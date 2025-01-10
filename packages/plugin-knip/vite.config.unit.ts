@@ -1,6 +1,6 @@
 /// <reference types="vitest" />
 import { defineConfig } from 'vite';
-import { tsconfigPathAliases } from '../../tools/vitest-tsconfig-path-aliases';
+import { tsconfigPathAliases } from '../../tooling/vitest-tsconfig-path-aliases';
 
 export default defineConfig({
   cacheDir: '../../node_modules/.vite/plugin-knip',
@@ -8,7 +8,7 @@ export default defineConfig({
     reporters: ['basic'],
     globals: true,
     cache: {
-      dir: '../../node_modules/.vitest',
+      dir: '../../node_modules/.vitest/plugin-knip',
     },
     alias: tsconfigPathAliases(),
     pool: 'threads',
