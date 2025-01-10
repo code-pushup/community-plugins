@@ -15,7 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "bundle-size": ["packages/bundle-size/src/index.ts"],
+      "knip-plugin": ["packages/plugin-knip/src/index.ts"],
       "plugin-factory": ["tooling/plugin-factory/src/index.ts"],
       "testing-utils": ["testing/utils/src/index.ts"]
     }

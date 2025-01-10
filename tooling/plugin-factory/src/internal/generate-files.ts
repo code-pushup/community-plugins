@@ -28,8 +28,6 @@ export async function addCodePushupConfigFile(
     persist?: PersistConfig;
   },
 ): Promise<void> {
-  console.log('addCodePushupConfigFile: ', options);
-
   const { configFile, plugins, categories, persist, upload } = options ?? {};
 
   const {
