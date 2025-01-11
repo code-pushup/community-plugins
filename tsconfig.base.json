@@ -17,6 +17,7 @@
     "paths": {
       "knip-plugin": ["packages/plugin-knip/src/index.ts"],
       "plugin-factory": ["tooling/plugin-factory/src/index.ts"],
+      "testing-setup": ["testing/setup/src/index.ts"],
       "testing-utils": ["testing/utils/src/index.ts"]
     }
   },

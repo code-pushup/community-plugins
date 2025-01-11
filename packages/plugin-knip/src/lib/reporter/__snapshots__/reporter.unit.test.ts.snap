@@ -1,0 +1,198 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`knipReporter > should produce valid audit outputs 1`] = `
+[
+  {
+    "details": {
+      "issues": [
+        {
+          "message": "Unused file code-pushup.config.ts",
+          "severity": "info",
+          "source": {
+            "file": "code-pushup.config.ts",
+          },
+        },
+      ],
+    },
+    "score": 0,
+    "slug": "unused-files",
+    "value": 1,
+  },
+  {
+    "details": {
+      "issues": [
+        {
+          "message": "Unused dependency cli-table3",
+          "severity": "error",
+          "source": {
+            "file": "package.json",
+          },
+        },
+      ],
+    },
+    "score": 0,
+    "slug": "unused-dependencies",
+    "value": 1,
+  },
+  {
+    "details": {
+      "issues": [
+        {
+          "message": "Unused devDependency @trivago/prettier-plugin-sort-imports",
+          "severity": "error",
+          "source": {
+            "file": "package.json",
+          },
+        },
+      ],
+    },
+    "score": 0,
+    "slug": "unused-devdependencies",
+    "value": 1,
+  },
+  {
+    "details": {
+      "issues": [
+        {
+          "message": "Unused devDependency ts-node",
+          "severity": "error",
+          "source": {
+            "file": "package.json",
+          },
+        },
+      ],
+    },
+    "score": 0,
+    "slug": "referenced-optional-peerdependencies",
+    "value": 1,
+  },
+  {
+    "details": {
+      "issues": [
+        {
+          "message": "Unlisted dependency jsonc-eslint-parser",
+          "severity": "info",
+          "source": {
+            "file": "../../../../User/username/code-pushup-cli/packages/utils/package.json",
+          },
+        },
+        {
+          "message": "Unlisted dependency jsonc-eslint-parser",
+          "severity": "info",
+          "source": {
+            "file": "../../../../User/username/code-pushup-cli/packages/utils/package.json",
+          },
+        },
+      ],
+    },
+    "score": 0,
+    "slug": "unlisted-dependencies",
+    "value": 2,
+  },
+  {
+    "score": 1,
+    "slug": "unlisted-binaries",
+    "value": 0,
+  },
+  {
+    "details": {
+      "issues": [
+        {
+          "message": "Unresolved import smo-package",
+          "severity": "info",
+          "source": {
+            "file": "packages/models/src/lib/category-config.ts",
+            "position": {
+              "startColumn": 23,
+              "startLine": 8,
+            },
+          },
+        },
+      ],
+    },
+    "score": 0,
+    "slug": "unresolved-imports",
+    "value": 1,
+  },
+  {
+    "details": {
+      "issues": [
+        {
+          "message": "Unused export duplicateErrorMsg",
+          "severity": "error",
+          "source": {
+            "file": "packages/models/src/lib/category-config.ts",
+            "position": {
+              "startColumn": 17,
+              "startLine": 54,
+            },
+          },
+        },
+      ],
+    },
+    "score": 0,
+    "slug": "unused-exports",
+    "value": 1,
+  },
+  {
+    "details": {
+      "issues": [
+        {
+          "message": "Unused exported type GroupMeta",
+          "severity": "error",
+          "source": {
+            "file": "packages/models/src/lib/group.ts",
+            "position": {
+              "startColumn": 13,
+              "startLine": 26,
+            },
+          },
+        },
+      ],
+    },
+    "score": 0,
+    "slug": "unused-exported-types",
+    "value": 1,
+  },
+  {
+    "details": {
+      "issues": [
+        {
+          "message": "Unused exported enum member unusedMember",
+          "severity": "error",
+          "source": {
+            "file": "packages/models/src/lib/group.ts",
+            "position": {
+              "startColumn": 13,
+              "startLine": 26,
+            },
+          },
+        },
+      ],
+    },
+    "score": 0,
+    "slug": "unused-exported-enum-members",
+    "value": 1,
+  },
+  {
+    "details": {
+      "issues": [
+        {
+          "message": "Duplicate export configurationGenerator|default",
+          "severity": "error",
+          "source": {
+            "file": "../../../michael_hladky/WebstormProjects/quality-metrics-cli/packages/nx-plugin/src/generators/configuration/generator.ts",
+            "position": {
+              "startColumn": 15,
+              "startLine": 54,
+            },
+          },
+        },
+      ],
+    },
+    "score": 0,
+    "slug": "duplicate-exports",
+    "value": 1,
+  },
+]
+`;
