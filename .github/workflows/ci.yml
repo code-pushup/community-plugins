@@ -34,4 +34,4 @@ jobs:
         if: ${{ github.event_name == 'pull_request' }}
 
       - run: npx nx format:check
-      - run: npx nx affected -t lint test build
+      - run: npx nx affected -t lint unit-test integration-test build
