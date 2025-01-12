@@ -8,17 +8,18 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "importHelpers": true,
-    "target": "es2015",
+    "target": "es2022",
     "module": "esnext",
-    "lib": ["es2020", "dom"],
+    "lib": ["es2023", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
       "knip-plugin": ["packages/plugin-knip/src/index.ts"],
       "plugin-factory": ["tooling/plugin-factory/src/index.ts"],
-      "testing-setup": ["testing/setup/src/index.ts"],
-      "testing-utils": ["testing/utils/src/index.ts"]
+      "@code-pushup/test-nx-utils": ["testing/test-nx-utils/src/index.ts"],
+      "@code-pushup/test-setup": ["testing/test-setup/src/index.ts"],
+      "@code-pushup/test-utils": ["testing/test-utils/src/index.ts"],
     }
   },
   "exclude": ["node_modules", "tmp"]

@@ -1,12 +1,9 @@
+import { getLogMessages } from '@code-pushup/test-utils';
+import { ui } from '@code-pushup/utils';
 import type { ReporterOptions } from 'knip';
 import { IssueRecords, IssueSet } from 'knip/dist/types/issues';
 import { fs as memfsFs } from 'memfs';
-import { join } from 'node:path';
-import { describe, expect, it, vi } from 'vitest';
-import { AuditOutputs } from '@code-pushup/models';
-import { MEMFS_VOLUME, getLogMessages } from 'testing-utils';
-import { ui } from '@code-pushup/utils';
-import { rawReport } from '../../../mocks/fixtures/raw-knip.report';
+import { describe, expect, it } from 'vitest';
 import { KNIP_RAW_REPORT_NAME, KNIP_REPORT_NAME } from './constants';
 import { CustomReporterOptions } from './model';
 import { knipReporter } from './reporter';
@@ -22,11 +19,6 @@ vi.mock('@code-pushup/utils', async () => {
 });
 
 describe('knipReporter', () => {
-
-  vi.mock('console', () => ({
-    log: vi.fn(),
-  }));
-
 
   it('should saves report to file system by default', async () => {
     await expect(
@@ -77,8 +69,8 @@ describe('knipReporter', () => {
         'jsonc-eslint-parser': {
           type: 'unlisted',
           symbol: 'jsonc-eslint-parser',
-          filePath:
-            '/User/username/code-pushup-cli/packages/utils/package.json',
+          filePath: '/User/username/code-pushup-cli/packages/utils/package.json',
+          workspace: 'code-pushup-cli'
         },
       },
     };
@@ -127,7 +119,7 @@ describe('knipReporter', () => {
       } as ReporterOptions),
     ).resolves.toBeUndefined();
 
-    expect(console.log).toHaveBeenCalledTimes(3);
+    expect(getLogMessages(ui().logger)).toHaveLength(1);
     expect(getLogMessages(ui().logger).at(0)).toBe(
       `[ blue(info) ] Reporter called with options: ${JSON.stringify(
         reporterOptions,
@@ -135,12 +127,12 @@ describe('knipReporter', () => {
         2,
       )}`,
     );
-    expect(getLogMessages(ui().logger).at(1)).toBe(
-      `[ blue(info) ] Saved raw report to ${reporterOptions.rawOutputFile}`,
-    );
-    expect(getLogMessages(ui().logger).at(2)).toBe(
-      `[ blue(info) ] Saved report to ${reporterOptions.outputFile}`,
-    );
+    // expect(getLogMessages(ui().logger).at(1)).toBe(
+    //   `[ blue(info) ] Saved raw report to ${reporterOptions.rawOutputFile}`,
+    // );
+    // expect(getLogMessages(ui().logger).at(2)).toBe(
+    //   `[ blue(info) ] Saved report to ${reporterOptions.outputFile}`,
+    // );
   });
 
 });

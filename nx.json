@@ -18,7 +18,11 @@
     },
     "@nx/vite:test": {
       "cache": true,
-      "inputs": ["default", "^default"]
+      "inputs": ["default", "^default"],
+      "options": {
+        "passWithNoTests": true,
+        "watch": false
+      }
     },
     "@nx/js:tsc": {
       "cache": true,
