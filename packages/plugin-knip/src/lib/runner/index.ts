@@ -10,7 +10,7 @@ import { type CustomReporterOptions } from '../reporter/index';
 /**
  * @description
  * Reduced implementation of the knip CLI arguments.
- * for a lull list see: https://knip.dev/reference/cli
+ * for a full list see: https://knip.dev/reference/cli
  */
 export type KnipCliOptions = Partial<{
   // https://knip.dev/reference/cli#general
