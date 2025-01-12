@@ -7,6 +7,7 @@
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
     "importHelpers": true,
     "target": "es2022",
     "module": "esnext",
@@ -15,11 +16,11 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "knip-plugin": ["packages/plugin-knip/src/index.ts"],
-      "plugin-factory": ["tooling/plugin-factory/src/index.ts"],
       "@code-pushup/test-nx-utils": ["testing/test-nx-utils/src/index.ts"],
       "@code-pushup/test-setup": ["testing/test-setup/src/index.ts"],
       "@code-pushup/test-utils": ["testing/test-utils/src/index.ts"],
+      "knip-plugin": ["packages/plugin-knip/src/index.ts"],
+      "plugin-factory": ["tooling/plugin-factory/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

@@ -5,9 +5,9 @@ import type {
 } from './lib/extend/path.matcher.js';
 
 declare module 'vitest' {
-  // eslint-disable-next-line @typescript-eslint/no-empty-object-type
+  // eslint-disable-next-line @typescript-eslint/no-empty-object-type, @typescript-eslint/no-empty-interface
   interface Assertion extends CustomPathMatchers {}
-  // eslint-disable-next-line @typescript-eslint/no-empty-object-type
+  // eslint-disable-next-line @typescript-eslint/no-empty-object-type, @typescript-eslint/no-empty-interface
   interface AsymmetricMatchersContaining extends CustomAsymmetricPathMatchers {}
 }
 /* eslint-enable @typescript-eslint/consistent-type-definitions */

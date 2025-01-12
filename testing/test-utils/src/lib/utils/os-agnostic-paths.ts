@@ -110,7 +110,7 @@ export function osAgnosticAudit<T extends AuditOutput | AuditReport>(
   return {
     ...audit,
     details: {
-      issues: issues.map(issue =>
+      issues: issues.map((issue) =>
         issue.source == null
           ? issue
           : {

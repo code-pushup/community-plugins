@@ -80,7 +80,6 @@ const audits = [
 export type KnipAudits = (typeof audits)[number]['slug'];
 
 function docsLink(slug: KnipAudits): string {
-  // eslint-disable-next-line functional/no-let
   let anchor = '#';
   const base = 'https://knip.dev/guides/handling-issues';
 
@@ -184,3 +183,36 @@ export const KNIP_GROUPS = [
 ] as const satisfies Group[]; // we use `as const satisfies` to get strict slug typing;
 
 export type KnipGroups = (typeof KNIP_GROUPS)[number]['slug'];
+
+import { IssueType as KnipIssueType } from 'knip/dist/types/issues';
+
+/**
+ * @description
+ * types that contain a knip `IssueSet`.
+ */
+export const ISSUE_SET_TYPES = ['files'] as const satisfies KnipIssueType[];
+
+/**
+ * @description
+ * types that contain a knip `Issue`
+ */
+export const ISSUE_RECORDS_TYPES = [
+  'dependencies',
+  'devDependencies',
+  'optionalPeerDependencies',
+  'unlisted',
+  'binaries',
+  'unresolved',
+  'exports',
+  'nsExports',
+  'types',
+  'nsTypes',
+  'enumMembers',
+  'classMembers',
+  'duplicates',
+] as const satisfies KnipIssueType[];
+
+export const ISSUE_TYPES = [
+  ...ISSUE_SET_TYPES,
+  ...ISSUE_RECORDS_TYPES,
+] as const satisfies KnipIssueType[];

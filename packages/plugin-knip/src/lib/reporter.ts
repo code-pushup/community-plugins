@@ -1,3 +1,3 @@
-import { knipReporter } from './reporter';
+import { knipReporter } from './reporter/index';
 
 export default knipReporter;

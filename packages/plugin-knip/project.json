@@ -31,6 +31,7 @@
       }
     },
     "integration-test": {
+      "dependsOn": ["build"],
       "executor": "@nx/vite:test",
       "options": {
         "configFile": "packages/plugin-knip/vite.config.integration.ts"

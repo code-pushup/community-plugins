@@ -1,5 +1,5 @@
 import { type MockInstance, afterEach, beforeEach, vi } from 'vitest';
-
+/* eslint-disable @typescript-eslint/no-explicit-any,@typescript-eslint/no-empty-function*/
 let consoleInfoSpy: MockInstance<any[], void> | undefined;
 let consoleWarnSpy: MockInstance<any[], void> | undefined;
 let consoleErrorSpy: MockInstance<any[], void> | undefined;
@@ -18,6 +18,7 @@ beforeEach(() => {
     consoleErrorSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
   }
 });
+/* eslint-enable @typescript-eslint/no-explicit-any,@typescript-eslint/no-empty-function*/
 
 afterEach(() => {
   consoleInfoSpy?.mockRestore();

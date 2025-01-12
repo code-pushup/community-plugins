@@ -1,6 +1,7 @@
 /// <reference types="vitest" />
 import { defineConfig } from 'vite';
-import { tsconfigPathAliases } from '../../tools/vitest-tsconfig-path-aliases.js';
+// eslint-disable-next-line @nx/enforce-module-boundaries
+import { tsconfigPathAliases } from '../../tooling/vitest-tsconfig-path-aliases';
 
 export default defineConfig({
   cacheDir: '../node_modules/.vite/test-utils',

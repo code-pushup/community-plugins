@@ -1,12 +1,19 @@
-import { getLogMessages } from '@code-pushup/test-utils';
+import {
+  getLogMessages,
+  MEMFS_VOLUME,
+  osAgnosticPath,
+} from '@code-pushup/test-utils';
 import { ui } from '@code-pushup/utils';
 import type { ReporterOptions } from 'knip';
 import { IssueRecords, IssueSet } from 'knip/dist/types/issues';
-import { fs as memfsFs } from 'memfs';
-import { describe, expect, it } from 'vitest';
+import { fs as memfsFs, vol } from 'memfs';
+import { beforeEach, describe, expect, it } from 'vitest';
 import { KNIP_RAW_REPORT_NAME, KNIP_REPORT_NAME } from './constants';
 import { CustomReporterOptions } from './model';
 import { knipReporter } from './reporter';
+import { join } from 'node:path';
+import { rawReport } from '../../../mocks/fixtures/raw-knip.report';
+import { AuditOutputs } from '@code-pushup/models';
 
 vi.mock('@code-pushup/utils', async () => {
   const actual = await vi.importActual('@code-pushup/utils');
@@ -19,6 +26,16 @@ vi.mock('@code-pushup/utils', async () => {
 });
 
 describe('knipReporter', () => {
+  beforeEach(async () => {
+    // memfs needs some files created (and deleted) to have the folder present
+    vol.fromJSON(
+      {
+        'test.ts': 'asdfa',
+      },
+      MEMFS_VOLUME,
+    );
+    await memfsFs.promises.rm('test.ts');
+  });
 
   it('should saves report to file system by default', async () => {
     await expect(
@@ -69,8 +86,8 @@ describe('knipReporter', () => {
         'jsonc-eslint-parser': {
           type: 'unlisted',
           symbol: 'jsonc-eslint-parser',
-          filePath: '/User/username/code-pushup-cli/packages/utils/package.json',
-          workspace: 'code-pushup-cli'
+          filePath:
+            '/User/username/code-pushup-cli/packages/utils/package.json',
         },
       },
     };
@@ -105,7 +122,7 @@ describe('knipReporter', () => {
     expect(rawKnipReport.counters).toStrictEqual({ files: 1, unlisted: 1 });
   });
 
-  it.only('should log if custom reporter option verbose is true', async () => {
+  it('should log if custom reporter option verbose is true', async () => {
     const reporterOptions: CustomReporterOptions = {
       verbose: true,
       outputFile: KNIP_REPORT_NAME,
@@ -119,7 +136,7 @@ describe('knipReporter', () => {
       } as ReporterOptions),
     ).resolves.toBeUndefined();
 
-    expect(getLogMessages(ui().logger)).toHaveLength(1);
+    expect(getLogMessages(ui().logger)).toHaveLength(3);
     expect(getLogMessages(ui().logger).at(0)).toBe(
       `[ blue(info) ] Reporter called with options: ${JSON.stringify(
         reporterOptions,
@@ -127,11 +144,44 @@ describe('knipReporter', () => {
         2,
       )}`,
     );
-    // expect(getLogMessages(ui().logger).at(1)).toBe(
-    //   `[ blue(info) ] Saved raw report to ${reporterOptions.rawOutputFile}`,
-    // );
-    // expect(getLogMessages(ui().logger).at(2)).toBe(
-    //   `[ blue(info) ] Saved report to ${reporterOptions.outputFile}`,
-    // );
+    expect(getLogMessages(ui().logger).at(1)).toBe(
+      `[ blue(info) ] Saved raw report to ${reporterOptions.rawOutputFile}`,
+    );
+    expect(getLogMessages(ui().logger).at(2)).toBe(
+      `[ blue(info) ] Saved report to ${reporterOptions.outputFile}`,
+    );
+  });
+
+  it('should produce valid audit outputs', async () => {
+    await expect(
+      knipReporter(rawReport as ReporterOptions),
+    ).resolves.toBeUndefined();
+
+    console.log(
+      'readdir: ',
+      memfsFs.readdir(MEMFS_VOLUME, (err, files) => {
+        console.log(files);
+      }),
+    );
+    const auditOutputsContent = await memfsFs.promises.readFile(
+      join(MEMFS_VOLUME, KNIP_REPORT_NAME),
+      { encoding: 'utf8' },
+    );
+    const auditOutputsJson = JSON.parse(
+      auditOutputsContent.toString(),
+    ) as AuditOutputs;
+    expect(
+      auditOutputsJson.map((audit) => ({
+        ...audit,
+        details: {
+          issues: audit.details?.issues?.map((issue) => ({
+            ...issue,
+            source: issue.source && {
+              file: osAgnosticPath(issue.source.file),
+            },
+          })),
+        },
+      })),
+    ).toMatchSnapshot();
   });
 });

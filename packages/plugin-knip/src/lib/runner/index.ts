@@ -5,7 +5,7 @@ import {
   KNIP_REPORT_NAME,
   type KnipAudits,
 } from '../constants';
-import { type CustomReporterOptions } from '../reporter';
+import { type CustomReporterOptions } from '../reporter/index';
 
 /**
  * @description

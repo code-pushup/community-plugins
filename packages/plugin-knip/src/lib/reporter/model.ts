@@ -12,7 +12,6 @@ export type CustomReporterOptions = z.infer<typeof customReporterOptionsSchema>;
 export function parseCustomReporterOptions(
   optionsString?: string,
 ): CustomReporterOptions {
-  // eslint-disable-next-line functional/no-let
   let rawJson;
   try {
     rawJson =
