@@ -150,7 +150,7 @@ export const rawReport: Pick<ReporterOptions, 'report' | 'issues' | 'options'> =
           'configurationGenerator|default': {
             type: 'duplicates',
             filePath:
-              '/Users/michael_hladky/WebstormProjects/quality-metrics-cli/packages/nx-plugin/src/generators/configuration/generator.ts',
+              '/Users/username/Projects/quality-metrics-cli/packages/nx-plugin/src/generators/configuration/generator.ts',
             symbol: 'configurationGenerator|default',
             symbols: [
               {

@@ -10,7 +10,6 @@ import {
   IssueSeverity,
   auditDetailsSchema,
   auditOutputsSchema,
-  Issue,
 } from '@code-pushup/models';
 import { ISSUE_RECORDS_TYPES, ISSUE_SET_TYPES } from '../constants';
 import { ISSUE_TYPE_MESSAGE } from './constants';

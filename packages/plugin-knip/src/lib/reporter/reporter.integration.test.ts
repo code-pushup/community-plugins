@@ -1,5 +1,4 @@
 import { relative } from 'knip/dist/util/path';
-// eslint-disable-next-line n/no-sync
 import { execSync } from 'node:child_process';
 import { readFile, rm } from 'node:fs/promises';
 import { join } from 'node:path';
@@ -10,6 +9,7 @@ describe('knipReporter', () => {
   afterEach(async () => {
     await rm(testFolder, { recursive: true, force: true });
   });
+
   it('should execute correctly', async () => {
     const sandboxRoot = join('packages', 'plugin-knip', 'mocks', 'sandbox');
     const reporterPath = join(
@@ -20,6 +20,8 @@ describe('knipReporter', () => {
       'dist',
       'packages',
       'plugin-knip',
+      'src',
+      'lib',
       'reporter.js',
     );
     const outputFile = join(testFolder, 'knip.report.json');
@@ -27,7 +29,6 @@ describe('knipReporter', () => {
       outputFile: relative(join('..', '..', '..', '..', outputFile)),
     });
 
-    // eslint-disable-next-line n/no-sync
     execSync(
       `npx knip --no-exit-code --reporter=${reporterPath} --reporter-options='${customReporterOptions}'`,
       {

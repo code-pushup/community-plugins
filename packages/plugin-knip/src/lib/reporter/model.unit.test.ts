@@ -29,17 +29,17 @@ describe('parseCustomReporterOptions', () => {
       `Option string: ${bold('{asd')}`,
     );
     expect(() => parseCustomReporterOptions('{asd')).toThrow(
-      `Error: Unexpected token a in JSON at position 1`,
+      ` Expected property name or '}' in JSON at position 1`,
     );
   });
 
   it('should throw for invalid options', () => {
     const opt = JSON.stringify({
-      outputFile: '',
-    } satisfies CustomReporterOptions);
+      verbose: 'test',
+    } as unknown as CustomReporterOptions);
     expect(() => parseCustomReporterOptions(opt)).toThrow(
       'The reporter options options have to follow the schema.',
     );
-    expect(() => parseCustomReporterOptions(opt)).toThrow('path is invalid');
+    expect(() => parseCustomReporterOptions(opt)).toThrow('invalid_type');
   });
 });

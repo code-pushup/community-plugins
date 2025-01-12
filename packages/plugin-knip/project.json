@@ -27,13 +27,14 @@
     "unit-test": {
       "executor": "@nx/vite:test",
       "options": {
-        "config": "packages/plugin-knip/vite.config.unit.ts"
+        "configFile": "packages/plugin-knip/vite.config.unit.ts"
       }
     },
     "integration-test": {
+      "dependsOn": ["build"],
       "executor": "@nx/vite:test",
       "options": {
-        "config": "packages/plugin-knip/vite.config.integration.ts"
+        "configFile": "packages/plugin-knip/vite.config.integration.ts"
       }
     }
   },

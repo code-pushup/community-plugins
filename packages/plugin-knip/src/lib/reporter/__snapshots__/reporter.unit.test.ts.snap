@@ -90,6 +90,9 @@ exports[`knipReporter > should produce valid audit outputs 1`] = `
     "value": 2,
   },
   {
+    "details": {
+      "issues": undefined,
+    },
     "score": 1,
     "slug": "unlisted-binaries",
     "value": 0,
@@ -102,10 +105,6 @@ exports[`knipReporter > should produce valid audit outputs 1`] = `
           "severity": "info",
           "source": {
             "file": "packages/models/src/lib/category-config.ts",
-            "position": {
-              "startColumn": 23,
-              "startLine": 8,
-            },
           },
         },
       ],
@@ -122,10 +121,6 @@ exports[`knipReporter > should produce valid audit outputs 1`] = `
           "severity": "error",
           "source": {
             "file": "packages/models/src/lib/category-config.ts",
-            "position": {
-              "startColumn": 17,
-              "startLine": 54,
-            },
           },
         },
       ],
@@ -136,16 +131,20 @@ exports[`knipReporter > should produce valid audit outputs 1`] = `
   },
   {
     "details": {
+      "issues": undefined,
+    },
+    "score": 1,
+    "slug": "exports-in-used-namespace",
+    "value": 0,
+  },
+  {
+    "details": {
       "issues": [
         {
           "message": "Unused exported type GroupMeta",
           "severity": "error",
           "source": {
             "file": "packages/models/src/lib/group.ts",
-            "position": {
-              "startColumn": 13,
-              "startLine": 26,
-            },
           },
         },
       ],
@@ -156,16 +155,20 @@ exports[`knipReporter > should produce valid audit outputs 1`] = `
   },
   {
     "details": {
+      "issues": undefined,
+    },
+    "score": 1,
+    "slug": "exported-types-in-used-namespace",
+    "value": 0,
+  },
+  {
+    "details": {
       "issues": [
         {
           "message": "Unused exported enum member unusedMember",
           "severity": "error",
           "source": {
             "file": "packages/models/src/lib/group.ts",
-            "position": {
-              "startColumn": 13,
-              "startLine": 26,
-            },
           },
         },
       ],
@@ -178,14 +181,26 @@ exports[`knipReporter > should produce valid audit outputs 1`] = `
     "details": {
       "issues": [
         {
+          "message": "Unused exported class member unusedKey",
+          "severity": "error",
+          "source": {
+            "file": "packages/models/src/lib/group.ts",
+          },
+        },
+      ],
+    },
+    "score": 0,
+    "slug": "unused-exported-class-members",
+    "value": 1,
+  },
+  {
+    "details": {
+      "issues": [
+        {
           "message": "Duplicate export configurationGenerator|default",
           "severity": "error",
           "source": {
-            "file": "../../../michael_hladky/WebstormProjects/quality-metrics-cli/packages/nx-plugin/src/generators/configuration/generator.ts",
-            "position": {
-              "startColumn": 15,
-              "startLine": 54,
-            },
+            "file": "../quality-metrics-cli/packages/nx-plugin/src/generators/configuration/generator.ts",
           },
         },
       ],

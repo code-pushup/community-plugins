@@ -1,5 +1,6 @@
 /// <reference types="vitest" />
 import { defineConfig } from 'vite';
+// eslint-disable-next-line @nx/enforce-module-boundaries
 import { tsconfigPathAliases } from '../../tooling/vitest-tsconfig-path-aliases';
 
 export default defineConfig({
