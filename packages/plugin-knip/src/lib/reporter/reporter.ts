@@ -16,7 +16,6 @@ import { knipToCpReport } from './utils';
  *
  */
 export const knipReporter = async (knipReporterOptions: ReporterOptions) => {
-  try {
     const { options, report, issues } = knipReporterOptions;
     const customReporterOptions = parseCustomReporterOptions(options);
     const {
@@ -62,8 +61,4 @@ export const knipReporter = async (knipReporterOptions: ReporterOptions) => {
     if (verbose) {
       ui().logger.info(`Saved report to ${outputFile}`);
     }
-  } catch (e) {
-    console.error('ERROR:');
-    console.error(e);
-  }
 };
