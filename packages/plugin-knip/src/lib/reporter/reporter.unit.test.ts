@@ -157,12 +157,6 @@ describe('knipReporter', () => {
       knipReporter(rawReport as ReporterOptions),
     ).resolves.toBeUndefined();
 
-    console.log(
-      'readdir: ',
-      memfsFs.readdir(MEMFS_VOLUME, (err, files) => {
-        console.log(files);
-      }),
-    );
     const auditOutputsContent = await memfsFs.promises.readFile(
       join(MEMFS_VOLUME, KNIP_REPORT_NAME),
       { encoding: 'utf8' },
