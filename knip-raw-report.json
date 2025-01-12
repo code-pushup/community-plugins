@@ -1,0 +1,15 @@
+{
+  "report": {
+    "files": true
+  },
+  "issues": {
+    "files": [
+      "main.js"
+    ]
+  },
+  "options": {
+    "verbose": true,
+    "outputFile": "knip-report.json",
+    "rawOutputFile": "knip-raw-report.json"
+  }
+}
