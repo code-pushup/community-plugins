@@ -16,7 +16,7 @@ import { knipToCpReport } from './utils';
  *
  */
 export const knipReporter = async (knipReporterOptions: ReporterOptions) => {
-  try{
+  try {
     const { options, report, issues } = knipReporterOptions;
     const customReporterOptions = parseCustomReporterOptions(options);
     const {
@@ -26,29 +26,29 @@ export const knipReporter = async (knipReporterOptions: ReporterOptions) => {
     } = customReporterOptions;
     if (verbose) {
       ui().logger.info(
-          `Reporter called with options: ${JSON.stringify(
-              customReporterOptions,
-              null,
-              2,
-          )}`,
+        `Reporter called with options: ${JSON.stringify(
+          customReporterOptions,
+          null,
+          2,
+        )}`,
       );
     }
     if (rawOutputFile != null) {
       await ensureDirectoryExists(dirname(rawOutputFile));
       await writeFile(
-          rawOutputFile,
-          JSON.stringify(
-              {
-                ...knipReporterOptions,
-                issues: {
-                  ...issues,
-                  files: [...issues.files], // files is a Set<string>
-                },
-                options: customReporterOptions,
-              },
-              null,
-              2,
-          ),
+        rawOutputFile,
+        JSON.stringify(
+          {
+            ...knipReporterOptions,
+            issues: {
+              ...issues,
+              files: [...issues.files], // files is a Set<string>
+            },
+            options: customReporterOptions,
+          },
+          null,
+          2,
+        ),
       );
       if (verbose) {
         ui().logger.info(`Saved raw report to ${rawOutputFile}`);
@@ -62,9 +62,8 @@ export const knipReporter = async (knipReporterOptions: ReporterOptions) => {
     if (verbose) {
       ui().logger.info(`Saved report to ${outputFile}`);
     }
-  }catch(e){
-    console.error('ERROR:')
+  } catch (e) {
+    console.error('ERROR:');
     console.error(e);
   }
-
 };

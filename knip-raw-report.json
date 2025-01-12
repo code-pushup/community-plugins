@@ -3,9 +3,7 @@
     "files": true
   },
   "issues": {
-    "files": [
-      "main.js"
-    ]
+    "files": ["main.js"]
   },
   "options": {
     "verbose": true,

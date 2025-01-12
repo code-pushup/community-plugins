@@ -134,5 +134,4 @@ describe('knipReporter', () => {
     //   `[ blue(info) ] Saved report to ${reporterOptions.outputFile}`,
     // );
   });
-
 });
