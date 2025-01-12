@@ -1,11 +1,10 @@
 import { bold } from 'ansis';
 import { z } from 'zod';
-import { filePathSchema } from '@code-pushup/models';
 
 export const customReporterOptionsSchema = z.object({
   verbose: z.boolean().optional(),
-  outputFile: filePathSchema.optional(),
-  rawOutputFile: filePathSchema.optional(),
+  outputFile: z.string().optional(), // TODO change into filePathSchema when @code-pushup/models releases new version
+  rawOutputFile: z.string().optional(), // TODO change into filePathSchema when @code-pushup/models releases new version
 });
 
 export type CustomReporterOptions = z.infer<typeof customReporterOptionsSchema>;
