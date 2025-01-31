@@ -33,7 +33,7 @@ describe('knipCategoryGroupRef', () => {
   it('should return correct group category reference object and set weight to 1 by default', () => {
     const categoryRef = categoryRefSchema.parse(knipCategoryGroupRef('files'));
     expect(categoryRef.slug).toBe('files');
-    expect(categoryRef.type).toBe('audit');
+    expect(categoryRef.type).toBe('group');
     expect(categoryRef.plugin).toBe(KNIP_PLUGIN_SLUG);
     expect(categoryRef.weight).toBe(1);
   });
@@ -43,7 +43,7 @@ describe('knipCategoryGroupRef', () => {
       knipCategoryGroupRef('files', 0),
     );
     expect(categoryRef.slug).toBe('files');
-    expect(categoryRef.type).toBe('audit');
+    expect(categoryRef.type).toBe('group');
     expect(categoryRef.plugin).toBe(KNIP_PLUGIN_SLUG);
     expect(categoryRef.weight).toBe(0);
   });
