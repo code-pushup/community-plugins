@@ -18,6 +18,7 @@ export const rawReport: Pick<ReporterOptions, 'report' | 'issues' | 'options'> =
       enumMembers: true,
       classMembers: true,
       duplicates: true,
+      _files: false
     },
     issues: {
       files: new Set([
@@ -30,6 +31,7 @@ export const rawReport: Pick<ReporterOptions, 'report' | 'issues' | 'options'> =
             filePath: '/Users/username/Projects/code-pushup-cli/package.json',
             symbol: 'cli-table3',
             severity: 'error',
+            workspace: 'code-pushup-cli',
           },
         },
       },
@@ -40,6 +42,7 @@ export const rawReport: Pick<ReporterOptions, 'report' | 'issues' | 'options'> =
             filePath: '/Users/username/Projects/code-pushup-cli/package.json',
             symbol: '@trivago/prettier-plugin-sort-imports',
             severity: 'error',
+            workspace: 'code-pushup-cli',
           },
         },
       },
@@ -50,6 +53,7 @@ export const rawReport: Pick<ReporterOptions, 'report' | 'issues' | 'options'> =
             filePath: '/Users/username/Projects/code-pushup-cli/package.json',
             symbol: 'ts-node',
             severity: 'error',
+            workspace: 'code-pushup-cli',
           },
         },
       },
@@ -58,16 +62,16 @@ export const rawReport: Pick<ReporterOptions, 'report' | 'issues' | 'options'> =
           'jsonc-eslint-parser': {
             type: 'unlisted',
             symbol: 'jsonc-eslint-parser',
-            filePath:
-              '/User/username/code-pushup-cli/packages/utils/package.json',
+            filePath: '/User/username/code-pushup-cli/packages/utils/package.json',
+            workspace: 'code-pushup-cli',
           },
         },
         'examples/plugins/.eslintrc.json': {
           'jsonc-eslint-parser': {
             type: 'unlisted',
             symbol: 'jsonc-eslint-parser',
-            filePath:
-              '/User/username/code-pushup-cli/packages/utils/package.json',
+            filePath: '/User/username/code-pushup-cli/packages/utils/package.json',
+            workspace: 'code-pushup-cli',
           },
         },
       },
@@ -78,10 +82,10 @@ export const rawReport: Pick<ReporterOptions, 'report' | 'issues' | 'options'> =
           'some-package': {
             type: 'unresolved',
             symbol: 'smo-package',
-            filePath:
-              '/Users/username/Projects/code-pushup-cli/packages/models/src/lib/category-config.ts',
+            filePath: '/Users/username/Projects/code-pushup-cli/packages/models/src/lib/category-config.ts',
             line: 8,
             col: 23,
+            workspace: 'code-pushup-cli',
           },
         },
       },
@@ -89,13 +93,13 @@ export const rawReport: Pick<ReporterOptions, 'report' | 'issues' | 'options'> =
         'packages/models/src/lib/category-config.ts': {
           duplicateErrorMsg: {
             type: 'exports',
-            filePath:
-              '/Users/username/Projects/code-pushup-cli/packages/models/src/lib/category-config.ts',
+            filePath: '/Users/username/Projects/code-pushup-cli/packages/models/src/lib/category-config.ts',
             symbol: 'duplicateErrorMsg',
             symbolType: 'function' as SymbolType,
             line: 54,
             col: 17,
             severity: 'error',
+            workspace: 'code-pushup-cli',
           },
         },
       },
@@ -105,13 +109,13 @@ export const rawReport: Pick<ReporterOptions, 'report' | 'issues' | 'options'> =
         'packages/models/src/lib/group.ts': {
           GroupMeta: {
             type: 'types',
-            filePath:
-              '/Users/username/Projects/code-pushup-cli/packages/models/src/lib/group.ts',
+            filePath: '/Users/username/Projects/code-pushup-cli/packages/models/src/lib/group.ts',
             symbol: 'GroupMeta',
             symbolType: 'type' as SymbolType,
             line: 26,
             col: 13,
             severity: 'error',
+            workspace: 'code-pushup-cli',
           },
         },
       },
@@ -121,13 +125,13 @@ export const rawReport: Pick<ReporterOptions, 'report' | 'issues' | 'options'> =
         'packages/models/src/lib/group.ts': {
           MyEnum: {
             type: 'enumMembers',
-            filePath:
-              '/Users/username/Projects/code-pushup-cli/packages/models/src/lib/group.ts',
+            filePath: '/Users/username/Projects/code-pushup-cli/packages/models/src/lib/group.ts',
             symbol: 'unusedMember',
             symbolType: 'enum' as SymbolType,
             line: 26,
             col: 13,
             severity: 'error',
+            workspace: 'code-pushup-cli',
           },
         },
       },
@@ -135,13 +139,13 @@ export const rawReport: Pick<ReporterOptions, 'report' | 'issues' | 'options'> =
         'packages/models/src/lib/group.ts': {
           MyClass: {
             type: 'classMembers',
-            filePath:
-              '/Users/username/Projects/code-pushup-cli/packages/models/src/lib/group.ts',
+            filePath: '/Users/username/Projects/code-pushup-cli/packages/models/src/lib/group.ts',
             symbol: 'unusedKey',
             symbolType: 'enum' as SymbolType,
             line: 40,
             col: 687,
             severity: 'error',
+            workspace: 'code-pushup-cli',
           },
         },
       },
@@ -149,8 +153,7 @@ export const rawReport: Pick<ReporterOptions, 'report' | 'issues' | 'options'> =
         'packages/nx-plugin/src/generators/configuration/generator.ts': {
           'configurationGenerator|default': {
             type: 'duplicates',
-            filePath:
-              '/Users/username/Projects/quality-metrics-cli/packages/nx-plugin/src/generators/configuration/generator.ts',
+            filePath: '/Users/username/Projects/quality-metrics-cli/packages/nx-plugin/src/generators/configuration/generator.ts',
             symbol: 'configurationGenerator|default',
             symbols: [
               {
@@ -165,9 +168,11 @@ export const rawReport: Pick<ReporterOptions, 'report' | 'issues' | 'options'> =
               },
             ],
             severity: 'error',
+            workspace: 'code-pushup-cli',
           },
         },
       },
+      _files: new Set(),
     },
     options: JSON.stringify({
       outputFile: 'knip-report.json',
