@@ -26,5 +26,15 @@
       "inputs": ["default", "^default"]
     }
   },
-  "plugins": []
+  "plugins": [
+    {
+      "plugin": "@push-based/nx-verdaccio",
+      "options": {
+        "environments": {
+          "environmentsDir": "tmp/environments",
+          "targetNames": ["e2e"]
+        }
+      }
+    }
+  ]
 }

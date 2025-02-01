@@ -1,8 +1,10 @@
 {
   "name": "plugin-knip-e2e",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "examples/plugin-knip-e2e/src",
+  "sourceRoot": "e2e/plugin-knip-e2e/src",
   "projectType": "application",
+  "implicitDependencies": ["plugin-knip"],
+  "tags": ["scope:tooling", "type:e2e"],
   "targets": {
     "lint": {
       "executor": "@nx/linter:eslint",
@@ -17,7 +19,5 @@
         "config": "e2e/plugin-knip-e2e/vite.config.e2e.ts"
       }
     }
-  },
-  "implicitDependencies": ["plugin-knip"],
-  "tags": ["scope:tooling", "type:e2e"]
+  }
 }

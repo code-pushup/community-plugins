@@ -19,8 +19,8 @@
       "@code-pushup/test-nx-utils": ["testing/test-nx-utils/src/index.ts"],
       "@code-pushup/test-setup": ["testing/test-setup/src/index.ts"],
       "@code-pushup/test-utils": ["testing/test-utils/src/index.ts"],
-      "knip-plugin": ["packages/plugin-knip/src/index.ts"],
-      "plugin-factory": ["tooling/plugin-factory/src/index.ts"]
+      "@code-pushup/plugin-knip": ["packages/plugin-knip/src/lib/index.ts"],
+      "@code-pushup/plugin-factory": ["tooling/plugin-factory/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
