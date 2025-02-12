@@ -1,5 +1,5 @@
-import { join } from 'node:path';
 import { PluginConfig } from '@code-pushup/models';
+import { join } from 'node:path';
 import { KNIP_AUDITS, KNIP_GROUPS, KNIP_PLUGIN_SLUG } from './constants';
 import { RunnerOptions, createRunnerConfig } from './runner';
 

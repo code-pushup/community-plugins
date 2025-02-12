@@ -1,5 +1,5 @@
-import { join } from 'node:path';
 import { RunnerConfig } from '@code-pushup/models';
+import { join } from 'node:path';
 import {
   KNIP_PLUGIN_SLUG,
   KNIP_REPORT_NAME,

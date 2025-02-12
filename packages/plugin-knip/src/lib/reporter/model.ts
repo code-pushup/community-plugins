@@ -4,8 +4,8 @@ import { z } from 'zod';
 
 export const customReporterOptionsSchema = z.object({
   verbose: z.boolean().optional(),
-  outputFile: filePathSchema,
-  rawOutputFile: filePathSchema,
+  outputFile: filePathSchema.optional(),
+  rawOutputFile: filePathSchema.optional(),
 });
 
 export type CustomReporterOptions = z.infer<typeof customReporterOptionsSchema>;
