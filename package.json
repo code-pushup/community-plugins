@@ -57,6 +57,9 @@
     "memfs": "^4.17.0",
     "zod": "^3.24.1"
   },
+  "devDependencies": {
+    "@beaussan/nx-knip": "0.0.5-15"
+  },
   "optionalDependencies": {
     "@nx/nx-darwin-arm64": "^16.9.1",
     "@nx/nx-darwin-x64": "^16.10.0",
