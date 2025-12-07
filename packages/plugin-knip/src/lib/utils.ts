@@ -17,19 +17,9 @@ export function knipCategoryGroupRef(slug: KnipGroups, weight = 1) {
 }
 
 function knipCategoryRef(
-  slug: KnipAudits,
-  weight: number,
-  type: 'audit',
-): CategoryRef;
-function knipCategoryRef(
-  slug: KnipGroups,
-  weight: number,
-  type: 'group',
-): CategoryRef;
-function knipCategoryRef(
   slug: KnipAudits | KnipGroups,
   weight: number,
-  type: CategoryRef['type'],
+  type: 'audit' | 'group',
 ): CategoryRef {
   return {
     plugin: KNIP_PLUGIN_SLUG,

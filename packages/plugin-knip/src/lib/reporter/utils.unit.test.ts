@@ -264,7 +264,7 @@ describe('toIssues', () => {
         files: new Set([
           '/User/projects/code-pushup-cli/packages/utils/src/index.js',
         ]),
-      }),
+      } as KnipIssues),
     ).resolves.toStrictEqual([
       expect.objectContaining({
         message: expect.stringMatching('Unused file'),
@@ -294,10 +294,11 @@ describe('toIssues', () => {
                 '/User/projects/code-pushup-cli/packages/utils/src/index.js',
               symbol: 'CliUi',
               severity: 'error',
+              workspace: 'workspace',
             },
           },
         },
-      }),
+      } as unknown as KnipIssues),
     ).resolves.toStrictEqual([
       expect.objectContaining({
         message: expect.stringMatching('CliUi'),
@@ -414,7 +415,7 @@ describe('knipToCpReport', () => {
               severity: 'error',
             },
           },
-        } as IssueRecords,
+        } as unknown as IssueRecords,
       } as ReporterOptions['issues'],
     });
     expect(() => auditOutputsSchema.parse(result)).not.toThrow();

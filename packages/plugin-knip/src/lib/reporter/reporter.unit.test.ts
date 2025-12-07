@@ -88,6 +88,7 @@ describe('knipReporter', () => {
           symbol: 'jsonc-eslint-parser',
           filePath:
             '/User/username/code-pushup-cli/packages/utils/package.json',
+          workspace: '/User/username/code-pushup-cli',
         },
       },
     };
