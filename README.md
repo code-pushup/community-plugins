@@ -13,6 +13,7 @@ Code-Pushup is a tool that helps you measure and track your code quality metrics
 ## Available Plugins
 
 This section will list community plugins as they are added. Each plugin will include:
+
 - Brief description
 - Installation instructions
 - Basic usage example
@@ -21,6 +22,7 @@ This section will list community plugins as they are added. Each plugin will inc
 ## Creating Your Own Plugin
 
 Want to contribute? Great! You can create your own plugin and share it with the community. Check out our [CONTRIBUTING.md](./CONTRIBUTING.md) guide for:
+
 - Minimum requirements
 - Development guidelines
 - Submission process
