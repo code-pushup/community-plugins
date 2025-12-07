@@ -1,11 +1,11 @@
-import { join } from 'node:path';
+import path from 'node:path';
 import { RunnerConfig } from '@code-pushup/models';
 import {
   KNIP_PLUGIN_SLUG,
   KNIP_REPORT_NAME,
   type KnipAudits,
-} from '../constants';
-import { type CustomReporterOptions } from '../reporter/index';
+} from '../constants.js';
+import type { CustomReporterOptions } from '../reporter/index.js';
 
 /**
  * @description
@@ -15,10 +15,10 @@ import { type CustomReporterOptions } from '../reporter/index';
 export type KnipCliOptions = Partial<{
   // https://knip.dev/reference/cli#general
   debug: boolean;
-  // eslint-disable-next-line @typescript-eslint/naming-convention
+   
   'config-hints': boolean;
   performance: boolean;
-  // eslint-disable-next-line @typescript-eslint/naming-convention
+   
   'isolate-workspaces': boolean;
   exitCode: boolean;
   // https://knip.dev/reference/cli#configuration
@@ -27,9 +27,9 @@ export type KnipCliOptions = Partial<{
   workspace: string; // dir path
   directory: string; // dir path
   gitignore: boolean;
-  // eslint-disable-next-line @typescript-eslint/naming-convention
+   
   'include-entry-exports': string;
-  // eslint-disable-next-line @typescript-eslint/naming-convention
+   
   'include-libs': string;
   // https://knip.dev/reference/cli#modes
   production: boolean;
@@ -39,7 +39,7 @@ export type KnipCliOptions = Partial<{
   include: KnipAudits[];
   dependencies: string[];
   exports: string[];
-  // eslint-disable-next-line @typescript-eslint/naming-convention
+   
   'experimental-tags': string[];
   tags: string[];
 }>;
@@ -47,7 +47,7 @@ export type RunnerOptions = KnipCliOptions & CustomReporterOptions;
 
 export function createRunnerConfig(options: RunnerOptions = {}): RunnerConfig {
   const {
-    outputFile = join(KNIP_PLUGIN_SLUG, KNIP_REPORT_NAME),
+    outputFile = path.join(KNIP_PLUGIN_SLUG, KNIP_REPORT_NAME),
     rawOutputFile,
   } = options;
   return {

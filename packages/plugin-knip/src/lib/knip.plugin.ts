@@ -1,7 +1,7 @@
 import { join } from 'node:path';
 import { PluginConfig } from '@code-pushup/models';
-import { KNIP_AUDITS, KNIP_GROUPS, KNIP_PLUGIN_SLUG } from './constants';
-import { RunnerOptions, createRunnerConfig } from './runner';
+import { KNIP_AUDITS, KNIP_GROUPS, KNIP_PLUGIN_SLUG } from './constants.js';
+import { RunnerOptions, createRunnerConfig } from './runner/index.js';
 
 export type PluginOptions = RunnerOptions;
 

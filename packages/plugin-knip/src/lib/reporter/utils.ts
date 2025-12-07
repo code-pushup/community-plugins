@@ -14,8 +14,8 @@ import {
   Issue as CpIssue,
 } from '@code-pushup/models';
 import { formatGitPath, getGitRoot, slugify } from '@code-pushup/utils';
-import { ISSUE_RECORDS_TYPES, ISSUE_SET_TYPES } from '../constants';
-import { ISSUE_TYPE_MESSAGE, ISSUE_TYPE_TITLE } from './constants';
+import { ISSUE_RECORDS_TYPES, ISSUE_SET_TYPES } from '../constants.js';
+import { ISSUE_TYPE_MESSAGE, ISSUE_TYPE_TITLE } from './constants.js';
 
 const severityMap: Record<KnipSeverity | 'unknown', CondPushupIssueSeverity> = {
   unknown: 'info',
@@ -118,7 +118,7 @@ export function knipToCpReport({
 }: Pick<ReporterOptions, 'report' | 'issues'>): Promise<AuditOutputs> {
   return Promise.all(
     Object.entries(report)
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+       
       .filter(([_, isReportType]) => isReportType)
       .map(async ([issueType]): Promise<AuditOutput> => {
         const issues = await toIssues(issueType as IssueType, rawIssues);

@@ -80,6 +80,7 @@ const audits = [
 export type KnipAudits = (typeof audits)[number]['slug'];
 
 function docsLink(slug: KnipAudits): string {
+  // eslint-disable-next-line functional/no-let
   let anchor = '#';
   const base = 'https://knip.dev/guides/handling-issues';
 

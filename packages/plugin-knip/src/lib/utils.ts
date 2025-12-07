@@ -3,7 +3,7 @@ import {
   KNIP_PLUGIN_SLUG,
   type KnipAudits,
   type KnipGroups,
-} from './constants';
+} from './constants.js';
 
 export function knipCategoryAuditRef(
   slug: KnipAudits,

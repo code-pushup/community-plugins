@@ -48,7 +48,6 @@
   },
   "targetDefaults": {
     "lint": {
-      "dependsOn": ["eslint-formatter-multi:build"],
       "inputs": ["default", "lint-eslint-inputs"],
       "outputs": ["{projectRoot}/.eslint/**/*"],
       "cache": true,
@@ -60,13 +59,8 @@
           "{projectRoot}/package.json",
           "--config={projectRoot}/eslint.config.js",
           "--max-warnings=0",
-          "--no-warn-ignored",
-          "--error-on-unmatched-pattern=false",
-          "--format=./tools/eslint-formatter-multi/dist/src/index.js"
-        ],
-        "env": {
-          "ESLINT_FORMATTER_CONFIG": "{\"outputDir\":\"{projectRoot}/.eslint\"}"
-        }
+          "--error-on-unmatched-pattern=false"
+        ]
       }
     },
     "build": {

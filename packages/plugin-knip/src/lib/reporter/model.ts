@@ -12,6 +12,7 @@ export type CustomReporterOptions = z.infer<typeof customReporterOptionsSchema>;
 export function parseCustomReporterOptions(
   optionsString?: string,
 ): CustomReporterOptions {
+  /* eslint-disable functional/no-let */
   let rawJson;
   try {
     rawJson =
@@ -19,7 +20,7 @@ export function parseCustomReporterOptions(
         ? (JSON.parse(optionsString) as Record<string, unknown>)
         : {};
   } catch (error) {
-    throw new Error(`The passed knip reporter options have to be a JSON parseable string. E.g. --reporter-options='{\\"prop\\":42}'
+    throw new Error(String.raw`The passed knip reporter options have to be a JSON parseable string. E.g. --reporter-options='{\"prop\":42}'
     Option string: ${bold(optionsString)}
     Error: ${(error as Error).message}`);
   }

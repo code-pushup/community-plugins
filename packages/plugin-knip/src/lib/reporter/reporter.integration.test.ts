@@ -1,18 +1,19 @@
 import { relative } from 'knip/dist/util/path';
 import { execSync } from 'node:child_process';
 import { readFile, rm } from 'node:fs/promises';
-import { join } from 'node:path';
+import path from 'node:path';
 import { afterEach, describe, expect, it } from 'vitest';
 
 describe('knipReporter', () => {
-  const testFolder = join('tmp', 'plugin-knip');
+  const testFolder = path.join('tmp', 'plugin-knip');
+
   afterEach(async () => {
     await rm(testFolder, { recursive: true, force: true });
   });
 
   it('should execute correctly', async () => {
-    const sandboxRoot = join('packages', 'plugin-knip', 'mocks', 'sandbox');
-    const reporterPath = join(
+    const sandboxRoot = path.join('packages', 'plugin-knip', 'mocks', 'sandbox');
+    const reporterPath = path.join(
       '..',
       '..',
       '..',
@@ -24,9 +25,9 @@ describe('knipReporter', () => {
       'lib',
       'reporter.js',
     );
-    const outputFile = join(testFolder, 'knip.report.json');
+    const outputFile = path.join(testFolder, 'knip.report.json');
     const customReporterOptions = JSON.stringify({
-      outputFile: relative(join('..', '..', '..', '..', outputFile)),
+      outputFile: relative(path.join('..', '..', '..', '..', outputFile)),
     });
 
     execSync(

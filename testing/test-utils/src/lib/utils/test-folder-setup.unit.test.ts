@@ -23,7 +23,7 @@ describe('restoreNxIgnoredFiles', () => {
       MEMFS_VOLUME,
     );
 
-    await expect(restoreNxIgnoredFiles('/')).resolves.not.toThrow();
+    await expect(restoreNxIgnoredFiles('/')).resolves.not.toThrowError();
 
     expect(vol.toJSON()).toStrictEqual({
       '/nx.json': '',
@@ -46,7 +46,7 @@ describe('restoreNxIgnoredFiles', () => {
       MEMFS_VOLUME,
     );
 
-    await expect(restoreNxIgnoredFiles('/')).resolves.not.toThrow();
+    await expect(restoreNxIgnoredFiles('/')).resolves.not.toThrowError();
 
     expect(vol.toJSON()).toStrictEqual({
       '/nx.json': '',
@@ -58,7 +58,7 @@ describe('restoreNxIgnoredFiles', () => {
   it('should throw if target folder does not exist', async () => {
     vol.fromJSON({}, MEMFS_VOLUME);
 
-    await expect(restoreNxIgnoredFiles('/non-existent')).rejects.toThrow(
+    await expect(restoreNxIgnoredFiles('/non-existent')).rejects.toThrowError(
       "ENOENT: no such file or directory, readdir '/non-existent'",
     );
   });
@@ -73,7 +73,7 @@ describe('restoreNxIgnoredFiles', () => {
       MEMFS_VOLUME,
     );
 
-    await expect(restoreNxIgnoredFiles('/')).resolves.not.toThrow();
+    await expect(restoreNxIgnoredFiles('/')).resolves.not.toThrowError();
 
     expect(vol.toJSON()).toStrictEqual({
       '/workspaces/workspace1/nx.json': '',
@@ -92,7 +92,7 @@ describe('cleanTestFolder', () => {
       MEMFS_VOLUME,
     );
 
-    await expect(cleanTestFolder('/tmp/unit')).resolves.not.toThrow();
+    await expect(cleanTestFolder('/tmp/unit')).resolves.not.toThrowError();
 
     expect(vol.toJSON()).toStrictEqual({
       '/tmp/unit': null,
@@ -104,7 +104,7 @@ describe('teardownTestFolder', () => {
   it('should handle non-existent folder', async () => {
     vol.fromJSON({}, MEMFS_VOLUME);
 
-    await expect(teardownTestFolder('/tmp/unit')).resolves.not.toThrow();
+    await expect(teardownTestFolder('/tmp/unit')).resolves.not.toThrowError();
 
     expect(vol.toJSON()).toStrictEqual({});
   });
