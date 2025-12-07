@@ -26,5 +26,6 @@
       "inputs": ["default", "^default"]
     }
   },
-  "plugins": []
+  "plugins": [],
+  "useLegacyCache": true
 }
