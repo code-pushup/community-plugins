@@ -46,11 +46,12 @@
     "packages/*"
   ],
   "dependencies": {
-    "@code-pushup/cli": "^0.57.0",
-    "@code-pushup/core": "^0.57.0",
-    "@code-pushup/models": "^0.57.0",
-    "@code-pushup/utils": "^0.57.0",
-    "@nx/devkit": "19.4.3",
+    "@code-pushup/cli": "0.92.1",
+    "@code-pushup/core": "0.92.1",
+    "@code-pushup/models": "0.92.1",
+    "@code-pushup/nx-plugin": "0.92.1",
+    "@code-pushup/utils": "0.92.1",
+    "@nx/devkit": "^19.4.3",
     "@poppinss/cliui": "^6.4.1",
     "ansis": "^3.8.1",
     "knip": "^5.42.0",

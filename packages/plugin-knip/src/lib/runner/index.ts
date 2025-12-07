@@ -60,7 +60,7 @@ export function createRunnerConfig(options: RunnerOptions = {}): RunnerConfig {
       '--no-progress',
       // code-pushup reporter is used statically
       // @TODO replace with correct path after release (@code-pushup/knip-plugin/src/reporter/index.js)
-      '--reporter=./dist/examples/plugins/knip/src/reporter/index.js',
+      '--reporter=./dist/packages/plugin-knip/src/lib/reporter/index.js',
       // code-pushup reporter options are passed as string. See
       `--reporter-options='${JSON.stringify({
         outputFile,
