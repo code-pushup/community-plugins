@@ -1,37 +1,34 @@
-import { MEMFS_VOLUME, osAgnosticPath } from '@code-pushup/test-utils';
-import { logger } from '@code-pushup/utils';
 import type { ReporterOptions } from 'knip';
 import type { IssueRecords, IssueSet } from 'knip/dist/types/issues';
 import { fs as memfsFs, vol } from 'memfs';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import { KNIP_RAW_REPORT_NAME, KNIP_REPORT_NAME } from './constants.js';
+import type { AuditOutputs } from '@code-pushup/models';
+import { MEMFS_VOLUME } from '@code-pushup/test-utils';
+import { logger } from '@code-pushup/utils';
+import { rawReport } from '../../../mocks/fixtures/raw-knip.report';
+import { KNIP_RAW_REPORT_NAME, KNIP_REPORT_NAME } from '../constants.js';
 import { CustomReporterOptions } from './model.js';
 import { knipReporter } from './reporter.js';
-import path from 'node:path';
-import { rawReport } from '../../../mocks/fixtures/raw-knip.report';
-import type { AuditOutputs } from '@code-pushup/models';
 
 vi.mock('@code-pushup/utils', async () => {
   const actual = await vi.importActual('@code-pushup/utils');
   return {
     ...actual,
-    getGitRoot: vi.fn().mockResolvedValue(MEMFS_VOLUME),
+    getGitRoot: vi
+      .fn()
+      .mockResolvedValue('/Users/username/Projects/code-pushup-cli/'),
     logger: {
       info: vi.fn(),
+      error: vi.fn(),
+      warn: vi.fn(),
     },
   };
 });
 
 describe('knipReporter', () => {
-  beforeEach(async () => {
-    // memfs needs some files created (and deleted) to have the folder present
-    vol.fromJSON(
-      {
-        'test.ts': 'asdfa',
-      },
-      MEMFS_VOLUME,
-    );
-    await memfsFs.promises.rm('test.ts');
+  beforeEach(() => {
+    vol.reset();
+    vol.fromJSON({ [MEMFS_VOLUME]: null });
   });
 
   it('should saves report to file system by default', async () => {
@@ -46,9 +43,7 @@ describe('knipReporter', () => {
       } as ReporterOptions),
     ).resolves.toBeUndefined();
 
-    expect(logger.info).not.toHaveBeenCalledWith(
-      expect.stringContaining('"$0":'),
-    );
+    expect(logger.info).not.toHaveBeenCalled();
   });
 
   it('should accept reporter option outputFile', async () => {
@@ -65,9 +60,7 @@ describe('knipReporter', () => {
       } as ReporterOptions),
     ).resolves.toBeUndefined();
 
-    expect(logger.info).not.toHaveBeenCalledWith(
-      expect.stringContaining('"$0":'),
-    );
+    expect(logger.info).not.toHaveBeenCalled();
 
     const auditOutputs = JSON.parse(
       (
@@ -89,7 +82,6 @@ describe('knipReporter', () => {
           symbol: 'jsonc-eslint-parser',
           filePath:
             '/User/username/code-pushup-cli/packages/utils/package.json',
-          workspace: '/User/username/code-pushup-cli',
         },
       },
     };
@@ -110,9 +102,7 @@ describe('knipReporter', () => {
       } as ReporterOptions),
     ).resolves.toBeUndefined();
 
-    expect(logger.info).not.toHaveBeenCalledWith(
-      expect.stringContaining('"$0":'),
-    );
+    expect(logger.info).not.toHaveBeenCalled();
 
     const rawKnipReport = JSON.parse(
       (
@@ -140,8 +130,22 @@ describe('knipReporter', () => {
       } as ReporterOptions),
     ).resolves.toBeUndefined();
 
-    expect(logger.info).not.toHaveBeenCalledWith(
-      expect.stringContaining('"$0":'),
+    expect(logger.info).toHaveBeenCalledTimes(3);
+    expect(logger.info).toHaveBeenNthCalledWith(
+      1,
+      `Reporter called with options: ${JSON.stringify(
+        reporterOptions,
+        null,
+        2,
+      )}`,
+    );
+    expect(logger.info).toHaveBeenNthCalledWith(
+      2,
+      `Saved raw report to ${reporterOptions.rawOutputFile}`,
+    );
+    expect(logger.info).toHaveBeenNthCalledWith(
+      3,
+      `Saved report to ${reporterOptions.outputFile}`,
     );
   });
 
@@ -151,24 +155,12 @@ describe('knipReporter', () => {
     ).resolves.toBeUndefined();
 
     const auditOutputsContent = await memfsFs.promises.readFile(
-      path.join(MEMFS_VOLUME, KNIP_REPORT_NAME),
+      'knip-report.json',
       { encoding: 'utf8' },
     );
     const auditOutputsJson = JSON.parse(
       auditOutputsContent.toString(),
     ) as AuditOutputs;
-    expect(
-      auditOutputsJson.map((audit) => ({
-        ...audit,
-        details: {
-          issues: audit.details?.issues?.map((issue) => ({
-            ...issue,
-            source: issue.source && {
-              file: osAgnosticPath(issue.source.file),
-            },
-          })),
-        },
-      })),
-    ).toMatchSnapshot();
+    expect(auditOutputsJson).toMatchSnapshot();
   });
 });

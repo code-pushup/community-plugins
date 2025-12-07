@@ -1,28 +1,5 @@
 import { ISSUE_TYPES } from '../constants.js';
 
-export const KNIP_REPORT_NAME = 'knip-report.json';
-export const KNIP_RAW_REPORT_NAME = 'knip-raw-report.json';
-
-export const ISSUE_TYPE_TO_AUDIT_SLUG: Record<
-  (typeof ISSUE_TYPES)[number],
-  string
-> = {
-  files: 'files',
-  dependencies: 'dependencies',
-  devDependencies: 'devdependencies',
-  optionalPeerDependencies: 'optionalpeerdependencies',
-  unlisted: 'unlisted',
-  binaries: 'binaries',
-  unresolved: 'unresolved',
-  exports: 'exports',
-  nsExports: 'nsexports',
-  types: 'types',
-  nsTypes: 'nstypes',
-  enumMembers: 'enummembers',
-  classMembers: 'classmembers',
-  duplicates: 'duplicates',
-} as const;
-
 export const ISSUE_TYPE_TITLE: Record<
   (typeof ISSUE_TYPES)[number] | '_files',
   string

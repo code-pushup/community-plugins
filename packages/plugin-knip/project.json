@@ -4,7 +4,11 @@
   "sourceRoot": "packages/plugin-knip/src",
   "projectType": "library",
   "targets": {
-    "build": {},
+    "build": {
+      "options": {
+        "additionalEntryPoints": ["packages/plugin-knip/src/lib/reporter.ts"]
+      }
+    },
     "lint": {},
     "unit-test": {},
     "int-test": {}

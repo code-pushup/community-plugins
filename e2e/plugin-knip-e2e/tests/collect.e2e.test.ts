@@ -47,7 +47,7 @@ describe('PLUGIN collect report with knip-plugin NPM package', () => {
     const report = await readJsonFile(
       path.join(defaultSetupDir, '.code-pushup', 'report.json'),
     );
-    expect(() => reportSchema.parse(report)).not.toThrow();
+    expect(() => reportSchema.parse(report)).not.toThrowError();
     expect(
       omitVariableReportData(report as Report, { omitAuditData: true }),
     ).toMatchSnapshot();

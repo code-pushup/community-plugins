@@ -1,4 +1,4 @@
-import type { Audit, Group } from '@code-pushup/models';
+import { IssueType as KnipIssueType } from 'knip/dist/types/issues';
 
 export const KNIP_PLUGIN_SLUG = 'knip';
 export const KNIP_RAW_REPORT_NAME = 'knip-raw-report.json';
@@ -75,57 +75,13 @@ const audits = [
     title: 'Duplicate exports',
     description: 'This is exported more than once',
   },
-] as const satisfies Audit[]; // we use `as const satisfies` to get strict slug typing
+] as const;
 
 export type KnipAudits = (typeof audits)[number]['slug'];
 
-function docsLink(slug: KnipAudits): string {
-  // eslint-disable-next-line functional/no-let
-  let anchor = '#';
-  const base = 'https://knip.dev/guides/handling-issues';
-
-  switch (slug) {
-    case 'files':
-      anchor = '#unused-files';
-      break;
-    case 'dependencies':
-    case 'devdependencies':
-      anchor = '#unused-dependencies';
-      break;
-    case 'unlisted':
-      anchor = '#unlisted-dependencies';
-      break;
-    case 'optionalpeerdependencies':
-      anchor = '#referenced-optional-peerDependencies';
-      break;
-    case 'unresolved':
-      anchor = '#unresolved-imports';
-      break;
-    case 'exports':
-    case 'types':
-    case 'nsexports':
-    case 'nstypes':
-      anchor = '#unused-exports';
-      break;
-    case 'enummembers':
-      anchor = '#enum-members';
-      break;
-    case 'classmembers':
-      anchor = '#class-members';
-      break;
-    // following cases also default:
-    // - case 'binaries':
-    // - case 'duplicates':
-    default:
-      return base;
-  }
-
-  return `${base}${anchor}`;
-}
-
 export const KNIP_AUDITS = audits.map((audit) => ({
   ...audit,
-  docsUrl: docsLink(audit.slug),
+  docsUrl: 'https://knip.dev/',
 }));
 
 export const KNIP_GROUP_FILES = {
@@ -133,7 +89,7 @@ export const KNIP_GROUP_FILES = {
   title: 'All file audits',
   description: 'Groups all file related audits',
   refs: [{ slug: 'files', weight: 1 }],
-} as const satisfies Group;
+};
 
 export const KNIP_GROUP_DEPENDENCIES = {
   slug: 'dependencies',
@@ -143,11 +99,10 @@ export const KNIP_GROUP_DEPENDENCIES = {
     { slug: 'dependencies', weight: 1 },
     { slug: 'devdependencies', weight: 1 },
     { slug: 'binaries', weight: 1 },
-    // critical as potentially breaking
     { slug: 'optionalpeerdependencies', weight: 2 },
     { slug: 'unlisted', weight: 2 },
   ],
-} as const satisfies Group;
+};
 
 export const KNIP_GROUP_EXPORTS = {
   slug: 'exports',
@@ -163,29 +118,38 @@ export const KNIP_GROUP_EXPORTS = {
     { slug: 'classmembers', weight: 10 },
     { slug: 'duplicates', weight: 2 },
   ],
-} as const satisfies Group;
+};
 
 export const KNIP_GROUP_ALL = {
   slug: 'all',
   title: 'All knip audits',
   description: 'Groups all knip audits into a group for easy use',
   refs: [
-    ...KNIP_GROUP_FILES.refs,
-    ...KNIP_GROUP_EXPORTS.refs,
-    ...KNIP_GROUP_DEPENDENCIES.refs,
+    { slug: 'files', weight: 1 },
+    { slug: 'unresolved', weight: 10 },
+    { slug: 'exports', weight: 10 },
+    { slug: 'types', weight: 10 },
+    { slug: 'nsexports', weight: 10 },
+    { slug: 'nstypes', weight: 10 },
+    { slug: 'enummembers', weight: 10 },
+    { slug: 'classmembers', weight: 10 },
+    { slug: 'duplicates', weight: 2 },
+    { slug: 'dependencies', weight: 1 },
+    { slug: 'devdependencies', weight: 1 },
+    { slug: 'binaries', weight: 1 },
+    { slug: 'optionalpeerdependencies', weight: 2 },
+    { slug: 'unlisted', weight: 2 },
   ],
-} as const satisfies Group;
+};
 
 export const KNIP_GROUPS = [
   KNIP_GROUP_FILES,
   KNIP_GROUP_EXPORTS,
   KNIP_GROUP_DEPENDENCIES,
   KNIP_GROUP_ALL,
-] as const satisfies Group[]; // we use `as const satisfies` to get strict slug typing;
+];
 
 export type KnipGroups = (typeof KNIP_GROUPS)[number]['slug'];
-
-import { IssueType as KnipIssueType } from 'knip/dist/types/issues';
 
 /**
  * @description

@@ -5,7 +5,7 @@ import type {
   IssueSeverity as KnipIssueSeverity,
   Issues as KnipIssues,
 } from 'knip/dist/types/issues';
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import {
   auditDetailsSchema,
   auditOutputsSchema,
@@ -264,7 +264,7 @@ describe('toIssues', () => {
         files: new Set([
           '/User/projects/code-pushup-cli/packages/utils/src/index.js',
         ]),
-      } as KnipIssues),
+      }),
     ).resolves.toStrictEqual([
       expect.objectContaining({
         message: expect.stringMatching('Unused file'),
@@ -294,11 +294,10 @@ describe('toIssues', () => {
                 '/User/projects/code-pushup-cli/packages/utils/src/index.js',
               symbol: 'CliUi',
               severity: 'error',
-              workspace: 'workspace',
             },
           },
         },
-      } as unknown as KnipIssues),
+      }),
     ).resolves.toStrictEqual([
       expect.objectContaining({
         message: expect.stringMatching('CliUi'),
@@ -315,11 +314,6 @@ describe('knipToCpReport', () => {
   it('should return empty audits if no report is flagged positive', async () => {
     await expect(
       knipToCpReport({
-        report: {
-          files: false,
-          dependencies: false,
-          // other options are falsy as undefined
-        },
         issues: {},
       } as ReporterOptions),
     ).resolves.toStrictEqual([]);
@@ -328,11 +322,6 @@ describe('knipToCpReport', () => {
   it('should return only audits flagged in report object', async () => {
     await expect(
       knipToCpReport({
-        report: {
-          files: false,
-          dependencies: true,
-          // other options are falsy as undefined
-        },
         issues: {
           dependencies: {},
         },
@@ -347,7 +336,6 @@ describe('knipToCpReport', () => {
   it('should return audit result with number of issues as value', async () => {
     await expect(
       knipToCpReport({
-        report: { files: true },
         issues: { files: new Set(['a.js', 'b.js', 'c.js']) },
       } as ReporterOptions),
     ).resolves.toStrictEqual([expect.objectContaining({ value: 3 })]);
@@ -356,7 +344,6 @@ describe('knipToCpReport', () => {
   it('should return audit result without display value', async () => {
     await expect(
       knipToCpReport({
-        report: { files: true },
         issues: { files: new Set(['main.js']) },
       } as ReporterOptions),
     ).resolves.toStrictEqual([
@@ -367,7 +354,6 @@ describe('knipToCpReport', () => {
   it('should score audits with empty issues with 1', async () => {
     await expect(
       knipToCpReport({
-        report: { files: true },
         issues: { files: new Set() },
       } as ReporterOptions),
     ).resolves.toStrictEqual([expect.objectContaining({ score: 1 })]);
@@ -376,7 +362,6 @@ describe('knipToCpReport', () => {
   it('should score audits with issues with 0', async () => {
     await expect(
       knipToCpReport({
-        report: { files: true },
         issues: { files: new Set(['main.js']) },
       } as ReporterOptions),
     ).resolves.toStrictEqual([expect.objectContaining({ score: 0 })]);
@@ -384,11 +369,6 @@ describe('knipToCpReport', () => {
 
   it('should return valid outputs schema', async () => {
     const result = await knipToCpReport({
-      report: {
-        files: true,
-        dependencies: false,
-        unlisted: true,
-      } as ReporterOptions['report'],
       issues: {
         files: new Set(['main.js']),
         unlisted: {
@@ -415,7 +395,7 @@ describe('knipToCpReport', () => {
               severity: 'error',
             },
           },
-        } as unknown as IssueRecords,
+        } as IssueRecords,
       } as ReporterOptions['issues'],
     });
     expect(() => auditOutputsSchema.parse(result)).not.toThrowError();

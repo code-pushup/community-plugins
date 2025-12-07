@@ -6,10 +6,10 @@ exports[`knipReporter > should produce valid audit outputs 1`] = `
     "details": {
       "issues": [
         {
-          "message": "Unused file ../Users/username/Projects/code-pushup-cli/code-pushup.config.ts",
+          "message": "Unused file code-pushup.config.ts",
           "severity": "info",
           "source": {
-            "file": "../Users/username/Projects/code-pushup-cli/code-pushup.config.ts",
+            "file": "code-pushup.config.ts",
           },
         },
       ],
@@ -25,7 +25,7 @@ exports[`knipReporter > should produce valid audit outputs 1`] = `
           "message": "Unused dependency cli-table3",
           "severity": "error",
           "source": {
-            "file": "../Users/username/Projects/code-pushup-cli/package.json",
+            "file": "package.json",
           },
         },
       ],
@@ -41,7 +41,7 @@ exports[`knipReporter > should produce valid audit outputs 1`] = `
           "message": "Unused devDependency @trivago/prettier-plugin-sort-imports",
           "severity": "error",
           "source": {
-            "file": "../Users/username/Projects/code-pushup-cli/package.json",
+            "file": "package.json",
           },
         },
       ],
@@ -57,7 +57,7 @@ exports[`knipReporter > should produce valid audit outputs 1`] = `
           "message": "Unused devDependency ts-node",
           "severity": "error",
           "source": {
-            "file": "../Users/username/Projects/code-pushup-cli/package.json",
+            "file": "package.json",
           },
         },
       ],
@@ -73,14 +73,14 @@ exports[`knipReporter > should produce valid audit outputs 1`] = `
           "message": "Unlisted dependency jsonc-eslint-parser",
           "severity": "info",
           "source": {
-            "file": "../User/username/code-pushup-cli/packages/utils/package.json",
+            "file": "../../../../User/username/code-pushup-cli/packages/utils/package.json",
           },
         },
         {
           "message": "Unlisted dependency jsonc-eslint-parser",
           "severity": "info",
           "source": {
-            "file": "../User/username/code-pushup-cli/packages/utils/package.json",
+            "file": "../../../../User/username/code-pushup-cli/packages/utils/package.json",
           },
         },
       ],
@@ -90,9 +90,6 @@ exports[`knipReporter > should produce valid audit outputs 1`] = `
     "value": 2,
   },
   {
-    "details": {
-      "issues": undefined,
-    },
     "score": 1,
     "slug": "unlisted-binaries",
     "value": 0,
@@ -104,7 +101,11 @@ exports[`knipReporter > should produce valid audit outputs 1`] = `
           "message": "Unresolved import smo-package",
           "severity": "info",
           "source": {
-            "file": "../Users/username/Projects/code-pushup-cli/packages/models/src/lib/category-config.ts",
+            "file": "packages/models/src/lib/category-config.ts",
+            "position": {
+              "startColumn": 23,
+              "startLine": 8,
+            },
           },
         },
       ],
@@ -120,7 +121,11 @@ exports[`knipReporter > should produce valid audit outputs 1`] = `
           "message": "Unused export duplicateErrorMsg",
           "severity": "error",
           "source": {
-            "file": "../Users/username/Projects/code-pushup-cli/packages/models/src/lib/category-config.ts",
+            "file": "packages/models/src/lib/category-config.ts",
+            "position": {
+              "startColumn": 17,
+              "startLine": 54,
+            },
           },
         },
       ],
@@ -130,9 +135,6 @@ exports[`knipReporter > should produce valid audit outputs 1`] = `
     "value": 1,
   },
   {
-    "details": {
-      "issues": undefined,
-    },
     "score": 1,
     "slug": "exports-in-used-namespace",
     "value": 0,
@@ -144,7 +146,11 @@ exports[`knipReporter > should produce valid audit outputs 1`] = `
           "message": "Unused exported type GroupMeta",
           "severity": "error",
           "source": {
-            "file": "../Users/username/Projects/code-pushup-cli/packages/models/src/lib/group.ts",
+            "file": "packages/models/src/lib/group.ts",
+            "position": {
+              "startColumn": 13,
+              "startLine": 26,
+            },
           },
         },
       ],
@@ -154,9 +160,6 @@ exports[`knipReporter > should produce valid audit outputs 1`] = `
     "value": 1,
   },
   {
-    "details": {
-      "issues": undefined,
-    },
     "score": 1,
     "slug": "exported-types-in-used-namespace",
     "value": 0,
@@ -168,7 +171,11 @@ exports[`knipReporter > should produce valid audit outputs 1`] = `
           "message": "Unused exported enum member unusedMember",
           "severity": "error",
           "source": {
-            "file": "../Users/username/Projects/code-pushup-cli/packages/models/src/lib/group.ts",
+            "file": "packages/models/src/lib/group.ts",
+            "position": {
+              "startColumn": 13,
+              "startLine": 26,
+            },
           },
         },
       ],
@@ -184,7 +191,11 @@ exports[`knipReporter > should produce valid audit outputs 1`] = `
           "message": "Unused exported class member unusedKey",
           "severity": "error",
           "source": {
-            "file": "../Users/username/Projects/code-pushup-cli/packages/models/src/lib/group.ts",
+            "file": "packages/models/src/lib/group.ts",
+            "position": {
+              "startColumn": 687,
+              "startLine": 40,
+            },
           },
         },
       ],
@@ -200,7 +211,11 @@ exports[`knipReporter > should produce valid audit outputs 1`] = `
           "message": "Duplicate export configurationGenerator|default",
           "severity": "error",
           "source": {
-            "file": "../Users/username/Projects/quality-metrics-cli/packages/nx-plugin/src/generators/configuration/generator.ts",
+            "file": "../quality-metrics-cli/packages/nx-plugin/src/generators/configuration/generator.ts",
+            "position": {
+              "startColumn": 15,
+              "startLine": 54,
+            },
           },
         },
       ],

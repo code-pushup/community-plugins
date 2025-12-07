@@ -19,7 +19,7 @@ import {
   ISSUE_SET_TYPES,
   ISSUE_TYPES,
 } from '../constants.js';
-import { ISSUE_TYPE_MESSAGE, ISSUE_TYPE_TO_AUDIT_SLUG } from './constants.js';
+import { ISSUE_TYPE_MESSAGE, ISSUE_TYPE_TITLE } from './constants.js';
 
 const severityMap: Record<KnipSeverity | 'unknown', CondPushupIssueSeverity> = {
   unknown: 'info',
@@ -92,6 +92,11 @@ export async function toIssues(
   issueType: IssueType,
   issues: KnipIssues,
 ): Promise<CpIssue[]> {
+  // Handle case where issueType is not present in issues object
+  if (!issues[issueType]) {
+    return [];
+  }
+
   const isSet = issues[issueType] instanceof Set;
   const issuesForType: string[] | KnipIssue[] = isSet
     ? [...(issues[issueType] as KnipIssueSet)]
@@ -119,15 +124,19 @@ export async function toIssues(
 export function knipToCpReport({
   issues: rawIssues,
   report,
-}: Pick<ReporterOptions, 'report' | 'issues'>): Promise<AuditOutputs> {
-  // Return audit outputs for ALL defined issue types, not just those in the report
-  // This ensures all audits referenced by groups are present
+}: Pick<ReporterOptions, 'issues' | 'report'>): Promise<AuditOutputs> {
+  // Filter issue types based on what's enabled in the report
+  // If report is not provided, use issue types that have data in rawIssues
+  const enabledIssueTypes = ISSUE_TYPES.filter((issueType) =>
+    report ? report[issueType] : rawIssues[issueType] != null,
+  );
+
   return Promise.all(
-    ISSUE_TYPES.map(async (issueType): Promise<AuditOutput> => {
+    enabledIssueTypes.map(async (issueType): Promise<AuditOutput> => {
       const issues = await toIssues(issueType, rawIssues);
 
       return {
-        slug: ISSUE_TYPE_TO_AUDIT_SLUG[issueType],
+        slug: slugify(ISSUE_TYPE_TITLE[issueType as IssueType]),
         score: issues.length === 0 ? 1 : 0,
         value: issues.length,
         ...(issues.length > 0 ? { details: { issues } } : {}),
