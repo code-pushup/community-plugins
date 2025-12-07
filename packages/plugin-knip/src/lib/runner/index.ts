@@ -50,10 +50,10 @@ export function createRunnerConfig(options: RunnerOptions = {}): RunnerConfig {
     outputFile = path.join(KNIP_PLUGIN_SLUG, KNIP_REPORT_NAME),
     rawOutputFile,
   } = options;
-  
+
   // Resolve the reporter path from the installed package
   const reporterPath = '@code-pushup/knip-plugin/src/lib/reporter/index.js';
-  
+
   return {
     command: 'npx',
     args: [

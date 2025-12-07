@@ -14,11 +14,12 @@ import type {
   Issue as CpIssue,
 } from '@code-pushup/models';
 import { formatGitPath, getGitRoot, slugify } from '@code-pushup/utils';
-import { ISSUE_RECORDS_TYPES, ISSUE_SET_TYPES, ISSUE_TYPES } from '../constants.js';
 import {
-  ISSUE_TYPE_MESSAGE,
-  ISSUE_TYPE_TO_AUDIT_SLUG,
-} from './constants.js';
+  ISSUE_RECORDS_TYPES,
+  ISSUE_SET_TYPES,
+  ISSUE_TYPES,
+} from '../constants.js';
+import { ISSUE_TYPE_MESSAGE, ISSUE_TYPE_TO_AUDIT_SLUG } from './constants.js';
 
 const severityMap: Record<KnipSeverity | 'unknown', CondPushupIssueSeverity> = {
   unknown: 'info',
