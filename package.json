@@ -52,12 +52,14 @@
     "@code-pushup/cli": "^0.92.1",
     "@code-pushup/core": "^0.92.1",
     "@code-pushup/models": "^0.92.1",
+    "@code-pushup/portal-client": "^0.16.0",
     "@code-pushup/utils": "^0.92.1",
     "@nx/devkit": "22.1.3",
     "@poppinss/cliui": "^6.4.1",
     "ansis": "^3.8.1",
     "knip": "^5.42.0",
     "memfs": "^4.17.0",
+    "ora": "^9.0.0",
     "zod": "^3.24.1"
   },
   "optionalDependencies": {
