@@ -35,6 +35,7 @@ describe('knipReporter', () => {
       outputFile: relative(path.join('..', '..', '..', '..', outputFile)),
     });
 
+    /* eslint-disable-next-line  n/no-sync */
     execSync(
       `npx knip --no-exit-code --reporter=${reporterPath} --reporter-options='${customReporterOptions}'`,
       {

@@ -1,5 +1,5 @@
 import path from 'node:path';
-import { RunnerConfig } from '@code-pushup/models';
+import type { RunnerConfig } from '@code-pushup/models';
 import {
   KNIP_PLUGIN_SLUG,
   KNIP_REPORT_NAME,

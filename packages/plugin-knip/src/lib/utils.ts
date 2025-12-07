@@ -1,4 +1,4 @@
-import { CategoryRef } from '@code-pushup/models';
+import type { CategoryRef } from '@code-pushup/models';
 import {
   KNIP_PLUGIN_SLUG,
   type KnipAudits,

@@ -1,7 +1,7 @@
 import { MEMFS_VOLUME, osAgnosticPath } from '@code-pushup/test-utils';
 import { logger } from '@code-pushup/utils';
 import type { ReporterOptions } from 'knip';
-import { IssueRecords, IssueSet } from 'knip/dist/types/issues';
+import type { IssueRecords, IssueSet } from 'knip/dist/types/issues';
 import { fs as memfsFs, vol } from 'memfs';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { KNIP_RAW_REPORT_NAME, KNIP_REPORT_NAME } from './constants.js';
@@ -9,7 +9,7 @@ import { CustomReporterOptions } from './model.js';
 import { knipReporter } from './reporter.js';
 import path from 'node:path';
 import { rawReport } from '../../../mocks/fixtures/raw-knip.report';
-import { AuditOutputs } from '@code-pushup/models';
+import type { AuditOutputs } from '@code-pushup/models';
 
 vi.mock('@code-pushup/utils', async () => {
   const actual = await vi.importActual('@code-pushup/utils');

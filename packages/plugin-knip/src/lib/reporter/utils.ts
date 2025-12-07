@@ -7,7 +7,7 @@ import type {
   IssueSeverity as KnipSeverity,
   ReporterOptions,
 } from 'knip/dist/types/issues';
-import {
+import type {
   AuditOutput,
   AuditOutputs,
   IssueSeverity as CondPushupIssueSeverity,

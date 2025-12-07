@@ -13,7 +13,16 @@ export default tseslint.config(
   ...vitest,
   {
     settings: {
-      'import/resolver': { typescript: { project: 'tsconfig.base.json' } },
+      'import/resolver': {
+        typescript: {
+          project: 'tsconfig.base.json',
+          alwaysTryTypes: true,
+          extensions: ['.ts', '.tsx', '.d.ts', '.js', '.jsx'],
+        },
+        node: {
+          extensions: ['.ts', '.tsx', '.d.ts', '.js', '.jsx'],
+        },
+      },
     },
   },
   { plugins: { '@nx': nxEslintPlugin } },

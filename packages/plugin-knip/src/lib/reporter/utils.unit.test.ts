@@ -1,4 +1,4 @@
-import { ReporterOptions } from 'knip';
+import type { ReporterOptions } from 'knip';
 import type {
   IssueRecords,
   Issue as KnipIssue,
@@ -7,9 +7,9 @@ import type {
 } from 'knip/dist/types/issues';
 import { describe, expect, it } from 'vitest';
 import {
-  IssueSeverity,
   auditDetailsSchema,
   auditOutputsSchema,
+  type IssueSeverity,
 } from '@code-pushup/models';
 import { ISSUE_RECORDS_TYPES, ISSUE_SET_TYPES } from '../constants.js';
 import { ISSUE_TYPE_MESSAGE } from './constants.js';

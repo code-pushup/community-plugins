@@ -1,5 +1,5 @@
-import { join } from 'node:path';
-import { PluginConfig } from '@code-pushup/models';
+import path from 'node:path';
+import type { PluginConfig } from '@code-pushup/models';
 import { KNIP_AUDITS, KNIP_GROUPS, KNIP_PLUGIN_SLUG } from './constants.js';
 import { RunnerOptions, createRunnerConfig } from './runner/index.js';
 
@@ -7,7 +7,7 @@ export type PluginOptions = RunnerOptions;
 
 export function knipPlugin(options: PluginOptions = {}): PluginConfig {
   const {
-    outputFile = join(
+    outputFile = path.join(
       '.code-pushup',
       KNIP_PLUGIN_SLUG,
       `knip-report-${Date.now()}.json`,
