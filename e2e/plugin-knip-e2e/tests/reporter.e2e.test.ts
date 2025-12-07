@@ -12,25 +12,18 @@ import {
 import { executeProcess, readJsonFile } from '@code-pushup/utils';
 
 describe('knip reporter', () => {
-  const envDir = path.join(
-    E2E_ENVIRONMENTS_DIR,
-    nxTargetProject(),
-  );
-  const testFileDir = path.join(
-      envDir,
-      TEST_OUTPUT_DIR,
-      'reporter',
-  );
+  const envDir = path.join(E2E_ENVIRONMENTS_DIR, nxTargetProject());
+  const testFileDir = path.join(envDir, TEST_OUTPUT_DIR, 'reporter');
   const reporterSetupDir = path.join(testFileDir, 'reporter-setup');
   const fixturesDir = path.join('e2e', nxTargetProject(), 'mocks/fixtures');
   const reporterPath = path.join(
-      envDir,
-      'node_modules',
-      '@code-pushup',
-      'plugin-knip',
-      'src',
-      'lib',
-      'reporter.js',
+    envDir,
+    'node_modules',
+    '@code-pushup',
+    'plugin-knip',
+    'src',
+    'lib',
+    'reporter.js',
   );
   beforeAll(async () => {
     await cp(fixturesDir, testFileDir, { recursive: true });
