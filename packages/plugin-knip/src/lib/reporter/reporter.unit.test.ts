@@ -1,7 +1,4 @@
-import {
-  MEMFS_VOLUME,
-  osAgnosticPath,
-} from '@code-pushup/test-utils';
+import { MEMFS_VOLUME, osAgnosticPath } from '@code-pushup/test-utils';
 import { logger } from '@code-pushup/utils';
 import type { ReporterOptions } from 'knip';
 import { IssueRecords, IssueSet } from 'knip/dist/types/issues';

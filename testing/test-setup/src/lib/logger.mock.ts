@@ -43,7 +43,7 @@ beforeAll(async () => {
 });
 
 afterAll(() => {
-  loggerSpies.forEach(loggerSpy => {
+  loggerSpies.forEach((loggerSpy) => {
     loggerSpy.mockRestore();
   });
 });
@@ -53,7 +53,7 @@ vi.mock('ora', async (): Promise<typeof import('ora')> => {
   const oraModule = await vi.importActual<typeof import('ora')>('ora');
   return {
     ...oraModule,
-    default: options => {
+    default: (options) => {
       const spinner = oraModule.default({
         // skip cli-cursor package
         hideCursor: false,
@@ -65,10 +65,10 @@ vi.mock('ora', async (): Promise<typeof import('ora')> => {
         ...(typeof options === 'string' ? { text: options } : options),
       });
       // skip log-symbols package
-      vi.spyOn(spinner, 'succeed').mockImplementation(text =>
+      vi.spyOn(spinner, 'succeed').mockImplementation((text) =>
         spinner.stopAndPersist({ text, symbol: ansis.green('✔') }),
       );
-      vi.spyOn(spinner, 'fail').mockImplementation(text =>
+      vi.spyOn(spinner, 'fail').mockImplementation((text) =>
         spinner.stopAndPersist({ text, symbol: ansis.red('✖') }),
       );
       return spinner;

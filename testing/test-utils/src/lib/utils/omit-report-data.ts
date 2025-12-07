@@ -39,7 +39,7 @@ export function omitVariableReportData(
 ) {
   return {
     ...report,
-    plugins: report.plugins.map(plugin =>
+    plugins: report.plugins.map((plugin) =>
       omitVariablePluginData(plugin, options),
     ),
   };

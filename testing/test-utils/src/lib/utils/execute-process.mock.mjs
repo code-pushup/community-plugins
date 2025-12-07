@@ -16,7 +16,7 @@ let throwError = process.argv[4] === '1';
   console.info(
     `process:start with interval: ${interval}, runs: ${runs}, throwError: ${throwError}`,
   );
-  await new Promise(resolve => {
+  await new Promise((resolve) => {
     const id = setInterval(() => {
       if (runs === 0) {
         clearInterval(id);

@@ -219,7 +219,7 @@ describe('createVitestConfig', () => {
     it('should handle all test kinds correctly', () => {
       const testKinds: TestKind[] = ['unit', 'int', 'e2e'];
 
-      testKinds.forEach(kind => {
+      testKinds.forEach((kind) => {
         const config = createVitestConfig('test-package', kind);
 
         const expectedIncludes = {

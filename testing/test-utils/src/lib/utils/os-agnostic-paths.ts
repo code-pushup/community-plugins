@@ -98,7 +98,7 @@ export function osAgnosticPath(filePath?: string): string | undefined {
 
 export function osAgnosticAudit<T extends AuditOutput | AuditReport>(
   audit: T,
-  transformMessage: (message: string) => string = s => s,
+  transformMessage: (message: string) => string = (s) => s,
 ): T {
   const { issues = [] } = audit.details ?? {};
   if (issues.every(({ source }) => source == null)) {
@@ -107,7 +107,7 @@ export function osAgnosticAudit<T extends AuditOutput | AuditReport>(
   return {
     ...audit,
     details: {
-      issues: issues.map(issue =>
+      issues: issues.map((issue) =>
         issue.source == null
           ? issue
           : {
@@ -127,7 +127,7 @@ export function osAgnosticAuditOutputs<T extends AuditOutput | AuditReport>(
   audits: T[],
   transformAuditIssueMessage?: (message: string) => string,
 ): T[] {
-  return audits.map(audit =>
+  return audits.map((audit) =>
     osAgnosticAudit(audit, transformAuditIssueMessage),
   );
 }

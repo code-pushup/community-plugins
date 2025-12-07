@@ -6,9 +6,9 @@ describe('getSetupFiles', () => {
   describe('relative paths', () => {
     it.each<TestKind>(['unit', 'int', 'e2e'])(
       'should return paths for %s-test relative to config file location',
-      kind => {
+      (kind) => {
         const setupFiles = getSetupFiles(kind);
-        expect(setupFiles).toSatisfyAll<string>(path =>
+        expect(setupFiles).toSatisfyAll<string>((path) =>
           /^\.\.\/\.\.\//.test(path),
         );
       },
@@ -21,7 +21,7 @@ describe('getSetupFiles', () => {
 
       expect(Array.isArray(setupFiles)).toBe(true);
       expect(setupFiles).toSatisfyAll<unknown>(
-        item => typeof item === 'string',
+        (item) => typeof item === 'string',
       );
     });
   });

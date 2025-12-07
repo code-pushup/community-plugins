@@ -60,7 +60,7 @@ export async function commitFile(
 }
 
 export async function simulateGitFetch(git: SimpleGit) {
-  let fetchHead: string = await git.branchLocal().then(resp => resp.current);
+  let fetchHead: string = await git.branchLocal().then((resp) => resp.current);
 
   vi.spyOn(git, 'fetch').mockImplementation((...args) => {
     fetchHead = (args as unknown as [string, string, string[]])[1];
@@ -70,16 +70,16 @@ export async function simulateGitFetch(git: SimpleGit) {
   const originalDiffSummary = git.diffSummary.bind(git);
   const originalDiff = git.diff.bind(git);
 
-  vi.spyOn(git, 'diffSummary').mockImplementation(args =>
+  vi.spyOn(git, 'diffSummary').mockImplementation((args) =>
     originalDiffSummary(
-      (args as unknown as string[]).map(arg =>
+      (args as unknown as string[]).map((arg) =>
         arg === 'FETCH_HEAD' ? fetchHead : arg,
       ),
     ),
   );
-  vi.spyOn(git, 'diff').mockImplementation(args =>
+  vi.spyOn(git, 'diff').mockImplementation((args) =>
     originalDiff(
-      (args as string[]).map(arg => (arg === 'FETCH_HEAD' ? fetchHead : arg)),
+      (args as string[]).map((arg) => (arg === 'FETCH_HEAD' ? fetchHead : arg)),
     ),
   );
 }

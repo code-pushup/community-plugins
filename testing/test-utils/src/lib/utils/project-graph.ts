@@ -17,7 +17,7 @@ export function toProjectGraph(
 ): ProjectGraph {
   return {
     nodes: Object.fromEntries(
-      nodes.map(node => [
+      nodes.map((node) => [
         node.name,
         {
           ...node,
@@ -36,7 +36,7 @@ export function toProjectGraph(
       ]),
     ),
     dependencies: Object.fromEntries(
-      nodes.map(node => [
+      nodes.map((node) => [
         node.name,
         dependencies?.[node.name]?.map(
           (target): ProjectGraphDependency => ({

@@ -43,7 +43,7 @@ export async function invokeCreateNodesOnVirtualFiles<
   vol.fromJSON(matchingFilesData, MEMFS_VOLUME);
 
   const results = await Promise.all(
-    Object.keys(matchingFilesData).map(file =>
+    Object.keys(matchingFilesData).map((file) =>
       createNodes[1](file, createNodeOptions, context),
     ),
   );
