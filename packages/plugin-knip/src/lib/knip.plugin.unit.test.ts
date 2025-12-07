@@ -1,12 +1,12 @@
 import { describe, expect, it } from 'vitest';
 import { pluginConfigSchema } from '@code-pushup/models';
-import { KNIP_AUDITS, KNIP_GROUPS, KNIP_PLUGIN_SLUG } from './constants';
+import { KNIP_AUDITS, KNIP_GROUPS, KNIP_PLUGIN_SLUG } from './constants.js';
 import { knipPlugin } from './knip.plugin';
 
 describe('knipPlugin-create-config-object', () => {
   it('should return valid PluginConfig', () => {
     const pluginConfig = knipPlugin({});
-    expect(() => pluginConfigSchema.parse(pluginConfig)).not.toThrow();
+    expect(() => pluginConfigSchema.parse(pluginConfig)).not.toThrowError();
     expect(pluginConfig).toEqual(
       expect.objectContaining({
         slug: KNIP_PLUGIN_SLUG,

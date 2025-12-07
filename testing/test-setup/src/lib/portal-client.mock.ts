@@ -1,0 +1,24 @@
+import { vi } from 'vitest';
+import type {
+  PortalComparisonLinkArgs,
+  PortalReportUploadArgs,
+  ReportUrlFragment,
+} from '@code-pushup/portal-client';
+
+vi.mock('@code-pushup/portal-client', async () => {
+  const module: typeof import('@code-pushup/portal-client') =
+    await vi.importActual('@code-pushup/portal-client');
+
+  return {
+    ...module,
+    uploadReportToPortal: vi.fn(
+      async ({ data }: PortalReportUploadArgs): Promise<ReportUrlFragment> => ({
+        url: `https://code-pushup.example.com/portal/${data.organization}/${data.project}/commit/${data.commit}`,
+      }),
+    ),
+    getPortalComparisonLink: vi.fn(
+      async ({ parameters }: PortalComparisonLinkArgs) =>
+        `https://code-pushup.example.com/portal/${parameters.organization}/${parameters.project}/comparison/${parameters.before}/${parameters.after}`,
+    ),
+  };
+});

@@ -1,4 +1,4 @@
-import { ISSUE_TYPES } from '../constants';
+import { ISSUE_TYPES } from '../constants.js';
 
 export const KNIP_REPORT_NAME = 'knip-report.json';
 export const KNIP_RAW_REPORT_NAME = 'knip-raw-report.json';
@@ -29,7 +29,7 @@ export const ISSUE_TYPE_MESSAGE: Record<
   (arg: string) => string
 > = {
   files: (file: string) => `Unused file ${file}`,
-  // eslint-disable-next-line  @typescript-eslint/naming-convention
+
   _files: (file: string) => `Unused file ${file}`,
   dependencies: (dep: string) => `Unused dependency ${dep}`,
   devDependencies: (dep: string) => `Unused devDependency ${dep}`,

@@ -1,5 +1,5 @@
-import { knipReporter } from './reporter';
+import { knipReporter } from './reporter.js';
 
 export default knipReporter;
-export { knipReporter } from './reporter';
-export { CustomReporterOptions } from './model';
+export { knipReporter } from './reporter.js';
+export { CustomReporterOptions } from './model.js';

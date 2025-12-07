@@ -1,4 +1,4 @@
-import { Audit, Group } from '@code-pushup/models';
+import type { Audit, Group } from '@code-pushup/models';
 
 export const KNIP_PLUGIN_SLUG = 'knip';
 export const KNIP_RAW_REPORT_NAME = 'knip-raw-report.json';
@@ -80,6 +80,7 @@ const audits = [
 export type KnipAudits = (typeof audits)[number]['slug'];
 
 function docsLink(slug: KnipAudits): string {
+  // eslint-disable-next-line functional/no-let
   let anchor = '#';
   const base = 'https://knip.dev/guides/handling-issues';
 

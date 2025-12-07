@@ -1,6 +1,6 @@
 import { bold } from 'ansis';
 import { describe, expect, it } from 'vitest';
-import { CustomReporterOptions, parseCustomReporterOptions } from './model';
+import { CustomReporterOptions, parseCustomReporterOptions } from './model.js';
 
 describe('parseCustomReporterOptions', () => {
   it('should return empty object if no reporter options are given', () => {
@@ -22,13 +22,13 @@ describe('parseCustomReporterOptions', () => {
   });
 
   it('should throw for invalid reporter-options argument', () => {
-    expect(() => parseCustomReporterOptions('{asd')).toThrow(
-      `The passed knip reporter options have to be a JSON parseable string. E.g. --reporter-options='{\\"prop\\":42}'`,
+    expect(() => parseCustomReporterOptions('{asd')).toThrowError(
+      String.raw`The passed knip reporter options have to be a JSON parseable string. E.g. --reporter-options='{\"prop\":42}'`,
     );
-    expect(() => parseCustomReporterOptions('{asd')).toThrow(
+    expect(() => parseCustomReporterOptions('{asd')).toThrowError(
       `Option string: ${bold('{asd')}`,
     );
-    expect(() => parseCustomReporterOptions('{asd')).toThrow(
+    expect(() => parseCustomReporterOptions('{asd')).toThrowError(
       ` Expected property name or '}' in JSON at position 1`,
     );
   });
@@ -37,9 +37,9 @@ describe('parseCustomReporterOptions', () => {
     const opt = JSON.stringify({
       verbose: 'test',
     } as unknown as CustomReporterOptions);
-    expect(() => parseCustomReporterOptions(opt)).toThrow(
+    expect(() => parseCustomReporterOptions(opt)).toThrowError(
       'The reporter options options have to follow the schema.',
     );
-    expect(() => parseCustomReporterOptions(opt)).toThrow('invalid_type');
+    expect(() => parseCustomReporterOptions(opt)).toThrowError('invalid_type');
   });
 });

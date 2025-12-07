@@ -6,10 +6,10 @@ exports[`knipReporter > should produce valid audit outputs 1`] = `
     "details": {
       "issues": [
         {
-          "message": "Unused file code-pushup.config.ts",
+          "message": "Unused file ../Users/username/Projects/code-pushup-cli/code-pushup.config.ts",
           "severity": "info",
           "source": {
-            "file": "code-pushup.config.ts",
+            "file": "../Users/username/Projects/code-pushup-cli/code-pushup.config.ts",
           },
         },
       ],
@@ -25,7 +25,7 @@ exports[`knipReporter > should produce valid audit outputs 1`] = `
           "message": "Unused dependency cli-table3",
           "severity": "error",
           "source": {
-            "file": "package.json",
+            "file": "../Users/username/Projects/code-pushup-cli/package.json",
           },
         },
       ],
@@ -41,7 +41,7 @@ exports[`knipReporter > should produce valid audit outputs 1`] = `
           "message": "Unused devDependency @trivago/prettier-plugin-sort-imports",
           "severity": "error",
           "source": {
-            "file": "package.json",
+            "file": "../Users/username/Projects/code-pushup-cli/package.json",
           },
         },
       ],
@@ -57,7 +57,7 @@ exports[`knipReporter > should produce valid audit outputs 1`] = `
           "message": "Unused devDependency ts-node",
           "severity": "error",
           "source": {
-            "file": "package.json",
+            "file": "../Users/username/Projects/code-pushup-cli/package.json",
           },
         },
       ],
@@ -73,14 +73,14 @@ exports[`knipReporter > should produce valid audit outputs 1`] = `
           "message": "Unlisted dependency jsonc-eslint-parser",
           "severity": "info",
           "source": {
-            "file": "../../../../User/username/code-pushup-cli/packages/utils/package.json",
+            "file": "../User/username/code-pushup-cli/packages/utils/package.json",
           },
         },
         {
           "message": "Unlisted dependency jsonc-eslint-parser",
           "severity": "info",
           "source": {
-            "file": "../../../../User/username/code-pushup-cli/packages/utils/package.json",
+            "file": "../User/username/code-pushup-cli/packages/utils/package.json",
           },
         },
       ],
@@ -104,7 +104,7 @@ exports[`knipReporter > should produce valid audit outputs 1`] = `
           "message": "Unresolved import smo-package",
           "severity": "info",
           "source": {
-            "file": "packages/models/src/lib/category-config.ts",
+            "file": "../Users/username/Projects/code-pushup-cli/packages/models/src/lib/category-config.ts",
           },
         },
       ],
@@ -120,7 +120,7 @@ exports[`knipReporter > should produce valid audit outputs 1`] = `
           "message": "Unused export duplicateErrorMsg",
           "severity": "error",
           "source": {
-            "file": "packages/models/src/lib/category-config.ts",
+            "file": "../Users/username/Projects/code-pushup-cli/packages/models/src/lib/category-config.ts",
           },
         },
       ],
@@ -144,7 +144,7 @@ exports[`knipReporter > should produce valid audit outputs 1`] = `
           "message": "Unused exported type GroupMeta",
           "severity": "error",
           "source": {
-            "file": "packages/models/src/lib/group.ts",
+            "file": "../Users/username/Projects/code-pushup-cli/packages/models/src/lib/group.ts",
           },
         },
       ],
@@ -168,7 +168,7 @@ exports[`knipReporter > should produce valid audit outputs 1`] = `
           "message": "Unused exported enum member unusedMember",
           "severity": "error",
           "source": {
-            "file": "packages/models/src/lib/group.ts",
+            "file": "../Users/username/Projects/code-pushup-cli/packages/models/src/lib/group.ts",
           },
         },
       ],
@@ -184,7 +184,7 @@ exports[`knipReporter > should produce valid audit outputs 1`] = `
           "message": "Unused exported class member unusedKey",
           "severity": "error",
           "source": {
-            "file": "packages/models/src/lib/group.ts",
+            "file": "../Users/username/Projects/code-pushup-cli/packages/models/src/lib/group.ts",
           },
         },
       ],
@@ -200,7 +200,7 @@ exports[`knipReporter > should produce valid audit outputs 1`] = `
           "message": "Duplicate export configurationGenerator|default",
           "severity": "error",
           "source": {
-            "file": "../quality-metrics-cli/packages/nx-plugin/src/generators/configuration/generator.ts",
+            "file": "../Users/username/Projects/quality-metrics-cli/packages/nx-plugin/src/generators/configuration/generator.ts",
           },
         },
       ],
