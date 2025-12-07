@@ -53,9 +53,6 @@ export function createVitestConfig(
     test: {
       reporters: ['basic'],
       globals: true,
-      cache: {
-        dir: '../../node_modules/.vitest',
-      },
       alias: tsconfigPathAliases(),
       pool: 'threads',
       poolOptions: { threads: { singleThread: true } },

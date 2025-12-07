@@ -59,7 +59,7 @@ describe('restoreNxIgnoredFiles', () => {
     vol.fromJSON({}, MEMFS_VOLUME);
 
     await expect(restoreNxIgnoredFiles('/non-existent')).rejects.toThrowError(
-      "ENOENT: no such file or directory, readdir '/non-existent'",
+      "ENOENT: no such file or directory, scandir '/non-existent'",
     );
   });
 
