@@ -3,6 +3,15 @@
   "version": "0.0.0",
   "license": "MIT",
   "type": "module",
+  "main": "./src/lib/index.js",
+  "types": "./src/lib/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./src/lib/index.d.ts",
+      "import": "./src/lib/index.js",
+      "default": "./src/lib/index.js"
+    }
+  },
   "dependencies": {
     "@code-pushup/models": "^0.92.1",
     "@code-pushup/utils": "^0.92.1",

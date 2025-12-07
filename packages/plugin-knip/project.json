@@ -1,5 +1,5 @@
 {
-  "name": "plugin-knip",
+  "name": "@code-pushup/plugin-knip",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/plugin-knip/src",
   "projectType": "library",
@@ -9,5 +9,5 @@
     "unit-test": {},
     "int-test": {}
   },
-  "tags": ["scope:plugin", "type:feature"]
+  "tags": ["scope:plugin", "type:feature", "publishable"]
 }
