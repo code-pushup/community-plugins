@@ -1,0 +1,127 @@
+[
+  {
+    "filePath": "/Users/michael_hladky/WebstormProjects/cli/testing/test-nx-utils/eslint.config.js",
+    "messages": [],
+    "suppressedMessages": [],
+    "errorCount": 0,
+    "fatalErrorCount": 0,
+    "warningCount": 0,
+    "fixableErrorCount": 0,
+    "fixableWarningCount": 0,
+    "usedDeprecatedRules": []
+  },
+  {
+    "filePath": "/Users/michael_hladky/WebstormProjects/cli/testing/test-nx-utils/src/index.ts",
+    "messages": [],
+    "suppressedMessages": [],
+    "errorCount": 0,
+    "fatalErrorCount": 0,
+    "warningCount": 0,
+    "fixableErrorCount": 0,
+    "fixableWarningCount": 0,
+    "usedDeprecatedRules": []
+  },
+  {
+    "filePath": "/Users/michael_hladky/WebstormProjects/cli/testing/test-nx-utils/src/lib/utils/environment.ts",
+    "messages": [],
+    "suppressedMessages": [],
+    "errorCount": 0,
+    "fatalErrorCount": 0,
+    "warningCount": 0,
+    "fixableErrorCount": 0,
+    "fixableWarningCount": 0,
+    "usedDeprecatedRules": []
+  },
+  {
+    "filePath": "/Users/michael_hladky/WebstormProjects/cli/testing/test-nx-utils/src/lib/utils/nx-plugin.ts",
+    "messages": [],
+    "suppressedMessages": [],
+    "errorCount": 0,
+    "fatalErrorCount": 0,
+    "warningCount": 0,
+    "fixableErrorCount": 0,
+    "fixableWarningCount": 0,
+    "usedDeprecatedRules": []
+  },
+  {
+    "filePath": "/Users/michael_hladky/WebstormProjects/cli/testing/test-nx-utils/src/lib/utils/nx-plugin.unit.test.ts",
+    "messages": [],
+    "suppressedMessages": [],
+    "errorCount": 0,
+    "fatalErrorCount": 0,
+    "warningCount": 0,
+    "fixableErrorCount": 0,
+    "fixableWarningCount": 0,
+    "usedDeprecatedRules": [
+      {
+        "ruleId": "vitest/no-done-callback",
+        "replacedBy": []
+      }
+    ]
+  },
+  {
+    "filePath": "/Users/michael_hladky/WebstormProjects/cli/testing/test-nx-utils/src/lib/utils/nx.ts",
+    "messages": [],
+    "suppressedMessages": [],
+    "errorCount": 0,
+    "fatalErrorCount": 0,
+    "warningCount": 0,
+    "fixableErrorCount": 0,
+    "fixableWarningCount": 0,
+    "usedDeprecatedRules": []
+  },
+  {
+    "filePath": "/Users/michael_hladky/WebstormProjects/cli/testing/test-nx-utils/src/lib/utils/nx.unit.test.ts",
+    "messages": [],
+    "suppressedMessages": [],
+    "errorCount": 0,
+    "fatalErrorCount": 0,
+    "warningCount": 0,
+    "fixableErrorCount": 0,
+    "fixableWarningCount": 0,
+    "usedDeprecatedRules": [
+      {
+        "ruleId": "vitest/no-done-callback",
+        "replacedBy": []
+      }
+    ]
+  },
+  {
+    "filePath": "/Users/michael_hladky/WebstormProjects/cli/testing/test-nx-utils/src/lib/utils/tree.int.test.ts",
+    "messages": [],
+    "suppressedMessages": [],
+    "errorCount": 0,
+    "fatalErrorCount": 0,
+    "warningCount": 0,
+    "fixableErrorCount": 0,
+    "fixableWarningCount": 0,
+    "usedDeprecatedRules": [
+      {
+        "ruleId": "vitest/no-done-callback",
+        "replacedBy": []
+      }
+    ]
+  },
+  {
+    "filePath": "/Users/michael_hladky/WebstormProjects/cli/testing/test-nx-utils/src/lib/utils/tree.ts",
+    "messages": [],
+    "suppressedMessages": [],
+    "errorCount": 0,
+    "fatalErrorCount": 0,
+    "warningCount": 0,
+    "fixableErrorCount": 0,
+    "fixableWarningCount": 0,
+    "usedDeprecatedRules": []
+  },
+  {
+    "filePath": "/Users/michael_hladky/WebstormProjects/cli/testing/test-nx-utils/vitest.unit.config.ts",
+    "messages": [],
+    "suppressedMessages": [],
+    "errorCount": 0,
+    "fatalErrorCount": 0,
+    "warningCount": 0,
+    "fixableErrorCount": 0,
+    "fixableWarningCount": 0,
+    "usedDeprecatedRules": []
+  }
+]

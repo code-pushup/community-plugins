@@ -12,9 +12,13 @@ export type GitConfig = { name: string; email: string };
 
 export async function initGitRepo(
   simpleGit: SimpleGitFactory,
-  opt: { baseDir: string; config?: GitConfig },
+  opt: {
+    baseDir: string;
+    config?: GitConfig;
+    baseBranch?: string;
+  },
 ): Promise<SimpleGit> {
-  const { baseDir, config } = opt;
+  const { baseDir, config, baseBranch } = opt;
   const { email = 'john.doe@example.com', name = 'John Doe' } = config ?? {};
   await mkdir(baseDir, { recursive: true });
   const git = simpleGit(baseDir);
@@ -23,7 +27,7 @@ export async function initGitRepo(
   await git.addConfig('user.email', email);
   await git.addConfig('commit.gpgSign', 'false');
   await git.addConfig('tag.gpgSign', 'false');
-  await git.branch(['-M', 'main']);
+  await git.branch(['-M', baseBranch ?? 'main']);
   return git;
 }
 
@@ -56,7 +60,7 @@ export async function commitFile(
 }
 
 export async function simulateGitFetch(git: SimpleGit) {
-  let fetchHead: string = await git.branchLocal().then((resp) => resp.current);
+  let fetchHead: string = await git.branchLocal().then(resp => resp.current);
 
   vi.spyOn(git, 'fetch').mockImplementation((...args) => {
     fetchHead = (args as unknown as [string, string, string[]])[1];
@@ -66,16 +70,16 @@ export async function simulateGitFetch(git: SimpleGit) {
   const originalDiffSummary = git.diffSummary.bind(git);
   const originalDiff = git.diff.bind(git);
 
-  vi.spyOn(git, 'diffSummary').mockImplementation((args) =>
+  vi.spyOn(git, 'diffSummary').mockImplementation(args =>
     originalDiffSummary(
-      (args as unknown as string[]).map((arg) =>
+      (args as unknown as string[]).map(arg =>
         arg === 'FETCH_HEAD' ? fetchHead : arg,
       ),
     ),
   );
-  vi.spyOn(git, 'diff').mockImplementation((args) =>
+  vi.spyOn(git, 'diff').mockImplementation(args =>
     originalDiff(
-      (args as string[]).map((arg) => (arg === 'FETCH_HEAD' ? fetchHead : arg)),
+      (args as string[]).map(arg => (arg === 'FETCH_HEAD' ? fetchHead : arg)),
     ),
   );
 }

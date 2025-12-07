@@ -31,6 +31,7 @@
     "eslint-config-prettier": "10.1.8",
     "jest": "30.0.5",
     "jest-environment-jsdom": "30.0.5",
+    "jest-extended": "^6.0.0",
     "jest-util": "30.0.5",
     "jiti": "2.4.2",
     "nx": "22.1.3",
@@ -48,10 +49,10 @@
     "packages/*"
   ],
   "dependencies": {
-    "@code-pushup/cli": "^0.58.0",
-    "@code-pushup/core": "^0.58.0",
-    "@code-pushup/models": "^0.58.0",
-    "@code-pushup/utils": "^0.58.0",
+    "@code-pushup/cli": "^0.92.1",
+    "@code-pushup/core": "^0.92.1",
+    "@code-pushup/models": "^0.92.1",
+    "@code-pushup/utils": "^0.92.1",
     "@nx/devkit": "22.1.3",
     "@poppinss/cliui": "^6.4.1",
     "ansis": "^3.8.1",

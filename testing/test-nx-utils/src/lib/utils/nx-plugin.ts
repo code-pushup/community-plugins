@@ -43,7 +43,7 @@ export async function invokeCreateNodesOnVirtualFiles<
   vol.fromJSON(matchingFilesData, MEMFS_VOLUME);
 
   const results = await Promise.all(
-    Object.keys(matchingFilesData).map((file) =>
+    Object.keys(matchingFilesData).map(file =>
       createNodes[1](file, createNodeOptions, context),
     ),
   );
@@ -56,6 +56,21 @@ export async function invokeCreateNodesOnVirtualFiles<
 }
 
 export function createNodesContext(
+  options?: Partial<CreateNodesContext>,
+): CreateNodesContext {
+  const {
+    workspaceRoot = process.cwd(),
+    nxJsonConfiguration = {},
+    configFiles = [],
+  } = options ?? {};
+  return {
+    workspaceRoot,
+    nxJsonConfiguration,
+    configFiles,
+  };
+}
+
+export function createNodesV2Context(
   options?: Partial<CreateNodesContextV2>,
 ): CreateNodesContextV2 {
   const { workspaceRoot = process.cwd(), nxJsonConfiguration = {} } =
