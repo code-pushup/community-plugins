@@ -2,9 +2,10 @@
   "name": "@code-pushup/knip-plugin",
   "version": "0.0.0",
   "license": "MIT",
+  "type": "module",
   "dependencies": {
-    "@code-pushup/models": "^0.57.0",
-    "@code-pushup/utils": "^0.57.0",
+    "@code-pushup/models": "^0.92.1",
+    "@code-pushup/utils": "^0.92.1",
     "ansis": "^3.8.1",
     "knip": "^5.42.0",
     "memfs": "^4.17.0",

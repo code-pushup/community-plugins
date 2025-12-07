@@ -1,13 +1,19 @@
-/* eslint-disable @typescript-eslint/consistent-type-definitions */
+import type { CustomMatchers as JestExtendedMatchers } from 'jest-extended';
+import type { CustomMarkdownTableMatchers } from './lib/extend/markdown-table.matcher.js';
 import type {
   CustomAsymmetricPathMatchers,
   CustomPathMatchers,
 } from './lib/extend/path.matcher.js';
 
 declare module 'vitest' {
-  // eslint-disable-next-line @typescript-eslint/no-empty-object-type, @typescript-eslint/no-empty-interface
-  interface Assertion extends CustomPathMatchers {}
-  // eslint-disable-next-line @typescript-eslint/no-empty-object-type, @typescript-eslint/no-empty-interface
-  interface AsymmetricMatchersContaining extends CustomAsymmetricPathMatchers {}
+  interface Assertion
+    extends CustomPathMatchers,
+      CustomMarkdownTableMatchers,
+      JestExtendedMatchers {}
+
+  interface AsymmetricMatchersContaining
+    extends CustomAsymmetricPathMatchers,
+      JestExtendedMatchers {}
+
+  interface ExpectStatic extends JestExtendedMatchers {}
 }
-/* eslint-enable @typescript-eslint/consistent-type-definitions */

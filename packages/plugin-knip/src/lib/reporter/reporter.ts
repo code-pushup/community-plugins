@@ -1,10 +1,10 @@
 import type { ReporterOptions } from 'knip';
 import { writeFile } from 'node:fs/promises';
-import { dirname } from 'node:path';
-import { ensureDirectoryExists, ui } from '@code-pushup/utils';
-import { KNIP_REPORT_NAME } from './constants';
-import { parseCustomReporterOptions } from './model';
-import { knipToCpReport } from './utils';
+import path from 'node:path';
+import { ensureDirectoryExists, logger } from '@code-pushup/utils';
+import { KNIP_REPORT_NAME } from './constants.js';
+import { parseCustomReporterOptions } from './model.js';
+import { knipToCpReport } from './utils.js';
 
 /**
  * @description
@@ -24,7 +24,7 @@ export const knipReporter = async (knipReporterOptions: ReporterOptions) => {
     rawOutputFile,
   } = customReporterOptions;
   if (verbose) {
-    ui().logger.info(
+    logger.info(
       `Reporter called with options: ${JSON.stringify(
         customReporterOptions,
         null,
@@ -33,7 +33,7 @@ export const knipReporter = async (knipReporterOptions: ReporterOptions) => {
     );
   }
   if (rawOutputFile != null) {
-    await ensureDirectoryExists(dirname(rawOutputFile));
+    await ensureDirectoryExists(path.dirname(rawOutputFile));
     await writeFile(
       rawOutputFile,
       JSON.stringify(
@@ -50,15 +50,15 @@ export const knipReporter = async (knipReporterOptions: ReporterOptions) => {
       ),
     );
     if (verbose) {
-      ui().logger.info(`Saved raw report to ${rawOutputFile}`);
+      logger.info(`Saved raw report to ${rawOutputFile}`);
     }
   }
 
   const result = await knipToCpReport({ issues, report });
 
-  await ensureDirectoryExists(dirname(outputFile));
+  await ensureDirectoryExists(path.dirname(outputFile));
   await writeFile(outputFile, JSON.stringify(result, null, 2));
   if (verbose) {
-    ui().logger.info(`Saved report to ${outputFile}`);
+    logger.info(`Saved report to ${outputFile}`);
   }
 };

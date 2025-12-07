@@ -5,9 +5,9 @@ import {
   KNIP_PLUGIN_SLUG,
   KnipAudits,
   KnipGroups,
-} from './constants';
+} from './constants.js';
 import { knipPlugin } from './knip.plugin';
-import { knipCategoryAuditRef, knipCategoryGroupRef } from './utils';
+import { knipCategoryAuditRef, knipCategoryGroupRef } from './utils.js';
 
 describe('knipCategoryAuditRef', () => {
   it('should return correct audit category reference object and set weight to 1 by default', () => {
@@ -65,9 +65,9 @@ describe('knipCategoryGroupRef-within-config', () => {
         ],
       });
       expect(config.categories?.[0]?.refs[0]?.slug).toEqual(groupRef);
-      expect(config.categories?.[0]?.refs[0]?.type).toEqual('group');
+      expect(config.categories?.[0]?.refs[0]?.type).toBe('group');
       expect(config.categories?.[0]?.refs[0]?.plugin).toEqual(KNIP_PLUGIN_SLUG);
-      expect(config.categories?.[0]?.refs[0]?.weight).toEqual(1);
+      expect(config.categories?.[0]?.refs[0]?.weight).toBe(1);
     },
   );
 });
@@ -87,9 +87,9 @@ describe('knipCategoryAuditRef-within-config', () => {
         ],
       });
       expect(config.categories?.[0]?.refs[0]?.slug).toEqual(auditRef);
-      expect(config.categories?.[0]?.refs[0]?.type).toEqual('audit');
+      expect(config.categories?.[0]?.refs[0]?.type).toBe('audit');
       expect(config.categories?.[0]?.refs[0]?.plugin).toEqual(KNIP_PLUGIN_SLUG);
-      expect(config.categories?.[0]?.refs[0]?.weight).toEqual(1);
+      expect(config.categories?.[0]?.refs[0]?.weight).toBe(1);
     },
   );
 });
