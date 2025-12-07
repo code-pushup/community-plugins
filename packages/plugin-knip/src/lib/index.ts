@@ -1,6 +1,6 @@
-import { knipPlugin } from './knip.plugin';
+import { knipPlugin } from './knip.plugin.js';
 
-export { knipPlugin } from './knip.plugin';
+export { knipPlugin } from './knip.plugin.js';
 
 export {
   KNIP_GROUP_DEPENDENCIES,

@@ -1,0 +1,243 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`PLUGIN collect report with knip-plugin NPM package > should run plugin over CLI and creates report.json 1`] = `
+{
+  "packageName": "@code-pushup/core",
+  "plugins": [
+    {
+      "audits": [
+        {
+          "description": "Unable to find a reference to this file",
+          "docsUrl": "https://knip.dev/guides/handling-issues#unused-files",
+          "slug": "files",
+          "title": "Unused Files",
+        },
+        {
+          "description": "Unable to find a reference to this dependency",
+          "docsUrl": "https://knip.dev/guides/handling-issues#unused-dependencies",
+          "slug": "dependencies",
+          "title": "Unused Dependencies",
+        },
+        {
+          "description": "Unable to find a reference to this devDependency",
+          "docsUrl": "https://knip.dev/guides/handling-issues#unused-dependencies",
+          "slug": "devdependencies",
+          "title": "Unused Development Dependencies",
+        },
+        {
+          "description": "Optional peer dependency is referenced",
+          "docsUrl": "https://knip.dev/guides/handling-issues#referenced-optional-peerDependencies",
+          "slug": "optionalpeerdependencies",
+          "title": "Referenced optional peerDependencies",
+        },
+        {
+          "description": "Used dependencies not listed in package.json",
+          "docsUrl": "https://knip.dev/guides/handling-issues#unlisted-dependencies",
+          "slug": "unlisted",
+          "title": "Unlisted dependencies",
+        },
+        {
+          "description": "Binaries from dependencies not listed in package.json",
+          "docsUrl": "https://knip.dev/guides/handling-issues",
+          "slug": "binaries",
+          "title": "Unlisted binaries",
+        },
+        {
+          "description": "Unable to resolve this (import) specifier",
+          "docsUrl": "https://knip.dev/guides/handling-issues#unresolved-imports",
+          "slug": "unresolved",
+          "title": "Unresolved imports",
+        },
+        {
+          "description": "Unable to find a reference to this export",
+          "docsUrl": "https://knip.dev/guides/handling-issues#unused-exports",
+          "slug": "exports",
+          "title": "Unused exports",
+        },
+        {
+          "description": "Namespace with export is referenced, but not export itself",
+          "docsUrl": "https://knip.dev/guides/handling-issues#unused-exports",
+          "slug": "nsexports",
+          "title": "Exports in used namespace",
+        },
+        {
+          "description": "Unable to find a reference to this exported type",
+          "docsUrl": "https://knip.dev/guides/handling-issues#unused-exports",
+          "slug": "types",
+          "title": "Unused exported types",
+        },
+        {
+          "description": "Namespace with type is referenced, but not type itself",
+          "docsUrl": "https://knip.dev/guides/handling-issues#unused-exports",
+          "slug": "nstypes",
+          "title": "Exported types in used namespace",
+        },
+        {
+          "description": "Unable to find a reference to this enum member",
+          "docsUrl": "https://knip.dev/guides/handling-issues#enum-members",
+          "slug": "enummembers",
+          "title": "Unused exported enum members",
+        },
+        {
+          "description": "Unable to find a reference to this class member",
+          "docsUrl": "https://knip.dev/guides/handling-issues#class-members",
+          "slug": "classmembers",
+          "title": "Unused exported class members",
+        },
+        {
+          "description": "This is exported more than once",
+          "docsUrl": "https://knip.dev/guides/handling-issues",
+          "slug": "duplicates",
+          "title": "Duplicate exports",
+        },
+      ],
+      "description": "A plugin to track dependencies and duplicates",
+      "groups": [
+        {
+          "description": "Groups all file related audits",
+          "refs": [
+            {
+              "slug": "files",
+              "weight": 1,
+            },
+          ],
+          "slug": "files",
+          "title": "All file audits",
+        },
+        {
+          "description": "Groups all dependency related knip audits",
+          "refs": [
+            {
+              "slug": "unresolved",
+              "weight": 10,
+            },
+            {
+              "slug": "exports",
+              "weight": 10,
+            },
+            {
+              "slug": "types",
+              "weight": 10,
+            },
+            {
+              "slug": "nsexports",
+              "weight": 10,
+            },
+            {
+              "slug": "nstypes",
+              "weight": 10,
+            },
+            {
+              "slug": "enummembers",
+              "weight": 10,
+            },
+            {
+              "slug": "classmembers",
+              "weight": 10,
+            },
+            {
+              "slug": "duplicates",
+              "weight": 2,
+            },
+          ],
+          "slug": "exports",
+          "title": "All exports related audits",
+        },
+        {
+          "description": "Groups all dependency related audits",
+          "refs": [
+            {
+              "slug": "dependencies",
+              "weight": 1,
+            },
+            {
+              "slug": "devdependencies",
+              "weight": 1,
+            },
+            {
+              "slug": "binaries",
+              "weight": 1,
+            },
+            {
+              "slug": "optionalpeerdependencies",
+              "weight": 2,
+            },
+            {
+              "slug": "unlisted",
+              "weight": 2,
+            },
+          ],
+          "slug": "dependencies",
+          "title": "All dependency audits",
+        },
+        {
+          "description": "Groups all knip audits into a group for easy use",
+          "refs": [
+            {
+              "slug": "files",
+              "weight": 1,
+            },
+            {
+              "slug": "unresolved",
+              "weight": 10,
+            },
+            {
+              "slug": "exports",
+              "weight": 10,
+            },
+            {
+              "slug": "types",
+              "weight": 10,
+            },
+            {
+              "slug": "nsexports",
+              "weight": 10,
+            },
+            {
+              "slug": "nstypes",
+              "weight": 10,
+            },
+            {
+              "slug": "enummembers",
+              "weight": 10,
+            },
+            {
+              "slug": "classmembers",
+              "weight": 10,
+            },
+            {
+              "slug": "duplicates",
+              "weight": 2,
+            },
+            {
+              "slug": "dependencies",
+              "weight": 1,
+            },
+            {
+              "slug": "devdependencies",
+              "weight": 1,
+            },
+            {
+              "slug": "binaries",
+              "weight": 1,
+            },
+            {
+              "slug": "optionalpeerdependencies",
+              "weight": 2,
+            },
+            {
+              "slug": "unlisted",
+              "weight": 2,
+            },
+          ],
+          "slug": "all",
+          "title": "All knip audits",
+        },
+      ],
+      "icon": "folder-javascript",
+      "slug": "knip",
+      "title": "Knip",
+    },
+  ],
+}
+`;

@@ -50,6 +50,10 @@ export function createRunnerConfig(options: RunnerOptions = {}): RunnerConfig {
     outputFile = path.join(KNIP_PLUGIN_SLUG, KNIP_REPORT_NAME),
     rawOutputFile,
   } = options;
+  
+  // Resolve the reporter path from the installed package
+  const reporterPath = '@code-pushup/knip-plugin/src/lib/reporter/index.js';
+  
   return {
     command: 'npx',
     args: [
@@ -58,9 +62,8 @@ export function createRunnerConfig(options: RunnerOptions = {}): RunnerConfig {
       '--no-exit-code',
       // off by default to guarantee execution without interference
       '--no-progress',
-      // code-pushup reporter is used statically
-      // @TODO replace with correct path after release (@code-pushup/knip-plugin/src/reporter/index.js)
-      '--reporter=./dist/packages/plugin-knip/src/lib/reporter/index.js',
+      // code-pushup reporter is used from the installed package
+      `--reporter=${reporterPath}`,
       // code-pushup reporter options are passed as string. See
       `--reporter-options='${JSON.stringify({
         outputFile,

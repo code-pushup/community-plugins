@@ -14,8 +14,11 @@ import type {
   Issue as CpIssue,
 } from '@code-pushup/models';
 import { formatGitPath, getGitRoot, slugify } from '@code-pushup/utils';
-import { ISSUE_RECORDS_TYPES, ISSUE_SET_TYPES } from '../constants.js';
-import { ISSUE_TYPE_MESSAGE, ISSUE_TYPE_TITLE } from './constants.js';
+import { ISSUE_RECORDS_TYPES, ISSUE_SET_TYPES, ISSUE_TYPES } from '../constants.js';
+import {
+  ISSUE_TYPE_MESSAGE,
+  ISSUE_TYPE_TO_AUDIT_SLUG,
+} from './constants.js';
 
 const severityMap: Record<KnipSeverity | 'unknown', CondPushupIssueSeverity> = {
   unknown: 'info',
@@ -116,19 +119,18 @@ export function knipToCpReport({
   issues: rawIssues,
   report,
 }: Pick<ReporterOptions, 'report' | 'issues'>): Promise<AuditOutputs> {
+  // Return audit outputs for ALL defined issue types, not just those in the report
+  // This ensures all audits referenced by groups are present
   return Promise.all(
-    Object.entries(report)
+    ISSUE_TYPES.map(async (issueType): Promise<AuditOutput> => {
+      const issues = await toIssues(issueType, rawIssues);
 
-      .filter(([_, isReportType]) => isReportType)
-      .map(async ([issueType]): Promise<AuditOutput> => {
-        const issues = await toIssues(issueType as IssueType, rawIssues);
-
-        return {
-          slug: slugify(ISSUE_TYPE_TITLE[issueType as IssueType]),
-          score: issues.length === 0 ? 1 : 0,
-          value: issues.length,
-          ...(issues.length > 0 ? { details: { issues } } : {}),
-        };
-      }),
+      return {
+        slug: ISSUE_TYPE_TO_AUDIT_SLUG[issueType],
+        score: issues.length === 0 ? 1 : 0,
+        value: issues.length,
+        ...(issues.length > 0 ? { details: { issues } } : {}),
+      };
+    }),
   );
 }

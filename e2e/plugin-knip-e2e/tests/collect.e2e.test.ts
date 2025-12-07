@@ -41,8 +41,8 @@ describe('PLUGIN collect report with knip-plugin NPM package', () => {
     });
 
     expect(code).toBe(0);
-    // TODO: test knip output with toContain
-    expect(stdout).toBe('knip string');
+    expect(stdout).toContain('Knip audits');
+    expect(stdout).toContain('Collecting report successful!');
 
     const report = await readJsonFile(
       path.join(defaultSetupDir, '.code-pushup', 'report.json'),
