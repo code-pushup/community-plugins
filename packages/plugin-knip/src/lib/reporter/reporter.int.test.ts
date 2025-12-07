@@ -12,7 +12,12 @@ describe('knipReporter', () => {
   });
 
   it('should execute correctly', async () => {
-    const sandboxRoot = path.join('packages', 'plugin-knip', 'mocks', 'sandbox');
+    const sandboxRoot = path.join(
+      'packages',
+      'plugin-knip',
+      'mocks',
+      'sandbox',
+    );
     const reporterPath = path.join(
       '..',
       '..',

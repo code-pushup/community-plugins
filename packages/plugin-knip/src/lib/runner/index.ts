@@ -15,10 +15,10 @@ import type { CustomReporterOptions } from '../reporter/index.js';
 export type KnipCliOptions = Partial<{
   // https://knip.dev/reference/cli#general
   debug: boolean;
-   
+
   'config-hints': boolean;
   performance: boolean;
-   
+
   'isolate-workspaces': boolean;
   exitCode: boolean;
   // https://knip.dev/reference/cli#configuration
@@ -27,9 +27,9 @@ export type KnipCliOptions = Partial<{
   workspace: string; // dir path
   directory: string; // dir path
   gitignore: boolean;
-   
+
   'include-entry-exports': string;
-   
+
   'include-libs': string;
   // https://knip.dev/reference/cli#modes
   production: boolean;
@@ -39,7 +39,7 @@ export type KnipCliOptions = Partial<{
   include: KnipAudits[];
   dependencies: string[];
   exports: string[];
-   
+
   'experimental-tags': string[];
   tags: string[];
 }>;

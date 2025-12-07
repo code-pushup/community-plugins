@@ -29,7 +29,7 @@ export const ISSUE_TYPE_MESSAGE: Record<
   (arg: string) => string
 > = {
   files: (file: string) => `Unused file ${file}`,
-   
+
   _files: (file: string) => `Unused file ${file}`,
   dependencies: (dep: string) => `Unused dependency ${dep}`,
   devDependencies: (dep: string) => `Unused devDependency ${dep}`,

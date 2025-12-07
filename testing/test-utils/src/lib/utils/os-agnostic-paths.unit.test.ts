@@ -93,7 +93,9 @@ describe('osAgnosticPath', () => {
 
     it('should convert a path within the CWD to an OS-agnostic path on Windows', () => {
       expect(
-        osAgnosticPath(String.raw`${windowsCWD}\.code-pushup\.code-pushup.config.ts`),
+        osAgnosticPath(
+          String.raw`${windowsCWD}\.code-pushup\.code-pushup.config.ts`,
+        ),
       ).toBe('<CWD>/.code-pushup/.code-pushup.config.ts');
     });
 

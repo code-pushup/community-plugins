@@ -118,7 +118,7 @@ export function knipToCpReport({
 }: Pick<ReporterOptions, 'report' | 'issues'>): Promise<AuditOutputs> {
   return Promise.all(
     Object.entries(report)
-       
+
       .filter(([_, isReportType]) => isReportType)
       .map(async ([issueType]): Promise<AuditOutput> => {
         const issues = await toIssues(issueType as IssueType, rawIssues);

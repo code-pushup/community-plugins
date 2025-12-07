@@ -4,6 +4,8 @@ import { createRunnerConfig } from './index.js';
 
 describe('runnerConfig', () => {
   it('should return correct runner config object', () => {
-    expect(() => runnerConfigSchema.parse(createRunnerConfig())).not.toThrowError();
+    expect(() =>
+      runnerConfigSchema.parse(createRunnerConfig()),
+    ).not.toThrowError();
   });
 });

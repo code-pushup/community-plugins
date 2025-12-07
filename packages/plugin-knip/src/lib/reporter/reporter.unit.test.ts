@@ -151,7 +151,7 @@ describe('knipReporter', () => {
     ).resolves.toBeUndefined();
 
     const auditOutputsContent = await memfsFs.promises.readFile(
-        path.join(MEMFS_VOLUME, KNIP_REPORT_NAME),
+      path.join(MEMFS_VOLUME, KNIP_REPORT_NAME),
       { encoding: 'utf8' },
     );
     const auditOutputsJson = JSON.parse(
