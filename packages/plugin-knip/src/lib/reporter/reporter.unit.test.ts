@@ -67,9 +67,15 @@ describe('knipReporter', () => {
         await memfsFs.promises.readFile(outputFile, { encoding: 'utf8' })
       ).toString(),
     );
-    expect(auditOutputs).toStrictEqual([
-      expect.objectContaining({ slug: 'unused-files' }),
-    ]);
+    // Reporter returns all audits to match plugin configuration
+    expect(auditOutputs).toHaveLength(14);
+    expect(auditOutputs).toContainEqual(
+      expect.objectContaining({ slug: 'files', score: 0, value: 1 }),
+    );
+    // Other audits should have score 1 (no issues)
+    expect(
+      auditOutputs.filter((audit: { slug: string }) => audit.slug !== 'files'),
+    ).toHaveLength(13);
   });
 
   it('should accept reporter option rawOutputFile', async () => {

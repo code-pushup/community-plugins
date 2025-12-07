@@ -9,80 +9,92 @@ const audits = [
     slug: 'files',
     title: 'Unused Files',
     description: 'Unable to find a reference to this file',
+    docsUrl: 'https://knip.dev/guides/handling-issues#files',
   },
   {
     slug: 'dependencies',
     title: 'Unused Dependencies',
     description: 'Unable to find a reference to this dependency',
+    docsUrl: 'https://knip.dev/guides/handling-issues#dependencies',
   },
   {
     slug: 'devdependencies',
     title: 'Unused Development Dependencies',
     description: 'Unable to find a reference to this devDependency',
+    docsUrl: 'https://knip.dev/guides/handling-issues#devDependencies',
   },
   {
     slug: 'optionalpeerdependencies',
     title: 'Referenced optional peerDependencies',
     description: 'Optional peer dependency is referenced',
+    docsUrl:
+      'https://knip.dev/guides/handling-issues#referenced-optional-peerDependencies',
   },
   {
     slug: 'unlisted',
     title: 'Unlisted dependencies',
     description: 'Used dependencies not listed in package.json',
+    docsUrl: 'https://knip.dev/guides/handling-issues#unlisted',
   },
   {
     slug: 'binaries',
     title: 'Unlisted binaries',
     description: 'Binaries from dependencies not listed in package.json',
+    docsUrl: 'https://knip.dev/guides/handling-issues#binaries',
   },
   {
     slug: 'unresolved',
     title: 'Unresolved imports',
     description: 'Unable to resolve this (import) specifier',
+    docsUrl: 'https://knip.dev/guides/handling-issues#unresolved',
   },
   {
     slug: 'exports',
     title: 'Unused exports',
     description: 'Unable to find a reference to this export',
+    docsUrl: 'https://knip.dev/guides/handling-issues#exports',
   },
   {
     slug: 'types',
     title: 'Unused exported types',
     description: 'Unable to find a reference to this exported type',
+    docsUrl: 'https://knip.dev/guides/handling-issues#types',
   },
   {
     slug: 'nsexports',
     title: 'Exports in used namespace',
     description: 'Namespace with export is referenced, but not export itself',
+    docsUrl: 'https://knip.dev/guides/handling-issues#nsExports',
   },
   {
     slug: 'nstypes',
     title: 'Exported types in used namespace',
     description: 'Namespace with type is referenced, but not type itself',
+    docsUrl: 'https://knip.dev/guides/handling-issues#nsTypes',
   },
   {
     slug: 'enummembers',
     title: 'Unused exported enum members',
     description: 'Unable to find a reference to this enum member',
+    docsUrl: 'https://knip.dev/guides/handling-issues#enumMembers',
   },
   {
     slug: 'classmembers',
     title: 'Unused exported class members',
     description: 'Unable to find a reference to this class member',
+    docsUrl: 'https://knip.dev/guides/handling-issues#classMembers',
   },
   {
     slug: 'duplicates',
     title: 'Duplicate exports',
     description: 'This is exported more than once',
+    docsUrl: 'https://knip.dev/guides/handling-issues#duplicates',
   },
 ] as const;
 
 export type KnipAudits = (typeof audits)[number]['slug'];
 
-export const KNIP_AUDITS = audits.map((audit) => ({
-  ...audit,
-  docsUrl: 'https://knip.dev/',
-}));
+export const KNIP_AUDITS = [...audits];
 
 export const KNIP_GROUP_FILES = {
   slug: 'files',

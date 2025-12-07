@@ -13,13 +13,17 @@ import type {
   IssueSeverity as CondPushupIssueSeverity,
   Issue as CpIssue,
 } from '@code-pushup/models';
-import { formatGitPath, getGitRoot, slugify } from '@code-pushup/utils';
+import { formatGitPath, getGitRoot } from '@code-pushup/utils';
 import {
   ISSUE_RECORDS_TYPES,
   ISSUE_SET_TYPES,
   ISSUE_TYPES,
 } from '../constants.js';
-import { ISSUE_TYPE_MESSAGE, ISSUE_TYPE_TITLE } from './constants.js';
+import {
+  ISSUE_TYPE_MESSAGE,
+  ISSUE_TYPE_TITLE,
+  ISSUE_TYPE_TO_SLUG,
+} from './constants.js';
 
 const severityMap: Record<KnipSeverity | 'unknown', CondPushupIssueSeverity> = {
   unknown: 'info',
@@ -125,18 +129,21 @@ export function knipToCpReport({
   issues: rawIssues,
   report,
 }: Pick<ReporterOptions, 'issues' | 'report'>): Promise<AuditOutputs> {
-  // Filter issue types based on what's enabled in the report
-  // If report is not provided, use issue types that have data in rawIssues
-  const enabledIssueTypes = ISSUE_TYPES.filter((issueType) =>
-    report ? report[issueType] : rawIssues[issueType] != null,
-  );
+  // When used as a knip reporter, always return ALL audits to match plugin configuration
+  // When called directly (tests), filter based on what's provided
+  const shouldReturnAllAudits = report != null;
+  const issueTypesToInclude = shouldReturnAllAudits
+    ? ISSUE_TYPES
+    : ISSUE_TYPES.filter((issueType) => rawIssues[issueType] != null);
 
   return Promise.all(
-    enabledIssueTypes.map(async (issueType): Promise<AuditOutput> => {
-      const issues = await toIssues(issueType, rawIssues);
+    issueTypesToInclude.map(async (issueType): Promise<AuditOutput> => {
+      // Only process issues if this type is enabled in the report (or if no report filter)
+      const isEnabled = !report || report[issueType];
+      const issues = isEnabled ? await toIssues(issueType, rawIssues) : [];
 
       return {
-        slug: slugify(ISSUE_TYPE_TITLE[issueType as IssueType]),
+        slug: ISSUE_TYPE_TO_SLUG[issueType],
         score: issues.length === 0 ? 1 : 0,
         value: issues.length,
         ...(issues.length > 0 ? { details: { issues } } : {}),

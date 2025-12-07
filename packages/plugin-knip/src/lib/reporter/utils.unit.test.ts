@@ -328,7 +328,7 @@ describe('knipToCpReport', () => {
       } as ReporterOptions),
     ).resolves.toStrictEqual(
       expect.arrayContaining([
-        expect.objectContaining({ slug: 'unused-dependencies' }),
+        expect.objectContaining({ slug: 'dependencies' }),
       ]),
     );
   });

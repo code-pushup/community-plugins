@@ -1,5 +1,23 @@
 import { ISSUE_TYPES } from '../constants.js';
 
+export const ISSUE_TYPE_TO_SLUG: Record<(typeof ISSUE_TYPES)[number], string> =
+  {
+    files: 'files',
+    dependencies: 'dependencies',
+    devDependencies: 'devdependencies',
+    optionalPeerDependencies: 'optionalpeerdependencies',
+    unlisted: 'unlisted',
+    binaries: 'binaries',
+    unresolved: 'unresolved',
+    exports: 'exports',
+    nsExports: 'nsexports',
+    types: 'types',
+    nsTypes: 'nstypes',
+    enumMembers: 'enummembers',
+    classMembers: 'classmembers',
+    duplicates: 'duplicates',
+  } as const;
+
 export const ISSUE_TYPE_TITLE: Record<
   (typeof ISSUE_TYPES)[number] | '_files',
   string

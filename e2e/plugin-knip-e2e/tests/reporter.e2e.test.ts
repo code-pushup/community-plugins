@@ -12,15 +12,26 @@ import {
 import { executeProcess, readJsonFile } from '@code-pushup/utils';
 
 describe('knip reporter', () => {
-  const testFileDir = path.join(
+  const envDir = path.join(
     E2E_ENVIRONMENTS_DIR,
     nxTargetProject(),
-    TEST_OUTPUT_DIR,
-    'reporter',
+  );
+  const testFileDir = path.join(
+      envDir,
+      TEST_OUTPUT_DIR,
+      'reporter',
   );
   const reporterSetupDir = path.join(testFileDir, 'reporter-setup');
   const fixturesDir = path.join('e2e', nxTargetProject(), 'mocks/fixtures');
-
+  const reporterPath = path.join(
+      envDir,
+      'node_modules',
+      '@code-pushup',
+      'plugin-knip',
+      'src',
+      'lib',
+      'reporter.js',
+  );
   beforeAll(async () => {
     await cp(fixturesDir, testFileDir, { recursive: true });
     await restoreNxIgnoredFiles(testFileDir);
@@ -31,15 +42,6 @@ describe('knip reporter', () => {
   });
 
   it('should execute knip with custom reporter and generate report', async () => {
-    const reporterPath = path.join(
-      reporterSetupDir,
-      'node_modules',
-      '@code-pushup',
-      'plugin-knip',
-      'src',
-      'lib',
-      'reporter.js',
-    );
     const outputFile = path.join(reporterSetupDir, 'knip-report.json');
     const customReporterOptions = JSON.stringify({
       outputFile: 'knip-report.json',
@@ -63,7 +65,7 @@ describe('knip reporter', () => {
     expect(report).toEqual(
       expect.arrayContaining([
         expect.objectContaining({
-          slug: 'unused-dependencies',
+          slug: 'dependencies',
           score: 0,
           value: 1,
           details: {

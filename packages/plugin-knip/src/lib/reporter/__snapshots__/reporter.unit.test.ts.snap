@@ -15,7 +15,7 @@ exports[`knipReporter > should produce valid audit outputs 1`] = `
       ],
     },
     "score": 0,
-    "slug": "unused-files",
+    "slug": "files",
     "value": 1,
   },
   {
@@ -31,7 +31,7 @@ exports[`knipReporter > should produce valid audit outputs 1`] = `
       ],
     },
     "score": 0,
-    "slug": "unused-dependencies",
+    "slug": "dependencies",
     "value": 1,
   },
   {
@@ -47,7 +47,7 @@ exports[`knipReporter > should produce valid audit outputs 1`] = `
       ],
     },
     "score": 0,
-    "slug": "unused-devdependencies",
+    "slug": "devdependencies",
     "value": 1,
   },
   {
@@ -63,7 +63,7 @@ exports[`knipReporter > should produce valid audit outputs 1`] = `
       ],
     },
     "score": 0,
-    "slug": "referenced-optional-peerdependencies",
+    "slug": "optionalpeerdependencies",
     "value": 1,
   },
   {
@@ -86,12 +86,12 @@ exports[`knipReporter > should produce valid audit outputs 1`] = `
       ],
     },
     "score": 0,
-    "slug": "unlisted-dependencies",
+    "slug": "unlisted",
     "value": 2,
   },
   {
     "score": 1,
-    "slug": "unlisted-binaries",
+    "slug": "binaries",
     "value": 0,
   },
   {
@@ -111,7 +111,7 @@ exports[`knipReporter > should produce valid audit outputs 1`] = `
       ],
     },
     "score": 0,
-    "slug": "unresolved-imports",
+    "slug": "unresolved",
     "value": 1,
   },
   {
@@ -131,12 +131,12 @@ exports[`knipReporter > should produce valid audit outputs 1`] = `
       ],
     },
     "score": 0,
-    "slug": "unused-exports",
+    "slug": "exports",
     "value": 1,
   },
   {
     "score": 1,
-    "slug": "exports-in-used-namespace",
+    "slug": "nsexports",
     "value": 0,
   },
   {
@@ -156,12 +156,12 @@ exports[`knipReporter > should produce valid audit outputs 1`] = `
       ],
     },
     "score": 0,
-    "slug": "unused-exported-types",
+    "slug": "types",
     "value": 1,
   },
   {
     "score": 1,
-    "slug": "exported-types-in-used-namespace",
+    "slug": "nstypes",
     "value": 0,
   },
   {
@@ -181,7 +181,7 @@ exports[`knipReporter > should produce valid audit outputs 1`] = `
       ],
     },
     "score": 0,
-    "slug": "unused-exported-enum-members",
+    "slug": "enummembers",
     "value": 1,
   },
   {
@@ -201,7 +201,7 @@ exports[`knipReporter > should produce valid audit outputs 1`] = `
       ],
     },
     "score": 0,
-    "slug": "unused-exported-class-members",
+    "slug": "classmembers",
     "value": 1,
   },
   {
@@ -221,7 +221,7 @@ exports[`knipReporter > should produce valid audit outputs 1`] = `
       ],
     },
     "score": 0,
-    "slug": "duplicate-exports",
+    "slug": "duplicates",
     "value": 1,
   },
 ]
