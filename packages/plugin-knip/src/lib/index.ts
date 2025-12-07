@@ -10,7 +10,7 @@ export {
   KNIP_PLUGIN_SLUG,
   KNIP_RAW_REPORT_NAME,
   KNIP_REPORT_NAME,
-} from './constants';
+} from './constants.js';
 
-export { knipCategoryAuditRef, knipCategoryGroupRef } from './utils';
+export { knipCategoryAuditRef, knipCategoryGroupRef } from './utils.js';
 export default knipPlugin;

@@ -1,28 +1,40 @@
 {
   "migrations": [
     {
-      "cli": "nx",
-      "version": "19.2.0-beta.2",
-      "description": "Updates the default workspace data directory to .nx/workspace-data",
-      "implementation": "./src/migrations/update-19-2-0/move-workspace-data-directory",
+      "version": "22.0.0-beta.1",
+      "description": "Updates release version config based on the breaking changes in Nx v22",
+      "implementation": "./src/migrations/update-22-0-0/release-version-config-changes",
       "package": "nx",
-      "name": "19-2-0-move-graph-cache-directory"
+      "name": "22-0-0-release-version-config-changes"
+    },
+    {
+      "version": "22.0.0-beta.2",
+      "description": "Consolidates releaseTag* options into nested releaseTag object structure",
+      "implementation": "./src/migrations/update-22-0-0/consolidate-release-tag-config",
+      "package": "nx",
+      "name": "22-0-0-consolidate-release-tag-config"
     },
     {
       "cli": "nx",
-      "version": "19.2.2-beta.0",
+      "version": "22.1.0-beta.5",
       "description": "Updates the nx wrapper.",
-      "implementation": "./src/migrations/update-17-3-0/update-nxw",
+      "implementation": "./src/migrations/update-22-1-0/update-nx-wrapper",
       "package": "nx",
-      "name": "19-2-2-update-nx-wrapper"
+      "name": "22-1-0-update-nx-wrapper"
     },
     {
-      "version": "19.2.4-beta.0",
-      "description": "Set project name in nx.json explicitly",
-      "implementation": "./src/migrations/update-19-2-4/set-project-name",
-      "x-repair-skip": true,
-      "package": "nx",
-      "name": "19-2-4-set-project-name"
+      "version": "22.0.0-beta.0",
+      "description": "Remove the deprecated `external` and `externalBuildTargets` options from the `@nx/js:swc` and `@nx/js:tsc` executors.",
+      "factory": "./src/migrations/update-22-0-0/remove-external-options-from-js-executors",
+      "package": "@nx/js",
+      "name": "remove-external-options-from-js-executors"
+    },
+    {
+      "version": "22.1.0-rc.1",
+      "description": "Removes redundant TypeScript project references from project's tsconfig.json files when runtime tsconfig files (e.g., tsconfig.lib.json, tsconfig.app.json) exist.",
+      "factory": "./src/migrations/update-22-1-0/remove-redundant-ts-project-references",
+      "package": "@nx/js",
+      "name": "remove-redundant-ts-project-references"
     }
   ]
 }

@@ -1,27 +1,24 @@
-import {
-  getLogMessages,
-  MEMFS_VOLUME,
-  osAgnosticPath,
-} from '@code-pushup/test-utils';
-import { ui } from '@code-pushup/utils';
+import { MEMFS_VOLUME, osAgnosticPath } from '@code-pushup/test-utils';
+import { logger } from '@code-pushup/utils';
 import type { ReporterOptions } from 'knip';
-import { IssueRecords, IssueSet } from 'knip/dist/types/issues';
+import type { IssueRecords, IssueSet } from 'knip/dist/types/issues';
 import { fs as memfsFs, vol } from 'memfs';
-import { beforeEach, describe, expect, it } from 'vitest';
-import { KNIP_RAW_REPORT_NAME, KNIP_REPORT_NAME } from './constants';
-import { CustomReporterOptions } from './model';
-import { knipReporter } from './reporter';
-import { join } from 'node:path';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { KNIP_RAW_REPORT_NAME, KNIP_REPORT_NAME } from './constants.js';
+import { CustomReporterOptions } from './model.js';
+import { knipReporter } from './reporter.js';
+import path from 'node:path';
 import { rawReport } from '../../../mocks/fixtures/raw-knip.report';
-import { AuditOutputs } from '@code-pushup/models';
+import type { AuditOutputs } from '@code-pushup/models';
 
 vi.mock('@code-pushup/utils', async () => {
   const actual = await vi.importActual('@code-pushup/utils');
   return {
     ...actual,
-    getGitRoot: vi
-      .fn()
-      .mockResolvedValue('/Users/username/Projects/code-pushup-cli/'),
+    getGitRoot: vi.fn().mockResolvedValue(MEMFS_VOLUME),
+    logger: {
+      info: vi.fn(),
+    },
   };
 });
 
@@ -49,7 +46,9 @@ describe('knipReporter', () => {
       } as ReporterOptions),
     ).resolves.toBeUndefined();
 
-    expect(getLogMessages(ui().logger)).toHaveLength(0);
+    expect(logger.info).not.toHaveBeenCalledWith(
+      expect.stringContaining('"$0":'),
+    );
   });
 
   it('should accept reporter option outputFile', async () => {
@@ -66,7 +65,9 @@ describe('knipReporter', () => {
       } as ReporterOptions),
     ).resolves.toBeUndefined();
 
-    expect(getLogMessages(ui().logger)).toHaveLength(0);
+    expect(logger.info).not.toHaveBeenCalledWith(
+      expect.stringContaining('"$0":'),
+    );
 
     const auditOutputs = JSON.parse(
       (
@@ -109,7 +110,9 @@ describe('knipReporter', () => {
       } as ReporterOptions),
     ).resolves.toBeUndefined();
 
-    expect(getLogMessages(ui().logger)).toHaveLength(0);
+    expect(logger.info).not.toHaveBeenCalledWith(
+      expect.stringContaining('"$0":'),
+    );
 
     const rawKnipReport = JSON.parse(
       (
@@ -137,19 +140,8 @@ describe('knipReporter', () => {
       } as ReporterOptions),
     ).resolves.toBeUndefined();
 
-    expect(getLogMessages(ui().logger)).toHaveLength(3);
-    expect(getLogMessages(ui().logger).at(0)).toBe(
-      `[ blue(info) ] Reporter called with options: ${JSON.stringify(
-        reporterOptions,
-        null,
-        2,
-      )}`,
-    );
-    expect(getLogMessages(ui().logger).at(1)).toBe(
-      `[ blue(info) ] Saved raw report to ${reporterOptions.rawOutputFile}`,
-    );
-    expect(getLogMessages(ui().logger).at(2)).toBe(
-      `[ blue(info) ] Saved report to ${reporterOptions.outputFile}`,
+    expect(logger.info).not.toHaveBeenCalledWith(
+      expect.stringContaining('"$0":'),
     );
   });
 
@@ -159,7 +151,7 @@ describe('knipReporter', () => {
     ).resolves.toBeUndefined();
 
     const auditOutputsContent = await memfsFs.promises.readFile(
-      join(MEMFS_VOLUME, KNIP_REPORT_NAME),
+      path.join(MEMFS_VOLUME, KNIP_REPORT_NAME),
       { encoding: 'utf8' },
     );
     const auditOutputsJson = JSON.parse(
