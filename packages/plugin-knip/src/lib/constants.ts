@@ -1,6 +1,5 @@
 import { IssueType as KnipIssueType } from 'knip/dist/types/issues';
 
-
 /* eslint-disable  sonarjs/no-duplicate-string */
 export const KNIP_PLUGIN_SLUG = 'knip';
 export const KNIP_RAW_REPORT_NAME = 'knip-raw-report.json';
