@@ -1,94 +1,97 @@
 import { IssueType as KnipIssueType } from 'knip/dist/types/issues';
 
+
+/* eslint-disable  sonarjs/no-duplicate-string */
 export const KNIP_PLUGIN_SLUG = 'knip';
 export const KNIP_RAW_REPORT_NAME = 'knip-raw-report.json';
 export const KNIP_REPORT_NAME = 'knip-code-pushup-report.json';
+
+const KNIP_DOCS_BASE_URL = 'https://knip.dev/guides/handling-issues';
 
 const audits = [
   {
     slug: 'files',
     title: 'Unused Files',
     description: 'Unable to find a reference to this file',
-    docsUrl: 'https://knip.dev/guides/handling-issues#files',
+    docsUrl: `${KNIP_DOCS_BASE_URL}#files`,
   },
   {
     slug: 'dependencies',
     title: 'Unused Dependencies',
     description: 'Unable to find a reference to this dependency',
-    docsUrl: 'https://knip.dev/guides/handling-issues#dependencies',
+    docsUrl: `${KNIP_DOCS_BASE_URL}#dependencies`,
   },
   {
     slug: 'dev-dependencies',
     title: 'Unused Development Dependencies',
     description: 'Unable to find a reference to this devDependency',
-    docsUrl: 'https://knip.dev/guides/handling-issues#devDependencies',
+    docsUrl: `${KNIP_DOCS_BASE_URL}#devDependencies`,
   },
   {
     slug: 'optional-peer-dependencies',
     title: 'Referenced optional peerDependencies',
     description: 'Optional peer dependency is referenced',
-    docsUrl:
-      'https://knip.dev/guides/handling-issues#referenced-optional-peerDependencies',
+    docsUrl: `${KNIP_DOCS_BASE_URL}#referenced-optional-peerDependencies`,
   },
   {
     slug: 'unlisted',
     title: 'Unlisted dependencies',
     description: 'Used dependencies not listed in package.json',
-    docsUrl: 'https://knip.dev/guides/handling-issues#unlisted',
+    docsUrl: `${KNIP_DOCS_BASE_URL}#unlisted`,
   },
   {
     slug: 'binaries',
     title: 'Unlisted binaries',
     description: 'Binaries from dependencies not listed in package.json',
-    docsUrl: 'https://knip.dev/guides/handling-issues#binaries',
+    docsUrl: `${KNIP_DOCS_BASE_URL}#binaries`,
   },
   {
     slug: 'unresolved',
     title: 'Unresolved imports',
     description: 'Unable to resolve this (import) specifier',
-    docsUrl: 'https://knip.dev/guides/handling-issues#unresolved',
+    docsUrl: `${KNIP_DOCS_BASE_URL}#unresolved`,
   },
   {
     slug: 'exports',
     title: 'Unused exports',
     description: 'Unable to find a reference to this export',
-    docsUrl: 'https://knip.dev/guides/handling-issues#exports',
+    docsUrl: `${KNIP_DOCS_BASE_URL}#exports`,
   },
   {
     slug: 'types',
     title: 'Unused exported types',
     description: 'Unable to find a reference to this exported type',
-    docsUrl: 'https://knip.dev/guides/handling-issues#types',
+    docsUrl: `${KNIP_DOCS_BASE_URL}#types`,
   },
   {
     slug: 'ns-exports',
     title: 'Exports in used namespace',
     description: 'Namespace with export is referenced, but not export itself',
-    docsUrl: 'https://knip.dev/guides/handling-issues#nsExports',
+    docsUrl: `${KNIP_DOCS_BASE_URL}#nsExports`,
   },
   {
     slug: 'ns-types',
     title: 'Exported types in used namespace',
     description: 'Namespace with type is referenced, but not type itself',
-    docsUrl: 'https://knip.dev/guides/handling-issues#nsTypes',
+    docsUrl: `${KNIP_DOCS_BASE_URL}#nsTypes`,
   },
   {
     slug: 'enum-members',
     title: 'Unused exported enum members',
     description: 'Unable to find a reference to this enum member',
-    docsUrl: 'https://knip.dev/guides/handling-issues#enumMembers',
+    docsUrl: `${KNIP_DOCS_BASE_URL}#enumMembers`,
   },
   {
     slug: 'class-members',
     title: 'Unused exported class members',
     description: 'Unable to find a reference to this class member',
-    docsUrl: 'https://knip.dev/guides/handling-issues#classMembers',
+    docsUrl: `${KNIP_DOCS_BASE_URL}#classMembers`,
   },
   {
     slug: 'duplicates',
     title: 'Duplicate exports',
     description: 'This is exported more than once',
-    docsUrl: 'https://knip.dev/guides/handling-issues#duplicates',
+    docsUrl: `${KNIP_DOCS_BASE_URL}#duplicates`,
   },
 ] as const;
 
@@ -193,3 +196,4 @@ export const ISSUE_TYPES = [
   ...ISSUE_SET_TYPES,
   ...ISSUE_RECORDS_TYPES,
 ] as const satisfies KnipIssueType[];
+/* eslint-enable  sonarjs/no-duplicate-string */
