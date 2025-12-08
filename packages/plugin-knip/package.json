@@ -11,10 +11,10 @@
       "import": "./src/lib/index.js",
       "default": "./src/lib/index.js"
     },
-    "./src/lib/reporter/index.js": {
-      "types": "./src/lib/reporter/index.d.ts",
-      "import": "./src/lib/reporter/index.js",
-      "default": "./src/lib/reporter/index.js"
+    "./src/lib/reporter.js": {
+      "types": "./src/lib/reporter.d.ts",
+      "import": "./src/lib/reporter.js",
+      "default": "./src/lib/reporter.js"
     }
   },
   "dependencies": {

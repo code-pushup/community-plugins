@@ -20,7 +20,7 @@ describe('knip reporter for code pushup audits', () => {
     envDir,
     'node_modules',
     '@code-pushup',
-    'plugin-knip',
+    'knip-plugin',
     'src',
     'lib',
     'reporter.js',
