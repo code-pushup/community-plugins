@@ -186,7 +186,7 @@ export const ISSUE_RECORDS_TYPES = [
   'nsTypes',
   'enumMembers',
   'classMembers',
-  'duplicates'
+  'duplicates',
 ] as const satisfies KnipIssueType[];
 
 export const ISSUE_TYPES = [

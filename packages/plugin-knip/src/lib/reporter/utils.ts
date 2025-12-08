@@ -5,7 +5,8 @@ import type {
   IssueSet as KnipIssueSet,
   Issues as KnipIssues,
   IssueSeverity as KnipSeverity,
-  ReporterOptions, SymbolIssueType,
+  ReporterOptions,
+  SymbolIssueType,
 } from 'knip/dist/types/issues';
 import type {
   AuditOutput,
@@ -147,5 +148,5 @@ export function knipToCpReport({
 }
 
 export function knipIssueTypeToAuditSlug(issueType: SymbolIssueType | 'files') {
-  return slugify(toSentenceCase(issueType))
+  return slugify(toSentenceCase(issueType));
 }

@@ -382,7 +382,9 @@ describe('knipToCpReport', () => {
       report: { files: true },
     } as ReporterOptions);
 
-    expect(result).toContainEqual(expect.objectContaining({ score: 1, value: 0 }));
+    expect(result).toContainEqual(
+      expect.objectContaining({ score: 1, value: 0 }),
+    );
   });
 
   it('should score audits with issues with 0', async () => {
@@ -392,7 +394,9 @@ describe('knipToCpReport', () => {
     } as ReporterOptions);
 
     const filesAudit = result.find((audit) => audit.slug === 'files');
-    expect(filesAudit).toStrictEqual(expect.objectContaining({ score: 0, value: 1 }));
+    expect(filesAudit).toStrictEqual(
+      expect.objectContaining({ score: 0, value: 1 }),
+    );
   });
 
   it('should return valid outputs schema', async () => {
