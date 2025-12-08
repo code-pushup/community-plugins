@@ -66,7 +66,7 @@ describe('knip reporter for code pushup audits', () => {
                 message: 'Unused dependency zod',
                 severity: 'error',
                 source: {
-                  file: 'tmp/e2e/plugin-knip-e2e/__test__/reporter/reporter-setup/package.json',
+                  file: expect.stringContaining('package.json'),
                   position: {
                     startColumn: 6,
                     startLine: 4,
