@@ -25,6 +25,7 @@ describe('knip reporter', () => {
     'lib',
     'reporter.js',
   );
+
   beforeAll(async () => {
     await cp(fixturesDir, testFileDir, { recursive: true });
     await restoreNxIgnoredFiles(testFileDir);

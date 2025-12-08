@@ -13,17 +13,18 @@ import type {
   IssueSeverity as CondPushupIssueSeverity,
   Issue as CpIssue,
 } from '@code-pushup/models';
-import { formatGitPath, getGitRoot } from '@code-pushup/utils';
+import {
+  formatGitPath,
+  getGitRoot,
+  slugify,
+  toSentenceCase,
+} from '@code-pushup/utils';
 import {
   ISSUE_RECORDS_TYPES,
   ISSUE_SET_TYPES,
   ISSUE_TYPES,
 } from '../constants.js';
-import {
-  ISSUE_TYPE_MESSAGE,
-  ISSUE_TYPE_TITLE,
-  ISSUE_TYPE_TO_SLUG,
-} from './constants.js';
+import { ISSUE_TYPE_MESSAGE } from './constants.js';
 
 const severityMap: Record<KnipSeverity | 'unknown', CondPushupIssueSeverity> = {
   unknown: 'info',
@@ -129,22 +130,15 @@ export function knipToCpReport({
   issues: rawIssues,
   report,
 }: Pick<ReporterOptions, 'issues' | 'report'>): Promise<AuditOutputs> {
-  // When used as a knip reporter, always return ALL audits to match plugin configuration
-  // When called directly (tests), filter based on what's provided
-  const shouldReturnAllAudits = report != null;
-  const issueTypesToInclude = shouldReturnAllAudits
-    ? ISSUE_TYPES
-    : ISSUE_TYPES.filter((issueType) => rawIssues[issueType] != null);
-
   return Promise.all(
-    issueTypesToInclude.map(async (issueType): Promise<AuditOutput> => {
-      // Only process issues if this type is enabled in the report (or if no report filter)
+    ISSUE_TYPES.map(async (issueType): Promise<AuditOutput> => {
+      // Only process issues if this type is enabled in the report
       const isEnabled = !report || report[issueType];
       const issues = isEnabled ? await toIssues(issueType, rawIssues) : [];
 
       return {
-        slug: ISSUE_TYPE_TO_SLUG[issueType],
-        score: issues.length === 0 ? 1 : 0,
+        slug: slugify(toSentenceCase(issueType)),
+        score: issues.length === 0 && isEnabled ? 1 : 0,
         value: issues.length,
         ...(issues.length > 0 ? { details: { issues } } : {}),
       };

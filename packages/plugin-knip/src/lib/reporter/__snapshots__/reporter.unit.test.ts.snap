@@ -47,7 +47,7 @@ exports[`knipReporter > should produce valid audit outputs 1`] = `
       ],
     },
     "score": 0,
-    "slug": "devdependencies",
+    "slug": "dev-dependencies",
     "value": 1,
   },
   {
@@ -63,7 +63,7 @@ exports[`knipReporter > should produce valid audit outputs 1`] = `
       ],
     },
     "score": 0,
-    "slug": "optionalpeerdependencies",
+    "slug": "optional-peer-dependencies",
     "value": 1,
   },
   {
@@ -136,7 +136,7 @@ exports[`knipReporter > should produce valid audit outputs 1`] = `
   },
   {
     "score": 1,
-    "slug": "nsexports",
+    "slug": "ns-exports",
     "value": 0,
   },
   {
@@ -161,7 +161,7 @@ exports[`knipReporter > should produce valid audit outputs 1`] = `
   },
   {
     "score": 1,
-    "slug": "nstypes",
+    "slug": "ns-types",
     "value": 0,
   },
   {
@@ -181,7 +181,7 @@ exports[`knipReporter > should produce valid audit outputs 1`] = `
       ],
     },
     "score": 0,
-    "slug": "enummembers",
+    "slug": "enum-members",
     "value": 1,
   },
   {
@@ -201,7 +201,7 @@ exports[`knipReporter > should produce valid audit outputs 1`] = `
       ],
     },
     "score": 0,
-    "slug": "classmembers",
+    "slug": "class-members",
     "value": 1,
   },
   {
