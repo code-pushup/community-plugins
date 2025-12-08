@@ -21,13 +21,13 @@ exports[`PLUGIN collect report with knip-plugin NPM package > should run plugin 
         {
           "description": "Unable to find a reference to this devDependency",
           "docsUrl": "https://knip.dev/guides/handling-issues#devDependencies",
-          "slug": "devdependencies",
+          "slug": "dev-dependencies",
           "title": "Unused Development Dependencies",
         },
         {
           "description": "Optional peer dependency is referenced",
           "docsUrl": "https://knip.dev/guides/handling-issues#referenced-optional-peerDependencies",
-          "slug": "optionalpeerdependencies",
+          "slug": "optional-peer-dependencies",
           "title": "Referenced optional peerDependencies",
         },
         {
@@ -151,7 +151,7 @@ exports[`PLUGIN collect report with knip-plugin NPM package > should run plugin 
               "weight": 1,
             },
             {
-              "slug": "devdependencies",
+              "slug": "dev-dependencies",
               "weight": 1,
             },
             {
@@ -159,7 +159,7 @@ exports[`PLUGIN collect report with knip-plugin NPM package > should run plugin 
               "weight": 1,
             },
             {
-              "slug": "optionalpeerdependencies",
+              "slug": "optional-peer-dependencies",
               "weight": 2,
             },
             {
@@ -214,7 +214,7 @@ exports[`PLUGIN collect report with knip-plugin NPM package > should run plugin 
               "weight": 1,
             },
             {
-              "slug": "devdependencies",
+              "slug": "dev-dependencies",
               "weight": 1,
             },
             {
@@ -222,7 +222,7 @@ exports[`PLUGIN collect report with knip-plugin NPM package > should run plugin 
               "weight": 1,
             },
             {
-              "slug": "optionalpeerdependencies",
+              "slug": "optional-peer-dependencies",
               "weight": 2,
             },
             {

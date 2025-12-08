@@ -5,7 +5,7 @@ import type {
   IssueSet as KnipIssueSet,
   Issues as KnipIssues,
   IssueSeverity as KnipSeverity,
-  ReporterOptions,
+  ReporterOptions, SymbolIssueType,
 } from 'knip/dist/types/issues';
 import type {
   AuditOutput,
@@ -137,11 +137,15 @@ export function knipToCpReport({
       const issues = isEnabled ? await toIssues(issueType, rawIssues) : [];
 
       return {
-        slug: slugify(toSentenceCase(issueType)),
+        slug: knipIssueTypeToAuditSlug(issueType),
         score: issues.length === 0 && isEnabled ? 1 : 0,
         value: issues.length,
         ...(issues.length > 0 ? { details: { issues } } : {}),
       };
     }),
   );
+}
+
+export function knipIssueTypeToAuditSlug(issueType: SymbolIssueType | 'files') {
+  return slugify(toSentenceCase(issueType))
 }

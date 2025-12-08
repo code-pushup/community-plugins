@@ -18,13 +18,13 @@ const audits = [
     docsUrl: 'https://knip.dev/guides/handling-issues#dependencies',
   },
   {
-    slug: 'devdependencies',
+    slug: 'dev-dependencies',
     title: 'Unused Development Dependencies',
     description: 'Unable to find a reference to this devDependency',
     docsUrl: 'https://knip.dev/guides/handling-issues#devDependencies',
   },
   {
-    slug: 'optionalpeerdependencies',
+    slug: 'optional-peer-dependencies',
     title: 'Referenced optional peerDependencies',
     description: 'Optional peer dependency is referenced',
     docsUrl:
@@ -109,9 +109,9 @@ export const KNIP_GROUP_DEPENDENCIES = {
   description: 'Groups all dependency related audits',
   refs: [
     { slug: 'dependencies', weight: 1 },
-    { slug: 'devdependencies', weight: 1 },
+    { slug: 'dev-dependencies', weight: 1 },
     { slug: 'binaries', weight: 1 },
-    { slug: 'optionalpeerdependencies', weight: 2 },
+    { slug: 'optional-peer-dependencies', weight: 2 },
     { slug: 'unlisted', weight: 2 },
   ],
 };
@@ -147,9 +147,9 @@ export const KNIP_GROUP_ALL = {
     { slug: 'classmembers', weight: 10 },
     { slug: 'duplicates', weight: 2 },
     { slug: 'dependencies', weight: 1 },
-    { slug: 'devdependencies', weight: 1 },
+    { slug: 'dev-dependencies', weight: 1 },
     { slug: 'binaries', weight: 1 },
-    { slug: 'optionalpeerdependencies', weight: 2 },
+    { slug: 'optional-peer-dependencies', weight: 2 },
     { slug: 'unlisted', weight: 2 },
   ],
 };
@@ -186,7 +186,7 @@ export const ISSUE_RECORDS_TYPES = [
   'nsTypes',
   'enumMembers',
   'classMembers',
-  'duplicates',
+  'duplicates'
 ] as const satisfies KnipIssueType[];
 
 export const ISSUE_TYPES = [

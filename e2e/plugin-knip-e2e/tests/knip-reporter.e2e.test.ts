@@ -11,7 +11,7 @@ import {
 } from '@code-pushup/test-utils';
 import { executeProcess, readJsonFile } from '@code-pushup/utils';
 
-describe('knip reporter', () => {
+describe('knip reporter for code pushup audits', () => {
   const envDir = path.join(E2E_ENVIRONMENTS_DIR, nxTargetProject());
   const testFileDir = path.join(envDir, TEST_OUTPUT_DIR, 'reporter');
   const reporterSetupDir = path.join(testFileDir, 'reporter-setup');
