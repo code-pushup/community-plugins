@@ -16,7 +16,7 @@ describe('knip reporter for code pushup audits', () => {
   const testFileDir = path.join(envDir, TEST_OUTPUT_DIR, 'reporter');
   const reporterSetupDir = path.join(testFileDir, 'reporter-setup');
   const fixturesDir = path.join('e2e', nxTargetProject(), 'mocks/fixtures');
-  const reporterPath = path.join(
+  const reporterPath = path.resolve(
     envDir,
     'node_modules',
     '@code-pushup',
