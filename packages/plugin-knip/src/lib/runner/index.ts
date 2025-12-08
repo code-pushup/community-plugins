@@ -52,7 +52,7 @@ export function createRunnerConfig(options: RunnerOptions = {}): RunnerConfig {
   } = options;
 
   // Resolve the reporter path from the installed package
-  const reporterPath = '@code-pushup/knip-plugin/src/lib/reporter/index.js';
+  const reporterPath = '@code-pushup/knip-plugin/src/lib/reporter.js';
 
   return {
     command: 'npx',
