@@ -6,6 +6,7 @@ import type {
   Issues as KnipIssues,
   IssueSeverity as KnipSeverity,
   ReporterOptions,
+  SymbolIssueType,
 } from 'knip/dist/types/issues';
 import type {
   AuditOutput,
@@ -13,9 +14,18 @@ import type {
   IssueSeverity as CondPushupIssueSeverity,
   Issue as CpIssue,
 } from '@code-pushup/models';
-import { formatGitPath, getGitRoot, slugify } from '@code-pushup/utils';
-import { ISSUE_RECORDS_TYPES, ISSUE_SET_TYPES } from '../constants.js';
-import { ISSUE_TYPE_MESSAGE, ISSUE_TYPE_TITLE } from './constants.js';
+import {
+  formatGitPath,
+  getGitRoot,
+  slugify,
+  toSentenceCase,
+} from '@code-pushup/utils';
+import {
+  ISSUE_RECORDS_TYPES,
+  ISSUE_SET_TYPES,
+  ISSUE_TYPES,
+} from '../constants.js';
+import { ISSUE_TYPE_MESSAGE } from './constants.js';
 
 const severityMap: Record<KnipSeverity | 'unknown', CondPushupIssueSeverity> = {
   unknown: 'info',
@@ -88,6 +98,11 @@ export async function toIssues(
   issueType: IssueType,
   issues: KnipIssues,
 ): Promise<CpIssue[]> {
+  // Handle case where issueType is not present in issues object
+  if (!issues[issueType]) {
+    return [];
+  }
+
   const isSet = issues[issueType] instanceof Set;
   const issuesForType: string[] | KnipIssue[] = isSet
     ? [...(issues[issueType] as KnipIssueSet)]
@@ -115,20 +130,23 @@ export async function toIssues(
 export function knipToCpReport({
   issues: rawIssues,
   report,
-}: Pick<ReporterOptions, 'report' | 'issues'>): Promise<AuditOutputs> {
+}: Pick<ReporterOptions, 'issues' | 'report'>): Promise<AuditOutputs> {
   return Promise.all(
-    Object.entries(report)
+    ISSUE_TYPES.map(async (issueType): Promise<AuditOutput> => {
+      // Only process issues if this type is enabled in the report
+      const isEnabled = !report || report[issueType];
+      const issues = isEnabled ? await toIssues(issueType, rawIssues) : [];
 
-      .filter(([_, isReportType]) => isReportType)
-      .map(async ([issueType]): Promise<AuditOutput> => {
-        const issues = await toIssues(issueType as IssueType, rawIssues);
-
-        return {
-          slug: slugify(ISSUE_TYPE_TITLE[issueType as IssueType]),
-          score: issues.length === 0 ? 1 : 0,
-          value: issues.length,
-          ...(issues.length > 0 ? { details: { issues } } : {}),
-        };
-      }),
+      return {
+        slug: knipIssueTypeToAuditSlug(issueType),
+        score: issues.length === 0 && isEnabled ? 1 : 0,
+        value: issues.length,
+        ...(issues.length > 0 ? { details: { issues } } : {}),
+      };
+    }),
   );
+}
+
+export function knipIssueTypeToAuditSlug(issueType: SymbolIssueType | 'files') {
+  return slugify(toSentenceCase(issueType));
 }

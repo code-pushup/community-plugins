@@ -16,13 +16,13 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@code-pushup/knip-plugin": ["packages/plugin-knip/src/index.ts"],
       "@code-pushup/test-nx-utils": ["testing/test-nx-utils/src/index.ts"],
       "@code-pushup/test-setup": ["testing/test-setup/src/index.ts"],
       "@code-pushup/test-setup-config": [
         "testing/test-setup-config/src/index.ts"
       ],
-      "@code-pushup/test-utils": ["testing/test-utils/src/index.ts"],
-      "knip-plugin": ["packages/plugin-knip/src/index.ts"]
+      "@code-pushup/test-utils": ["testing/test-utils/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

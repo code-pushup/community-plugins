@@ -2,9 +2,39 @@ import type { ReporterOptions } from 'knip';
 import { writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { ensureDirectoryExists, logger } from '@code-pushup/utils';
-import { KNIP_REPORT_NAME } from './constants.js';
+import { KNIP_REPORT_NAME } from '../constants.js';
 import { parseCustomReporterOptions } from './model.js';
 import { knipToCpReport } from './utils.js';
+
+async function saveRawReport(
+  rawOutputFile: string,
+  knipReporterOptions: ReporterOptions,
+  customReporterOptions: ReturnType<typeof parseCustomReporterOptions>,
+  verbose: boolean,
+) {
+  const rawOutputDir = path.dirname(rawOutputFile);
+  if (rawOutputDir && rawOutputDir !== '.' && rawOutputDir !== '') {
+    await ensureDirectoryExists(rawOutputDir);
+  }
+  await writeFile(
+    rawOutputFile,
+    JSON.stringify(
+      {
+        ...knipReporterOptions,
+        issues: {
+          ...knipReporterOptions.issues,
+          files: [...knipReporterOptions.issues.files],
+        },
+        options: customReporterOptions,
+      },
+      null,
+      2,
+    ),
+  );
+  if (verbose) {
+    logger.info(`Saved raw report to ${rawOutputFile}`);
+  }
+}
 
 /**
  * @description
@@ -16,47 +46,35 @@ import { knipToCpReport } from './utils.js';
  *
  */
 export const knipReporter = async (knipReporterOptions: ReporterOptions) => {
-  const { options, report, issues } = knipReporterOptions;
+  const { options, issues, report } = knipReporterOptions;
   const customReporterOptions = parseCustomReporterOptions(options);
   const {
     verbose,
     outputFile = KNIP_REPORT_NAME,
     rawOutputFile,
   } = customReporterOptions;
+
   if (verbose) {
     logger.info(
-      `Reporter called with options: ${JSON.stringify(
-        customReporterOptions,
-        null,
-        2,
-      )}`,
+      `Reporter called with options: ${JSON.stringify(customReporterOptions, null, 2)}`,
     );
   }
+
   if (rawOutputFile != null) {
-    await ensureDirectoryExists(path.dirname(rawOutputFile));
-    await writeFile(
+    await saveRawReport(
       rawOutputFile,
-      JSON.stringify(
-        {
-          ...knipReporterOptions,
-          issues: {
-            ...issues,
-            files: [...issues.files], // files is a Set<string>
-          },
-          options: customReporterOptions,
-        },
-        null,
-        2,
-      ),
+      knipReporterOptions,
+      customReporterOptions,
+      verbose ?? false,
     );
-    if (verbose) {
-      logger.info(`Saved raw report to ${rawOutputFile}`);
-    }
   }
 
   const result = await knipToCpReport({ issues, report });
 
-  await ensureDirectoryExists(path.dirname(outputFile));
+  const outputDir = path.dirname(outputFile);
+  if (outputDir && outputDir !== '.' && outputDir !== '') {
+    await ensureDirectoryExists(outputDir);
+  }
   await writeFile(outputFile, JSON.stringify(result, null, 2));
   if (verbose) {
     logger.info(`Saved report to ${outputFile}`);

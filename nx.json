@@ -1,9 +1,5 @@
 {
-  "pluginsConfig": {
-    "@nx/js": {
-      "analyzeSourceFiles": true
-    }
-  },
+  "pluginsConfig": {},
   "extends": "nx/presets/npm.json",
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
   "workspaceLayout": {
@@ -104,9 +100,24 @@
     },
     "e2e": {
       "cache": true,
-      "inputs": ["default", "test-vitest-inputs"],
-      "dependsOn": ["^build"]
+      "inputs": ["default", "test-vitest-inputs"]
     }
   },
-  "plugins": []
+  "plugins": [
+    {
+      "plugin": "@push-based/nx-verdaccio",
+      "options": {
+        "environments": {
+          "environmentsDir": "tmp/e2e",
+          "targetNames": ["e2e"],
+          "inferredTargets": {
+            "e2e": "e2e-test"
+          }
+        },
+        "packages": {
+          "filterByTags": ["publishable"]
+        }
+      }
+    }
+  ]
 }

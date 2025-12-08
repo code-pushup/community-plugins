@@ -1,8 +1,5 @@
 import { ISSUE_TYPES } from '../constants.js';
 
-export const KNIP_REPORT_NAME = 'knip-report.json';
-export const KNIP_RAW_REPORT_NAME = 'knip-raw-report.json';
-
 export const ISSUE_TYPE_TITLE: Record<
   (typeof ISSUE_TYPES)[number] | '_files',
   string

@@ -1,0 +1,53 @@
+# path to a directory with all packages
+storage: ../tmp/local-registry/storage
+
+# a list of other known repositories we can talk to
+uplinks:
+  npmjs:
+    url: https://registry.npmjs.org/
+    maxage: 60m
+
+packages:
+  # exceptions for external @code-pushup packages
+  '@code-pushup/models':
+    access: $all
+    proxy: npmjs
+  '@code-pushup/utils':
+    access: $all
+    proxy: npmjs
+  '@code-pushup/core':
+    access: $all
+    proxy: npmjs
+  '@code-pushup/cli':
+    access: $all
+    proxy: npmjs
+  '@code-pushup/portal-client':
+    access: $all
+    proxy: npmjs
+  '@code-pushup/eslint-config':
+    access: $all
+    proxy: npmjs
+
+  # allow publishing local packages
+  '@code-pushup/*':
+    access: $all
+    publish: $all
+    unpublish: $all
+
+  # proxy other packages to official NPM registry
+  '**':
+    access: $all
+    proxy: npmjs
+
+# log settings
+log:
+  type: stdout
+  format: pretty
+  level: warn
+
+publish:
+  allow_offline: true # set offline to true to allow publish offline
+
+middlewares:
+  audit:
+    enabled: true # needed to run npm audit in e2e test folder
