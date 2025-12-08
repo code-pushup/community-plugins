@@ -45,7 +45,7 @@ describe('knip reporter for code pushup audits', () => {
         '--no-exit-code',
         `--reporter=${reporterPath}`,
         /* eslint-disable-next-line no-useless-escape */
-        `--reporter-options={\"outputFile\":\"knip-report.json\"}`,
+        `--reporter-options={\\"outputFile\\":\\"knip-report.json\\"}`,
       ],
       cwd: reporterSetupDir,
     });
