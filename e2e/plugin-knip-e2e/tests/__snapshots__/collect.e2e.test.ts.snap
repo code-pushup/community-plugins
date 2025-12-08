@@ -57,7 +57,7 @@ exports[`PLUGIN collect report with knip-plugin NPM package > should run plugin 
         {
           "description": "Namespace with export is referenced, but not export itself",
           "docsUrl": "https://knip.dev/guides/handling-issues#nsExports",
-          "slug": "nsexports",
+          "slug": "ns-exports",
           "title": "Exports in used namespace",
         },
         {
@@ -69,19 +69,19 @@ exports[`PLUGIN collect report with knip-plugin NPM package > should run plugin 
         {
           "description": "Namespace with type is referenced, but not type itself",
           "docsUrl": "https://knip.dev/guides/handling-issues#nsTypes",
-          "slug": "nstypes",
+          "slug": "ns-types",
           "title": "Exported types in used namespace",
         },
         {
           "description": "Unable to find a reference to this enum member",
           "docsUrl": "https://knip.dev/guides/handling-issues#enumMembers",
-          "slug": "enummembers",
+          "slug": "enum-members",
           "title": "Unused exported enum members",
         },
         {
           "description": "Unable to find a reference to this class member",
           "docsUrl": "https://knip.dev/guides/handling-issues#classMembers",
-          "slug": "classmembers",
+          "slug": "class-members",
           "title": "Unused exported class members",
         },
         {
@@ -120,19 +120,19 @@ exports[`PLUGIN collect report with knip-plugin NPM package > should run plugin 
               "weight": 10,
             },
             {
-              "slug": "nsexports",
+              "slug": "ns-exports",
               "weight": 10,
             },
             {
-              "slug": "nstypes",
+              "slug": "ns-types",
               "weight": 10,
             },
             {
-              "slug": "enummembers",
+              "slug": "enum-members",
               "weight": 10,
             },
             {
-              "slug": "classmembers",
+              "slug": "class-members",
               "weight": 10,
             },
             {
@@ -190,19 +190,19 @@ exports[`PLUGIN collect report with knip-plugin NPM package > should run plugin 
               "weight": 10,
             },
             {
-              "slug": "nsexports",
+              "slug": "ns-exports",
               "weight": 10,
             },
             {
-              "slug": "nstypes",
+              "slug": "ns-types",
               "weight": 10,
             },
             {
-              "slug": "enummembers",
+              "slug": "enum-members",
               "weight": 10,
             },
             {
-              "slug": "classmembers",
+              "slug": "class-members",
               "weight": 10,
             },
             {
