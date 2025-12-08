@@ -37,9 +37,6 @@ describe('knip reporter for code pushup audits', () => {
 
   it('should execute knip with custom reporter and generate report', async () => {
     const outputFile = path.join(reporterSetupDir, 'knip-report.json');
-    const customReporterOptions = JSON.stringify({
-      outputFile: 'knip-report.json',
-    });
 
     const { code } = await executeProcess({
       command: 'npx',
@@ -47,7 +44,7 @@ describe('knip reporter for code pushup audits', () => {
         'knip',
         '--no-exit-code',
         `--reporter=${reporterPath}`,
-        `--reporter-options=${customReporterOptions}`,
+        `--reporter-options='{"outputFile":"knip-report.json"}'`,
       ],
       cwd: reporterSetupDir,
     });
