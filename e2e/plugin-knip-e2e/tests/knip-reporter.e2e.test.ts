@@ -44,7 +44,7 @@ describe('knip reporter for code pushup audits', () => {
         'knip',
         '--no-exit-code',
         `--reporter=${reporterPath}`,
-        `--reporter-options='"{\"outputFile\":\"knip-report.json\"}"'`,
+        `--reporter-options='{\"outputFile\":\"knip-report.json\"}'`,
       ],
       cwd: reporterSetupDir,
     });
