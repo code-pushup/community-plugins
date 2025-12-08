@@ -1,10 +1,10 @@
-import { bold } from 'ansis';
+import chalk from 'chalk';
 import { z } from 'zod';
 
 export const customReporterOptionsSchema = z.object({
   verbose: z.boolean().optional(),
-  outputFile: z.string().optional(), // TODO change into filePathSchema when @code-pushup/models releases new version
-  rawOutputFile: z.string().optional(), // TODO change into filePathSchema when @code-pushup/models releases new version
+  outputFile: z.string().optional(),
+  rawOutputFile: z.string().optional(),
 });
 
 export type CustomReporterOptions = z.infer<typeof customReporterOptionsSchema>;
@@ -12,7 +12,7 @@ export type CustomReporterOptions = z.infer<typeof customReporterOptionsSchema>;
 export function parseCustomReporterOptions(
   optionsString?: string,
 ): CustomReporterOptions {
-  /* eslint-disable functional/no-let */
+  // eslint-disable-next-line functional/no-let
   let rawJson;
   try {
     rawJson =
@@ -21,7 +21,7 @@ export function parseCustomReporterOptions(
         : {};
   } catch (error) {
     throw new Error(String.raw`The passed knip reporter options have to be a JSON parseable string. E.g. --reporter-options='{\"prop\":42}'
-    Option string: ${bold(optionsString)}
+    Option string: ${chalk.bold(optionsString)}
     Error: ${(error as Error).message}`);
   }
 

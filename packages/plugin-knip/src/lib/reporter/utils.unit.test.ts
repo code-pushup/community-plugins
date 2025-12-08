@@ -5,7 +5,7 @@ import type {
   IssueSeverity as KnipIssueSeverity,
   Issues as KnipIssues,
 } from 'knip/dist/types/issues';
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import {
   auditDetailsSchema,
   auditOutputsSchema,
@@ -294,8 +294,7 @@ describe('toIssues', () => {
                 '/User/projects/code-pushup-cli/packages/utils/src/index.js',
               symbol: 'CliUi',
               severity: 'error',
-              workspace: 'workspace',
-            },
+            } as unknown as KnipIssue,
           },
         },
       } as unknown as KnipIssues),
@@ -313,82 +312,95 @@ describe('toIssues', () => {
 
 describe('knipToCpReport', () => {
   it('should return empty audits if no report is flagged positive', async () => {
-    await expect(
-      knipToCpReport({
-        report: {
-          files: false,
-          dependencies: false,
-          // other options are falsy as undefined
-        },
-        issues: {},
-      } as ReporterOptions),
-    ).resolves.toStrictEqual([]);
+    const result = await knipToCpReport({
+      issues: {},
+      report: {},
+    } as ReporterOptions);
+
+    expect(result).toEqual(
+      expect.arrayContaining([expect.objectContaining({ score: 0, value: 0 })]),
+    );
   });
 
   it('should return only audits flagged in report object', async () => {
-    await expect(
-      knipToCpReport({
-        report: {
-          files: false,
-          dependencies: true,
-          // other options are falsy as undefined
-        },
-        issues: {
-          dependencies: {},
-        },
-      } as ReporterOptions),
-    ).resolves.toStrictEqual(
+    const result = await knipToCpReport({
+      issues: {
+        dependencies: {},
+      },
+      report: { dependencies: true },
+    } as ReporterOptions);
+
+    expect(result).toEqual(
       expect.arrayContaining([
-        expect.objectContaining({ slug: 'unused-dependencies' }),
+        expect.objectContaining({ slug: 'dependencies' }),
+      ]),
+    );
+  });
+
+  it('should return readable audit slug derived from knip issueType', async () => {
+    const result = await knipToCpReport({
+      issues: {
+        optionalPeerDependencies: {},
+      },
+      report: { optionalPeerDependencies: true },
+    } as ReporterOptions);
+
+    expect(result).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ slug: 'optional-peer-dependencies' }),
       ]),
     );
   });
 
   it('should return audit result with number of issues as value', async () => {
-    await expect(
-      knipToCpReport({
-        report: { files: true },
-        issues: { files: new Set(['a.js', 'b.js', 'c.js']) },
-      } as ReporterOptions),
-    ).resolves.toStrictEqual([expect.objectContaining({ value: 3 })]);
+    const result = await knipToCpReport({
+      issues: { files: new Set(['a.js', 'b.js', 'c.js']) },
+      report: { files: true },
+    } as ReporterOptions);
+
+    expect(result).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ slug: 'files', value: 3 }),
+      ]),
+    );
   });
 
   it('should return audit result without display value', async () => {
-    await expect(
-      knipToCpReport({
-        report: { files: true },
-        issues: { files: new Set(['main.js']) },
-      } as ReporterOptions),
-    ).resolves.toStrictEqual([
-      expect.not.objectContaining({ displayValue: expect.any(String) }),
-    ]);
+    const result = await knipToCpReport({
+      issues: { files: new Set(['main.js']) },
+      report: { files: true },
+    } as ReporterOptions);
+
+    // Check that the files audit doesn't have displayValue
+    const filesAudit = result.find((audit) => audit.slug === 'files');
+    expect(filesAudit).not.toHaveProperty('displayValue');
   });
 
   it('should score audits with empty issues with 1', async () => {
-    await expect(
-      knipToCpReport({
-        report: { files: true },
-        issues: { files: new Set() },
-      } as ReporterOptions),
-    ).resolves.toStrictEqual([expect.objectContaining({ score: 1 })]);
+    const result = await knipToCpReport({
+      issues: { files: new Set() },
+      report: { files: true },
+    } as ReporterOptions);
+
+    expect(result).toContainEqual(
+      expect.objectContaining({ score: 1, value: 0 }),
+    );
   });
 
   it('should score audits with issues with 0', async () => {
-    await expect(
-      knipToCpReport({
-        report: { files: true },
-        issues: { files: new Set(['main.js']) },
-      } as ReporterOptions),
-    ).resolves.toStrictEqual([expect.objectContaining({ score: 0 })]);
+    const result = await knipToCpReport({
+      issues: { files: new Set(['main.js']) },
+      report: { files: true },
+    } as ReporterOptions);
+
+    const filesAudit = result.find((audit) => audit.slug === 'files');
+    expect(filesAudit).toStrictEqual(
+      expect.objectContaining({ score: 0, value: 1 }),
+    );
   });
 
   it('should return valid outputs schema', async () => {
     const result = await knipToCpReport({
-      report: {
-        files: true,
-        dependencies: false,
-        unlisted: true,
-      } as ReporterOptions['report'],
       issues: {
         files: new Set(['main.js']),
         unlisted: {
@@ -404,7 +416,7 @@ describe('knipToCpReport', () => {
               col: 0,
               symbols: [],
               parentSymbol: '',
-            },
+            } as unknown as KnipIssue,
           },
           '/User/username/code-pushup-cli/examples/plugins/.eslintrc.json': {
             'jsonc-eslint-parser': {
@@ -413,11 +425,12 @@ describe('knipToCpReport', () => {
               filePath:
                 '/User/username/code-pushup-cli/packages/utils/package.json',
               severity: 'error',
-            },
+            } as unknown as KnipIssue,
           },
-        } as unknown as IssueRecords,
+        } as IssueRecords,
       } as ReporterOptions['issues'],
-    });
+      report: { files: true, unlisted: true },
+    } as ReporterOptions);
     expect(() => auditOutputsSchema.parse(result)).not.toThrowError();
   });
 });

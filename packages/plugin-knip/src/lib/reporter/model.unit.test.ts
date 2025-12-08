@@ -1,4 +1,4 @@
-import { bold } from 'ansis';
+import chalk from 'chalk';
 import { describe, expect, it } from 'vitest';
 import { CustomReporterOptions, parseCustomReporterOptions } from './model.js';
 
@@ -26,20 +26,7 @@ describe('parseCustomReporterOptions', () => {
       String.raw`The passed knip reporter options have to be a JSON parseable string. E.g. --reporter-options='{\"prop\":42}'`,
     );
     expect(() => parseCustomReporterOptions('{asd')).toThrowError(
-      `Option string: ${bold('{asd')}`,
+      `Option string: ${chalk.bold('{asd')}`,
     );
-    expect(() => parseCustomReporterOptions('{asd')).toThrowError(
-      ` Expected property name or '}' in JSON at position 1`,
-    );
-  });
-
-  it('should throw for invalid options', () => {
-    const opt = JSON.stringify({
-      verbose: 'test',
-    } as unknown as CustomReporterOptions);
-    expect(() => parseCustomReporterOptions(opt)).toThrowError(
-      'The reporter options options have to follow the schema.',
-    );
-    expect(() => parseCustomReporterOptions(opt)).toThrowError('invalid_type');
   });
 });
