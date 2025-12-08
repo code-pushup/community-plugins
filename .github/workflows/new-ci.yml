@@ -1,4 +1,6 @@
 name: CI New
+permissions:
+  contents: read
 
 on:
   push:
