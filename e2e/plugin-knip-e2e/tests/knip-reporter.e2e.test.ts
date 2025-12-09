@@ -44,8 +44,7 @@ describe('knip reporter for code pushup audits', () => {
         'knip',
         '--no-exit-code',
         `--reporter=${reporterPath}`,
-        /* eslint-disable-next-line unicorn/prefer-string-raw */
-        `--reporter-options={\\"outputFile\\":\\"knip-report.json\\"}`,
+        `--reporter-options=${JSON.stringify(JSON.stringify({ outputFile: 'knip-report.json' }))}`,
       ],
       cwd: reporterSetupDir,
     });
@@ -66,7 +65,7 @@ describe('knip reporter for code pushup audits', () => {
                 message: 'Unused dependency zod',
                 severity: 'error',
                 source: {
-                  file: expect.stringContaining('package.json'),
+                  file: expect.pathToEndWith('package.json'),
                   position: {
                     startColumn: 6,
                     startLine: 4,

@@ -3,7 +3,7 @@ import type { IssueRecords, IssueSet } from 'knip/dist/types/issues';
 import { fs as memfsFs, vol } from 'memfs';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import type { AuditOutputs } from '@code-pushup/models';
-import { MEMFS_VOLUME } from '@code-pushup/test-utils';
+import { MEMFS_VOLUME, omitVariableAuditData } from '@code-pushup/test-utils';
 import { logger } from '@code-pushup/utils';
 import { rawReport } from '../../../mocks/fixtures/raw-knip.report';
 import { KNIP_RAW_REPORT_NAME, KNIP_REPORT_NAME } from '../constants.js';
@@ -118,7 +118,15 @@ describe('knipReporter', () => {
     expect(rawKnipReport.report).toStrictEqual({ files: true, unlisted: true });
     expect(rawKnipReport.options).toStrictEqual({ rawOutputFile });
     expect(rawKnipReport.issues.files).toStrictEqual(['main.js']);
-    expect(rawKnipReport.issues.unlisted).toStrictEqual(unlistedIssueRecords);
+    expect(rawKnipReport.issues.unlisted).toStrictEqual({
+      '/User/username/code-pushup-cli/packages/utils/.eslintrc.json': {
+        'jsonc-eslint-parser': {
+          type: 'unlisted',
+          symbol: 'jsonc-eslint-parser',
+          filePath: expect.pathToEndWith('package.json'),
+        },
+      },
+    });
     expect(rawKnipReport.counters).toStrictEqual({ files: 1, unlisted: 1 });
   });
 
@@ -167,6 +175,7 @@ describe('knipReporter', () => {
     const auditOutputsJson = JSON.parse(
       auditOutputsContent.toString(),
     ) as AuditOutputs;
-    expect(auditOutputsJson).toMatchSnapshot();
+    // sanitize variable data before snapshotting
+    expect(auditOutputsJson.map(omitVariableAuditData)).toMatchSnapshot();
   });
 });
