@@ -1,7 +1,11 @@
 import benny from 'benny';
 import type { Summary } from 'benny/lib/internal/common-types';
 import { JS_BENCHMARK_PLUGIN_SLUG } from '../constants.js';
-import { BenchmarkResult, BenchmarkRunnerOptions, SuiteConfig } from './types.js';
+import {
+  BenchmarkResult,
+  BenchmarkRunnerOptions,
+  SuiteConfig,
+} from './types.js';
 
 export const bennyRunner = {
   run: async (
@@ -13,7 +17,7 @@ export const bennyRunner = {
       outputDir: folder = JS_BENCHMARK_PLUGIN_SLUG,
     } = options;
 
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
       // This is not working with named imports
       void benny.suite(
         suiteName,
@@ -25,7 +29,7 @@ export const bennyRunner = {
 
         benny.cycle(),
 
-        benny.complete(summary => {
+        benny.complete((summary) => {
           resolve(
             benchToBenchmarkResult(summary, {
               suiteName,

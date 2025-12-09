@@ -28,7 +28,7 @@ describe('benchToBenchmarkResult', () => {
         } as Bench,
         {
           suiteName: 'suite-1',
-          cases: suitNames.map(name => [name, vi.fn()]),
+          cases: suitNames.map((name) => [name, vi.fn()]),
           targetImplementation: suitNames.at(0) as string,
         },
       ),

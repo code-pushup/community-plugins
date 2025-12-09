@@ -1,5 +1,5 @@
 import { describe, expect } from 'vitest';
-import { PluginConfig, pluginConfigSchema } from '@code-pushup/models';
+import { pluginConfigSchema, type PluginConfig } from '@code-pushup/models';
 import { JS_BENCHMARK_PLUGIN_SLUG } from './constants.js';
 import { jsBenchmarkPlugin } from './js-benchmark.plugin';
 import { BenchmarkResult } from './runner/types.js';
@@ -22,7 +22,7 @@ vi.mock('./utils', async () => {
             isFastest: index === 0,
             isTarget: index === 0,
             samples: suiteNames.length * 10,
-          } satisfies BenchmarkResult),
+          }) satisfies BenchmarkResult,
       ),
     ),
   };

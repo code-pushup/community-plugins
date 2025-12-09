@@ -1,10 +1,10 @@
-import { join } from 'node:path';
+import path from 'node:path';
 
 export const JS_BENCHMARK_PLUGIN_SLUG = 'js-benchmarking';
 
 function withRunnerRoot(runnerName: string): string {
   // @TODO replace with `@code-pushup/js-benchmarking-plugin/src/runner/`
-  return join(
+  return path.join(
     'dist',
     'examples',
     'plugins',

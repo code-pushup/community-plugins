@@ -1,4 +1,4 @@
-import { Audit, type CategoryRef } from '@code-pushup/models';
+import type { Audit, CategoryRef } from '@code-pushup/models';
 import { importModule } from '@code-pushup/utils';
 import { JS_BENCHMARK_PLUGIN_SLUG } from './constants.js';
 import { type SuiteConfig, toAuditSlug } from './runner/index.js';
@@ -9,11 +9,11 @@ export function toAuditTitle(suiteName: string): string {
 
 export function toAuditMetadata(suiteNames: string[]): Audit[] {
   return suiteNames.map(
-    suiteName =>
+    (suiteName) =>
       ({
         slug: toAuditSlug(suiteName),
         title: toAuditTitle(suiteName),
-      } satisfies Audit),
+      }) satisfies Audit,
   );
 }
 export function jsBenchmarkingSuiteNameToCategoryRef(
@@ -38,7 +38,7 @@ export function loadSuites(
   const { tsconfig } = options;
   return Promise.all(
     targets.map((filepath: string) =>
-        importModule<SuiteConfig>({
+      importModule<SuiteConfig>({
         tsconfig,
         filepath,
       }),

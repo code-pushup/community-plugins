@@ -1,7 +1,7 @@
 export type SuiteConfig = {
   suiteName: string;
   targetImplementation: string;
-   
+
   cases: [string, (...args: unknown[]) => Promise<unknown> | unknown][];
   time?: number;
 };

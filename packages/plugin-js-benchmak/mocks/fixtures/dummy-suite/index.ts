@@ -59,10 +59,13 @@ const suiteConfig: SuiteConfig = {
   cases: Array.from({ length: numCases }).map((_, idx) => [
     `case-${idx + 1}`,
     () =>
-      new Promise(resolve =>
-        setTimeout(() => {
-          resolve(factorial((syncIterations + syncIterationsDiff) * idx));
-        }, executionTime + executionTimeDiff * idx),
+      new Promise((resolve) =>
+        setTimeout(
+          () => {
+            resolve(factorial((syncIterations + syncIterationsDiff) * idx));
+          },
+          executionTime + executionTimeDiff * idx,
+        ),
       ),
   ]),
   time: executionTime + executionTimeDiff * 2,

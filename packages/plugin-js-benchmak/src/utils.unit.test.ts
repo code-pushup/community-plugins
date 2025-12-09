@@ -22,7 +22,7 @@ vi.mock('@code-pushup/utils', async () => {
             ['current-implementation', vi.fn()],
             ['slower-implementation', vi.fn()],
           ],
-        } satisfies SuiteConfig),
+        }) satisfies SuiteConfig,
     ),
   };
 });

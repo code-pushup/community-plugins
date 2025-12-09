@@ -1,5 +1,5 @@
 import { writeFile } from 'node:fs/promises';
-import { join } from 'node:path';
+import path from 'node:path';
 import { Bench } from 'tinybench';
 import { ensureDirectoryExists } from '@code-pushup/utils';
 import { JS_BENCHMARK_PLUGIN_SLUG } from '../constants.js';
@@ -22,7 +22,7 @@ export const tinybenchRunner = {
     const suite = new Bench({ time });
 
     // register test cases
-    cases.forEach(tuple => suite.add(...tuple));
+    cases.forEach((tuple) => suite.add(...tuple));
 
     await suite.warmup(); // make results more reliable, ref: https://github.com/tinylibs/tinybench/pull/50
     await suite.run();
@@ -37,7 +37,7 @@ export const tinybenchRunner = {
     if (fileName || folder) {
       await ensureDirectoryExists(folder);
       return writeFile(
-        join(folder, `${fileName}.json`),
+        path.join(folder, `${fileName}.json`),
         JSON.stringify(result, null, 2),
       ).then(() => result);
     }
@@ -53,7 +53,7 @@ export function benchToBenchmarkResult(
   const { suiteName, cases, targetImplementation } = suite;
   const caseNames = cases.map(([name]) => name);
   const results = caseNames
-    .map(caseName => {
+    .map((caseName) => {
       const result = bench.getTask(caseName)?.result ?? {
         hz: 0,
         rme: 0,
@@ -70,9 +70,9 @@ export function benchToBenchmarkResult(
       } satisfies BenchmarkResult;
     })
     // sort by hz to get fastest at the top
-    .sort(({ hz: hzA }, { hz: hzB }) => hzA - hzB);
+    .toSorted(({ hz: hzA }, { hz: hzB }) => hzA - hzB);
 
-  return results.map(result =>
+  return results.map((result) =>
     results.at(1)?.name === result.name
       ? { ...result, isFastest: true }
       : result,

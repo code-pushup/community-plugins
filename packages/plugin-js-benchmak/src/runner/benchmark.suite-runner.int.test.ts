@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import dummySuite from '../../mocks/fixtures/dummy-suite/index';
-import { benchmarkRunner } from './benchmark.suite-runner';
+import dummySuite from '../../mocks/fixtures/dummy-suite/index.js';
+import { benchmarkRunner } from './benchmark.suite-runner.js';
 
 describe('benchmarkRunner-execution', () => {
   // @TODO move to e2e tests when plugin is released officially

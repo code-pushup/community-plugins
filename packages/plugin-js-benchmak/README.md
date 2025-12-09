@@ -46,9 +46,18 @@ You can configure the plugin with the following options:
         suiteName: 'glob',
         targetImplementation: 'version-2',
         cases: [
-          ['version-1', () => new Promise(resolve => setTimeout(resolve, 30))],
-          ['version-2', () => new Promise(resolve => setTimeout(resolve, 10))],
-          ['version-3', () => new Promise(resolve => setTimeout(resolve, 20))],
+          [
+            'version-1',
+            () => new Promise((resolve) => setTimeout(resolve, 30)),
+          ],
+          [
+            'version-2',
+            () => new Promise((resolve) => setTimeout(resolve, 10)),
+          ],
+          [
+            'version-3',
+            () => new Promise((resolve) => setTimeout(resolve, 20)),
+          ],
         ],
       };
       ```
@@ -56,7 +65,9 @@ You can configure the plugin with the following options:
 4. (Optional) Set up categories (use `npx code-pushup print-config` to list audits and groups).
 
    ```js
-   import benchmarkJsPlugin, { suitesToCategorieGroupRef } from './benchmark-js.plugin';
+   import benchmarkJsPlugin, {
+     suitesToCategorieGroupRef,
+   } from './benchmark-js.plugin';
 
    export default {
      // ...
@@ -108,20 +119,37 @@ const suite: SuiteConfig = {
   suiteName: 'dummy-suite',
   targetImplementation: 'version-2',
   cases: [
-    ['version-1', async () => new Promise(resolve => setTimeout(resolve, 30))],
-    ['version-2', async () => new Promise(resolve => setTimeout(resolve, 50))],
-    ['version-3', async () => new Promise(resolve => setTimeout(resolve, 80))],
+    [
+      'version-1',
+      async () => new Promise((resolve) => setTimeout(resolve, 30)),
+    ],
+    [
+      'version-2',
+      async () => new Promise((resolve) => setTimeout(resolve, 50)),
+    ],
+    [
+      'version-3',
+      async () => new Promise((resolve) => setTimeout(resolve, 80)),
+    ],
   ],
 };
 const results = await runSuite(suite);
 
-const { suiteName, name, hz: maxHz } = results.find(({ isFastest }) => isFastest);
+const {
+  suiteName,
+  name,
+  hz: maxHz,
+} = results.find(({ isFastest }) => isFastest);
 const target = results.find(({ isTarget }) => isTarget);
-console.log(`In suite ${suiteName} fastest is: ${name} target is ${target?.name}`);
+console.log(
+  `In suite ${suiteName} fastest is: ${name} target is ${target?.name}`,
+);
 console.table(
   results.map(({ name, hz, rme, samples, isTarget, isFastest }) => {
     const targetIcon = isTarget ? '🎯' : '';
-    const postfix = isFastest ? '(fastest 🔥)' : `(${((1 - hz / maxHz) * 100).toFixed(1)}% slower)`;
+    const postfix = isFastest
+      ? '(fastest 🔥)'
+      : `(${((1 - hz / maxHz) * 100).toFixed(1)}% slower)`;
     return {
       // fast-glob x 40,824 ops/sec ±4.44% (85 runs sampled)
       message: `${targetIcon}${name} x ${hz.toFixed(2)} ops/sec ±${rme.toFixed(2)}; ${samples} samples ${postfix}`,

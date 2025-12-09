@@ -1,6 +1,6 @@
 import Benchmark, { Event, type Suite, type Target } from 'benchmark';
 import { writeFile } from 'node:fs/promises';
-import { join } from 'node:path';
+import path from 'node:path';
 import { JS_BENCHMARK_PLUGIN_SLUG } from '../constants.js';
 import type {
   BenchmarkResult,
@@ -22,7 +22,7 @@ export const benchmarkRunner = {
 
     return new Promise((resolve, reject) => {
       // This is not working with named imports
-       
+
       const suite = new Benchmark.Suite(suiteName);
 
       // Add Listener
@@ -30,7 +30,7 @@ export const benchmarkRunner = {
         error: (e: { target?: { error?: unknown } }) => {
           reject(e.target?.error ?? e);
         },
-        cycle (event: Event) {
+        cycle(event: Event) {
           if (verbose) {
             // @TODO use cliui.logger.info(String(event.target))
             // eslint-disable-next-line no-console
@@ -45,7 +45,7 @@ export const benchmarkRunner = {
           });
           if (fileName || folder) {
             void writeFile(
-              join(folder, `${fileName}.json`),
+              path.join(folder, `${fileName}.json`),
               JSON.stringify(result, null, 2),
             ).then(() => {
               resolve(result);
@@ -57,7 +57,7 @@ export const benchmarkRunner = {
       }).forEach(([name, fn]) => suite.on(name, fn));
 
       // register test cases
-      cases.forEach(tuple => suite.add(...tuple));
+      cases.forEach((tuple) => suite.add(...tuple));
 
       suite.run({ async: true });
     });
@@ -79,7 +79,7 @@ export function benchToBenchmarkResult(
         samples: bench.stats?.sample.length ?? 0, // number of samples
         isFastest: fastest === bench.name,
         isTarget: targetImplementation === bench.name,
-      } satisfies BenchmarkResult),
+      }) satisfies BenchmarkResult,
   ) as BenchmarkResult[]; // suite.map has a broken typing
 }
 

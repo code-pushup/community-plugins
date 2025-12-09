@@ -1,4 +1,4 @@
-import { AuditOutput, Issue } from '@code-pushup/models';
+import type { AuditOutput, Issue } from '@code-pushup/models';
 import { slugify } from '@code-pushup/utils';
 import { JS_BENCHMARK_PLUGIN_SLUG } from '../constants.js';
 import { BenchmarkResult } from './types.js';

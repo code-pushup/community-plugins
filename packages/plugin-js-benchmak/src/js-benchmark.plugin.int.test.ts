@@ -1,13 +1,13 @@
-import { dirname, join } from 'node:path';
+import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { describe, expect } from 'vitest';
 import { executePlugin } from '@code-pushup/core';
-import { PluginConfig, pluginConfigSchema } from '@code-pushup/models';
+import { pluginConfigSchema, type PluginConfig } from '@code-pushup/models';
 import { JS_BENCHMARK_PLUGIN_SLUG } from './constants.js';
 import { jsBenchmarkPlugin } from './js-benchmark.plugin';
 
-const targetPath = join(
-  fileURLToPath(dirname(import.meta.url)),
+const targetPath = path.join(
+  fileURLToPath(path.dirname(import.meta.url)),
   '..',
   '..',
   '..',
@@ -25,7 +25,15 @@ describe('jsBenchmarkingPlugin-execution', () => {
       targets: [targetPath],
     });
     expect(() => pluginConfigSchema.parse(pluginConfig)).not.toThrowError();
-    await expect(executePlugin(pluginConfig)).resolves.toEqual(
+    await expect(
+      executePlugin(pluginConfig, {
+        cache: {
+          read: false,
+          write: false,
+        },
+        persist: {},
+      }),
+    ).resolves.toEqual(
       expect.objectContaining({
         slug: JS_BENCHMARK_PLUGIN_SLUG,
         title: 'JS Benchmarking',

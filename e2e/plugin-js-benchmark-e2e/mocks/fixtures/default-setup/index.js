@@ -1,6 +1,6 @@
 // Utility functions to benchmark
 export function arrayMap(arr) {
-  return arr.map(x => x * 2);
+  return arr.map((x) => x * 2);
 }
 
 export function arrayForLoop(arr) {
