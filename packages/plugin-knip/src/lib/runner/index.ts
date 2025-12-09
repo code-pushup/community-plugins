@@ -50,37 +50,6 @@ export type KnipCliOptions = Partial<{
 }>;
 export type RunnerOptions = KnipCliOptions & CustomReporterOptions;
 
-export function createRunnerConfig(options: RunnerOptions = {}): RunnerConfig {
-  const {
-    outputFile = path.join(KNIP_PLUGIN_SLUG, KNIP_REPORT_NAME),
-    rawOutputFile,
-  } = options;
-
-  // Resolve the reporter path from the installed package
-  const reporterPath = '@code-pushup/knip-plugin/src/lib/reporter.js';
-
-  return {
-    command: 'npx',
-    args: [
-      'knip',
-      // off as we want to CI to pass
-      '--no-exit-code',
-      // off by default to guarantee execution without interference
-      '--no-progress',
-      // code-pushup reporter is used from the installed package
-      `--reporter=${reporterPath}`,
-      // code-pushup reporter options are passed as string. Double JSON.stringify ensures proper escaping on all platforms
-      `--reporter-options=${JSON.stringify(
-        JSON.stringify({
-          outputFile,
-          rawOutputFile,
-        } satisfies CustomReporterOptions),
-      )}`,
-    ],
-    outputFile,
-  };
-}
-
 export function createRunnerFunction(
   options: RunnerOptions = {},
 ): RunnerFunction {
