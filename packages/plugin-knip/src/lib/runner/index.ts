@@ -64,11 +64,13 @@ export function createRunnerConfig(options: RunnerOptions = {}): RunnerConfig {
       '--no-progress',
       // code-pushup reporter is used from the installed package
       `--reporter=${reporterPath}`,
-      // code-pushup reporter options are passed as string. See
-      `--reporter-options='${JSON.stringify({
-        outputFile,
-        rawOutputFile,
-      } satisfies CustomReporterOptions)}'`,
+      // code-pushup reporter options are passed as string. Double JSON.stringify ensures proper escaping on all platforms
+      `--reporter-options=${JSON.stringify(
+        JSON.stringify({
+          outputFile,
+          rawOutputFile,
+        } satisfies CustomReporterOptions),
+      )}`,
     ],
     outputFile,
   };

@@ -42,7 +42,7 @@ async function saveRawReport(
  *
  * @example
  * run the following command to test it:
- * npx knip --reporter ./dist/packages/plugin-knip/reporter.js --reporter-options='{\"outputFile\":\"my-knip-report.json\"}'
+ * npx knip --reporter ./dist/packages/plugin-knip/reporter.js --reporter-options='{"outputFile":"my-knip-report.json"}'
  *
  */
 export const knipReporter = async (knipReporterOptions: ReporterOptions) => {
