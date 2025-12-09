@@ -11,9 +11,9 @@ export type {
   BenchmarkRunner,
 } from './runner/index.js';
 export { JsBenchmarkingPluginConfig } from './config.js';
-import { jsBenchmarkPlugin } from './js-benchmark.plugin';
-
-export { jsBenchmarkPlugin } from './js-benchmark.plugin';
 export { jsBenchmarkingSuiteNameToCategoryRef } from './utils.js';
+
+import { jsBenchmarkPlugin } from './js-benchmark.plugin.js';
+export { jsBenchmarkPlugin } from './js-benchmark.plugin.js';
 
 export default jsBenchmarkPlugin;
