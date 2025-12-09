@@ -123,60 +123,59 @@ describe('knipReporter', () => {
                 'jsonc-eslint-parser': {
                     type: 'unlisted',
                     symbol: 'jsonc-eslint-parser',
-                    filePath: expect.stringContaining('package.json')
+                    filePath: expect.pathToEndWith('package.json')
                 },
             },
         });
         expect(rawKnipReport.counters).toStrictEqual({files: 1, unlisted: 1});
     });
-});
 
-it('should log if custom reporter option verbose is true', async () => {
-    const reporterOptions: CustomReporterOptions = {
-        verbose: true,
-        outputFile: KNIP_REPORT_NAME,
-        rawOutputFile: KNIP_RAW_REPORT_NAME,
-    };
-    await expect(
-        knipReporter({
-            report: {files: true},
-            issues: {files: new Set(['main.js'])},
-            options: JSON.stringify(reporterOptions),
-        } as ReporterOptions),
-    ).resolves.toBeUndefined();
+    it('should log if custom reporter option verbose is true', async () => {
+        const reporterOptions: CustomReporterOptions = {
+            verbose: true,
+            outputFile: KNIP_REPORT_NAME,
+            rawOutputFile: KNIP_RAW_REPORT_NAME,
+        };
+        await expect(
+            knipReporter({
+                report: {files: true},
+                issues: {files: new Set(['main.js'])},
+                options: JSON.stringify(reporterOptions),
+            } as ReporterOptions),
+        ).resolves.toBeUndefined();
 
-    expect(logger.info).toHaveBeenCalledTimes(3);
-    expect(logger.info).toHaveBeenNthCalledWith(
-        1,
-        `Reporter called with options: ${JSON.stringify(
-            reporterOptions,
-            null,
+        expect(logger.info).toHaveBeenCalledTimes(3);
+        expect(logger.info).toHaveBeenNthCalledWith(
+            1,
+            `Reporter called with options: ${JSON.stringify(
+                reporterOptions,
+                null,
+                2,
+            )}`,
+        );
+        expect(logger.info).toHaveBeenNthCalledWith(
             2,
-        )}`,
-    );
-    expect(logger.info).toHaveBeenNthCalledWith(
-        2,
-        `Saved raw report to ${reporterOptions.rawOutputFile}`,
-    );
-    expect(logger.info).toHaveBeenNthCalledWith(
-        3,
-        `Saved report to ${reporterOptions.outputFile}`,
-    );
-});
+            `Saved raw report to ${reporterOptions.rawOutputFile}`,
+        );
+        expect(logger.info).toHaveBeenNthCalledWith(
+            3,
+            `Saved report to ${reporterOptions.outputFile}`,
+        );
+    });
 
-it('should produce valid audit outputs', async () => {
-    await expect(
-        knipReporter(rawReport as ReporterOptions),
-    ).resolves.toBeUndefined();
+    it('should produce valid audit outputs', async () => {
+        await expect(
+            knipReporter(rawReport as ReporterOptions),
+        ).resolves.toBeUndefined();
 
-    const auditOutputsContent = await memfsFs.promises.readFile(
-        'knip-report.json',
-        {encoding: 'utf8'},
-    );
-    const auditOutputsJson = JSON.parse(
-        auditOutputsContent.toString(),
-    ) as AuditOutputs;
-    expect(auditOutputsJson).toMatchSnapshot();
-});
+        const auditOutputsContent = await memfsFs.promises.readFile(
+            'knip-report.json',
+            {encoding: 'utf8'},
+        );
+        const auditOutputsJson = JSON.parse(
+            auditOutputsContent.toString(),
+        ) as AuditOutputs;
+        expect(auditOutputsJson).toMatchSnapshot();
+    })
 })
-;
+
