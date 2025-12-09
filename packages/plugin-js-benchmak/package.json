@@ -3,13 +3,13 @@
   "version": "0.0.0",
   "license": "MIT",
   "type": "module",
-  "main": "./src/lib/index.js",
-  "types": "./src/lib/index.d.ts",
+  "main": "./src/index.js",
+  "types": "./src/index.d.ts",
   "exports": {
     ".": {
-      "types": "./src/lib/index.d.ts",
-      "import": "./src/lib/index.js",
-      "default": "./src/lib/index.js"
+      "types": "./src/index.d.ts",
+      "import": "./src/index.js",
+      "default": "./src/index.js"
     }
   },
   "dependencies": {
