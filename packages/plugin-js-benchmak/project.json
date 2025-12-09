@@ -1,0 +1,17 @@
+{
+  "name": "plugin-js-benchmark",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/plugin-js-benchmark/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "options": {
+        "additionalEntryPoints": ["packages/plugin-js-benchmark/src/lib/reporter.ts"]
+      }
+    },
+    "lint": {},
+    "unit-test": {},
+    "int-test": {}
+  },
+  "tags": ["scope:plugin", "type:feature", "publishable"]
+}
