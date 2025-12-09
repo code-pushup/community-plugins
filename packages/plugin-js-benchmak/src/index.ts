@@ -9,7 +9,7 @@ export type {
   BenchmarkResult,
   SuiteConfig,
   BenchmarkRunner,
-} from './runner.js';
+} from './runner/index.js';
 export { JsBenchmarkingPluginConfig } from './config.js';
 import { jsBenchmarkPlugin } from './js-benchmark.plugin';
 
