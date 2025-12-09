@@ -1,7 +1,7 @@
 import path from 'node:path';
 import type { PluginConfig } from '@code-pushup/models';
 import { KNIP_AUDITS, KNIP_GROUPS, KNIP_PLUGIN_SLUG } from './constants.js';
-import { RunnerOptions, createRunnerConfig } from './runner/index.js';
+import { RunnerOptions, createRunnerFunction } from './runner/index.js';
 
 export type PluginOptions = RunnerOptions;
 
@@ -19,7 +19,7 @@ export function knipPlugin(options: PluginOptions = {}): PluginConfig {
     title: 'Knip',
     icon: 'folder-javascript',
     description: 'A plugin to track dependencies and duplicates',
-    runner: createRunnerConfig({
+    runner: createRunnerFunction({
       ...runnerOptions,
       outputFile,
     }),
