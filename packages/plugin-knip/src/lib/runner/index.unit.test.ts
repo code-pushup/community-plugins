@@ -1,11 +1,11 @@
 import { describe, expect, it } from 'vitest';
 import { runnerConfigSchema } from '@code-pushup/models';
-import { createRunnerConfig } from './index.js';
+import {createRunnerConfig, createRunnerFunction} from './index.js';
 
-describe('runnerConfig', () => {
+describe('createRunnerFunction', () => {
   it('should return correct runner config object', () => {
     expect(() =>
-      runnerConfigSchema.parse(createRunnerConfig()),
+      runnerConfigSchema.parse(createRunnerFunction()),
     ).not.toThrowError();
   });
 });

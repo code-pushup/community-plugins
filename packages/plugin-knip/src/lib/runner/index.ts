@@ -1,5 +1,10 @@
 import path from 'node:path';
-import type { RunnerConfig } from '@code-pushup/models';
+import type {
+  AuditOutputs,
+  RunnerConfig,
+  RunnerFunction,
+} from '@code-pushup/models';
+import { executeProcess, readJsonFile } from '@code-pushup/utils';
 import {
   KNIP_PLUGIN_SLUG,
   KNIP_REPORT_NAME,
@@ -73,5 +78,41 @@ export function createRunnerConfig(options: RunnerOptions = {}): RunnerConfig {
       )}`,
     ],
     outputFile,
+  };
+}
+
+export function createRunnerFunction(
+  options: RunnerOptions = {},
+): RunnerFunction {
+  const {
+    outputFile = path.join(KNIP_PLUGIN_SLUG, KNIP_REPORT_NAME),
+    rawOutputFile,
+  } = options;
+
+  // Resolve the reporter path from the installed package
+  const reporterPath = '@code-pushup/knip-plugin/src/lib/reporter.js';
+
+  return async () => {
+    await executeProcess({
+      command: 'npx',
+      args: [
+        'knip',
+        // off as we want to CI to pass
+        '--no-exit-code',
+        // off by default to guarantee execution without interference
+        '--no-progress',
+        // code-pushup reporter is used from the installed package
+        `--reporter=${reporterPath}`,
+        // code-pushup reporter options are passed as string. Double JSON.stringify ensures proper escaping on all platforms
+        `--reporter-options=${JSON.stringify(
+          JSON.stringify({
+            outputFile,
+            rawOutputFile,
+          } satisfies CustomReporterOptions),
+        )}`,
+      ],
+    });
+
+    return readJsonFile<AuditOutputs>(outputFile);
   };
 }
