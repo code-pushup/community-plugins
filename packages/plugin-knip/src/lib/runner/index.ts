@@ -1,9 +1,5 @@
 import path from 'node:path';
-import type {
-  AuditOutputs,
-  RunnerConfig,
-  RunnerFunction,
-} from '@code-pushup/models';
+import type { AuditOutputs, RunnerFunction } from '@code-pushup/models';
 import { executeProcess, readJsonFile } from '@code-pushup/utils';
 import {
   KNIP_PLUGIN_SLUG,
