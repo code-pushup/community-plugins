@@ -1,7 +1,8 @@
 import type { Audit, CategoryRef } from '@code-pushup/models';
 import { importModule } from '@code-pushup/utils';
 import { JS_BENCHMARK_PLUGIN_SLUG } from './constants.js';
-import { type SuiteConfig, toAuditSlug } from './runner/index.js';
+import type { SuiteConfig } from './runner/types.js';
+import { toAuditSlug } from './runner/utils.js';
 
 export function toAuditTitle(suiteName: string): string {
   return `${suiteName}`;
