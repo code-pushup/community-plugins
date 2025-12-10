@@ -14,12 +14,13 @@ export function splitPathSegments(path: string): string[] {
  */
 export function normalizePathForMatching(path: string): string {
   // Remove all instances of ../, applying repeatedly to catch overlapping or regenerated cases
+  let normalizedPath = path;
   let prev;
   do {
-    prev = path;
-    path = path.replace(/\.\.\//g, '');
-  } while (path !== prev);
-  return path.replace(/^\/+/, '');
+    prev = normalizedPath;
+    normalizedPath = normalizedPath.replace(/\.\.\//g, '');
+  } while (normalizedPath !== prev);
+  return normalizedPath.replace(/^\/+/, '');
 }
 
 /**
