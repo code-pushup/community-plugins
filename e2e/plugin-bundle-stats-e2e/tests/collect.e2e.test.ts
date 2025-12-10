@@ -40,7 +40,7 @@ describe('PLUGIN collect report with bundle-stats-plugin NPM package', () => {
     });
 
     expect(code).toBe(0);
-    expect(stdout).toContain('bundle-stats audits');
+    expect(stdout).toContain('Bundle Stats audits');
 
     const report = await readJsonFile(
       path.join(testFileDir, '.code-pushup', 'report.json'),
