@@ -23,7 +23,7 @@ export function createRunnerFunction(
   return async (): Promise<AuditOutputs> => {
     // Load suites at runtime instead of at config time
     const suites: SuiteConfig[] = await loadSuites(targets, { tsconfig });
-    
+
     const allSuiteResults: BenchmarkResult[][] = [];
     // Execute each suite sequentially
     // eslint-disable-next-line functional/no-loop-statements

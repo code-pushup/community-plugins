@@ -28,7 +28,7 @@ export async function jsBenchmarkPlugin(
   await ensureDirectoryExists(outputDir);
 
   const suites = await loadSuites(targets, { tsconfig });
-  const suiteNames = suites.map(suite => suite.suiteName);
+  const suiteNames = suites.map((suite) => suite.suiteName);
   const audits = toAuditMetadata(suiteNames);
 
   return {

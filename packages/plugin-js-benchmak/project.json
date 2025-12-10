@@ -6,7 +6,9 @@
   "targets": {
     "build": {
       "options": {
-        "additionalEntryPoints": ["packages/plugin-js-benchmak/src/lib/runner/index.ts"]
+        "additionalEntryPoints": [
+          "packages/plugin-js-benchmak/src/lib/runner/index.ts"
+        ]
       }
     },
     "lint": {},
