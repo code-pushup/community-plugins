@@ -57,7 +57,6 @@
   "dependencies": {
     "@code-pushup/cli": "^0.92.1",
     "@code-pushup/core": "^0.92.1",
-    "@code-pushup/models": "^0.92.1",
     "@code-pushup/portal-client": "^0.16.0",
     "@code-pushup/utils": "^0.92.1",
     "@poppinss/cliui": "^6.4.1",
