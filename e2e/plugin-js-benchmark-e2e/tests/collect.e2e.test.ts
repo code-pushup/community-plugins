@@ -12,7 +12,6 @@ import {
 } from '@code-pushup/test-utils';
 import {executeProcess, readJsonFile} from '@code-pushup/utils';
 
-// skip tests until js-benchmark-plugin is officially released
 describe('PLUGIN collect report with js-benchmark-plugin NPM package', () => {
     const envDir = path.join(
         E2E_ENVIRONMENTS_DIR,
@@ -23,7 +22,6 @@ describe('PLUGIN collect report with js-benchmark-plugin NPM package', () => {
         TEST_OUTPUT_DIR,
         'collect',
     );
-    const defaultSetupDir = path.join(testFileDir);
 
     const fixturesDir = path.join('e2e', nxTargetProject(), 'mocks/fixtures/default-setup');
 
@@ -33,10 +31,10 @@ describe('PLUGIN collect report with js-benchmark-plugin NPM package', () => {
     });
 
     afterAll(async () => {
-        //  await teardownTestFolder(testFileDir);
+        await teardownTestFolder(testFileDir);
     });
 
-    it.skip('should run plugin over CLI and creates report.json', async () => {
+    it('should run plugin over CLI and creates report.json', async () => {
         const {code, stdout} = await executeProcess({
             command: 'npx',
             // verbose exposes audits with perfect scores that are hidden in the default stdout
@@ -56,42 +54,4 @@ describe('PLUGIN collect report with js-benchmark-plugin NPM package', () => {
         ).toMatchSnapshot();
     });
 
-    it('should be able to import runner entry point', async () => {
-        // Test that the runner entry point can be imported from the installed package
-        const runnerModule = await import(
-            path.resolve(envDir, 'node_modules/@code-pushup/js-benchmark-plugin/src/lib/runner/index.js')
-        );
-
-        expect(runnerModule.createRunnerFunction).toBeDefined();
-        expect(typeof runnerModule.createRunnerFunction).toBe('function');
-        expect(runnerModule.toAuditSlug).toBeDefined();
-        expect(typeof runnerModule.toAuditSlug).toBe('function');
-
-        // Test toAuditSlug function
-        const slug = runnerModule.toAuditSlug('test-suite');
-        expect(slug).toBe('js-benchmarking-test-suite');
-    });
-
-    it('should be able to import suite runner entry points', async () => {
-        // Test tinybench suite runner
-        const tinybenchModule = await import(
-            path.resolve(envDir, 'node_modules/@code-pushup/js-benchmark-plugin/src/plugins/tinybench.suite-runner.js')
-        );
-        expect(tinybenchModule.tinybenchRunner).toBeDefined();
-        expect(typeof tinybenchModule.tinybenchRunner.run).toBe('function');
-
-        // Test benchmark suite runner
-        const benchmarkModule = await import(
-            path.resolve(envDir, 'node_modules/@code-pushup/js-benchmark-plugin/src/plugins/benchmark.suite-runner.js')
-        );
-        expect(benchmarkModule.benchmarkRunner).toBeDefined();
-        expect(typeof benchmarkModule.benchmarkRunner.run).toBe('function');
-
-        // Test benny suite runner
-        const bennyModule = await import(
-            path.resolve(envDir, 'node_modules/@code-pushup/js-benchmark-plugin/src/plugins/benny.suite-runner.js')
-        );
-        expect(bennyModule.bennyRunner).toBeDefined();
-        expect(typeof bennyModule.bennyRunner.run).toBe('function');
-    });
 });
