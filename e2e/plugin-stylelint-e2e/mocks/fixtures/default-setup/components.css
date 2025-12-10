@@ -1,0 +1,23 @@
+/* Additional CSS file for testing multiple file patterns */
+
+.card {
+  border: 1px solid #ccc;
+  padding: 16px;
+  margin: 8px;
+}
+
+.card-header {
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.card-body {
+  line-height: 1.4;
+}
+
+/* Valid CSS with no issues */
+.well-formatted {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}

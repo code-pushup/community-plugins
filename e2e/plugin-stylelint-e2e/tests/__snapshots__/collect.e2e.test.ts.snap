@@ -1,0 +1,855 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`PLUGIN collect report with stylelint-plugin NPM package > should run plugin over CLI and creates report.json 1`] = `
+{
+  "packageName": "@code-pushup/core",
+  "plugins": [
+    {
+      "audits": [
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/color-no-invalid-hex",
+          "slug": "color-no-invalid-hex",
+          "title": "color-no-invalid-hex",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/declaration-colon-space-after",
+          "slug": "declaration-colon-space-after",
+          "title": "declaration-colon-space-after",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/declaration-colon-space-before",
+          "slug": "declaration-colon-space-before",
+          "title": "declaration-colon-space-before",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/indentation",
+          "slug": "indentation",
+          "title": "indentation",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/declaration-block-trailing-semicolon",
+          "slug": "declaration-block-trailing-semicolon",
+          "title": "declaration-block-trailing-semicolon",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/declaration-block-no-duplicate-properties",
+          "slug": "declaration-block-no-duplicate-properties",
+          "title": "declaration-block-no-duplicate-properties",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/block-opening-brace-space-before",
+          "slug": "block-opening-brace-space-before",
+          "title": "block-opening-brace-space-before",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/string-quotes",
+          "slug": "string-quotes",
+          "title": "string-quotes",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/max-line-length",
+          "slug": "max-line-length",
+          "title": "max-line-length",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/no-eol-whitespace",
+          "slug": "no-eol-whitespace",
+          "title": "no-eol-whitespace",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/block-no-empty",
+          "slug": "block-no-empty",
+          "title": "block-no-empty",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/no-missing-end-of-source-newline",
+          "slug": "no-missing-end-of-source-newline",
+          "title": "no-missing-end-of-source-newline",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/declaration-block-no-redundant-longhand-properties",
+          "slug": "declaration-block-no-redundant-longhand-properties",
+          "title": "declaration-block-no-redundant-longhand-properties",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/alpha-value-notation",
+          "slug": "alpha-value-notation",
+          "title": "alpha-value-notation",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/at-rule-empty-line-before",
+          "slug": "at-rule-empty-line-before",
+          "title": "at-rule-empty-line-before",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/at-rule-no-vendor-prefix",
+          "slug": "at-rule-no-vendor-prefix",
+          "title": "at-rule-no-vendor-prefix",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/block-no-redundant-nested-style-rules",
+          "slug": "block-no-redundant-nested-style-rules",
+          "title": "block-no-redundant-nested-style-rules",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/color-function-alias-notation",
+          "slug": "color-function-alias-notation",
+          "title": "color-function-alias-notation",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/color-function-notation",
+          "slug": "color-function-notation",
+          "title": "color-function-notation",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/color-hex-length",
+          "slug": "color-hex-length",
+          "title": "color-hex-length",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/comment-empty-line-before",
+          "slug": "comment-empty-line-before",
+          "title": "comment-empty-line-before",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/comment-whitespace-inside",
+          "slug": "comment-whitespace-inside",
+          "title": "comment-whitespace-inside",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/container-name-pattern",
+          "slug": "container-name-pattern",
+          "title": "container-name-pattern",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/custom-property-empty-line-before",
+          "slug": "custom-property-empty-line-before",
+          "title": "custom-property-empty-line-before",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/custom-media-pattern",
+          "slug": "custom-media-pattern",
+          "title": "custom-media-pattern",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/custom-property-pattern",
+          "slug": "custom-property-pattern",
+          "title": "custom-property-pattern",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/declaration-block-single-line-max-declarations",
+          "slug": "declaration-block-single-line-max-declarations",
+          "title": "declaration-block-single-line-max-declarations",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/declaration-empty-line-before",
+          "slug": "declaration-empty-line-before",
+          "title": "declaration-empty-line-before",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/font-family-name-quotes",
+          "slug": "font-family-name-quotes",
+          "title": "font-family-name-quotes",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/function-name-case",
+          "slug": "function-name-case",
+          "title": "function-name-case",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/function-url-quotes",
+          "slug": "function-url-quotes",
+          "title": "function-url-quotes",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/hue-degree-notation",
+          "slug": "hue-degree-notation",
+          "title": "hue-degree-notation",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/import-notation",
+          "slug": "import-notation",
+          "title": "import-notation",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/keyframe-selector-notation",
+          "slug": "keyframe-selector-notation",
+          "title": "keyframe-selector-notation",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/keyframes-name-pattern",
+          "slug": "keyframes-name-pattern",
+          "title": "keyframes-name-pattern",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/layer-name-pattern",
+          "slug": "layer-name-pattern",
+          "title": "layer-name-pattern",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/length-zero-no-unit",
+          "slug": "length-zero-no-unit",
+          "title": "length-zero-no-unit",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/lightness-notation",
+          "slug": "lightness-notation",
+          "title": "lightness-notation",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/media-feature-name-no-vendor-prefix",
+          "slug": "media-feature-name-no-vendor-prefix",
+          "title": "media-feature-name-no-vendor-prefix",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/media-feature-range-notation",
+          "slug": "media-feature-range-notation",
+          "title": "media-feature-range-notation",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/number-max-precision",
+          "slug": "number-max-precision",
+          "title": "number-max-precision",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/property-no-vendor-prefix",
+          "slug": "property-no-vendor-prefix",
+          "title": "property-no-vendor-prefix",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/rule-empty-line-before",
+          "slug": "rule-empty-line-before",
+          "title": "rule-empty-line-before",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/selector-attribute-quotes",
+          "slug": "selector-attribute-quotes",
+          "title": "selector-attribute-quotes",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/selector-class-pattern",
+          "slug": "selector-class-pattern",
+          "title": "selector-class-pattern",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/selector-id-pattern",
+          "slug": "selector-id-pattern",
+          "title": "selector-id-pattern",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/selector-no-vendor-prefix",
+          "slug": "selector-no-vendor-prefix",
+          "title": "selector-no-vendor-prefix",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/selector-not-notation",
+          "slug": "selector-not-notation",
+          "title": "selector-not-notation",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/selector-pseudo-element-colon-notation",
+          "slug": "selector-pseudo-element-colon-notation",
+          "title": "selector-pseudo-element-colon-notation",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/selector-type-case",
+          "slug": "selector-type-case",
+          "title": "selector-type-case",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/shorthand-property-no-redundant-values",
+          "slug": "shorthand-property-no-redundant-values",
+          "title": "shorthand-property-no-redundant-values",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/value-keyword-case",
+          "slug": "value-keyword-case",
+          "title": "value-keyword-case",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/value-no-vendor-prefix",
+          "slug": "value-no-vendor-prefix",
+          "title": "value-no-vendor-prefix",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/annotation-no-unknown",
+          "slug": "annotation-no-unknown",
+          "title": "annotation-no-unknown",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/at-rule-descriptor-no-unknown",
+          "slug": "at-rule-descriptor-no-unknown",
+          "title": "at-rule-descriptor-no-unknown",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/at-rule-descriptor-value-no-unknown",
+          "slug": "at-rule-descriptor-value-no-unknown",
+          "title": "at-rule-descriptor-value-no-unknown",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/at-rule-no-deprecated",
+          "slug": "at-rule-no-deprecated",
+          "title": "at-rule-no-deprecated",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/at-rule-no-unknown",
+          "slug": "at-rule-no-unknown",
+          "title": "at-rule-no-unknown",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/at-rule-prelude-no-invalid",
+          "slug": "at-rule-prelude-no-invalid",
+          "title": "at-rule-prelude-no-invalid",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/comment-no-empty",
+          "slug": "comment-no-empty",
+          "title": "comment-no-empty",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/custom-property-no-missing-var-function",
+          "slug": "custom-property-no-missing-var-function",
+          "title": "custom-property-no-missing-var-function",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/declaration-block-no-duplicate-custom-properties",
+          "slug": "declaration-block-no-duplicate-custom-properties",
+          "title": "declaration-block-no-duplicate-custom-properties",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/declaration-block-no-shorthand-property-overrides",
+          "slug": "declaration-block-no-shorthand-property-overrides",
+          "title": "declaration-block-no-shorthand-property-overrides",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/declaration-property-value-keyword-no-deprecated",
+          "slug": "declaration-property-value-keyword-no-deprecated",
+          "title": "declaration-property-value-keyword-no-deprecated",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/declaration-property-value-no-unknown",
+          "slug": "declaration-property-value-no-unknown",
+          "title": "declaration-property-value-no-unknown",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/font-family-no-duplicate-names",
+          "slug": "font-family-no-duplicate-names",
+          "title": "font-family-no-duplicate-names",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/font-family-no-missing-generic-family-keyword",
+          "slug": "font-family-no-missing-generic-family-keyword",
+          "title": "font-family-no-missing-generic-family-keyword",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/function-calc-no-unspaced-operator",
+          "slug": "function-calc-no-unspaced-operator",
+          "title": "function-calc-no-unspaced-operator",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/keyframe-block-no-duplicate-selectors",
+          "slug": "keyframe-block-no-duplicate-selectors",
+          "title": "keyframe-block-no-duplicate-selectors",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/keyframe-declaration-no-important",
+          "slug": "keyframe-declaration-no-important",
+          "title": "keyframe-declaration-no-important",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/media-feature-name-no-unknown",
+          "slug": "media-feature-name-no-unknown",
+          "title": "media-feature-name-no-unknown",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/media-feature-name-value-no-unknown",
+          "slug": "media-feature-name-value-no-unknown",
+          "title": "media-feature-name-value-no-unknown",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/media-query-no-invalid",
+          "slug": "media-query-no-invalid",
+          "title": "media-query-no-invalid",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/media-type-no-deprecated",
+          "slug": "media-type-no-deprecated",
+          "title": "media-type-no-deprecated",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/named-grid-areas-no-invalid",
+          "slug": "named-grid-areas-no-invalid",
+          "title": "named-grid-areas-no-invalid",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/nesting-selector-no-missing-scoping-root",
+          "slug": "nesting-selector-no-missing-scoping-root",
+          "title": "nesting-selector-no-missing-scoping-root",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/no-descending-specificity",
+          "slug": "no-descending-specificity",
+          "title": "no-descending-specificity",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/no-duplicate-at-import-rules",
+          "slug": "no-duplicate-at-import-rules",
+          "title": "no-duplicate-at-import-rules",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/no-duplicate-selectors",
+          "slug": "no-duplicate-selectors",
+          "title": "no-duplicate-selectors",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/no-empty-source",
+          "slug": "no-empty-source",
+          "title": "no-empty-source",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/no-invalid-double-slash-comments",
+          "slug": "no-invalid-double-slash-comments",
+          "title": "no-invalid-double-slash-comments",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/no-invalid-position-at-import-rule",
+          "slug": "no-invalid-position-at-import-rule",
+          "title": "no-invalid-position-at-import-rule",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/no-invalid-position-declaration",
+          "slug": "no-invalid-position-declaration",
+          "title": "no-invalid-position-declaration",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/no-irregular-whitespace",
+          "slug": "no-irregular-whitespace",
+          "title": "no-irregular-whitespace",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/property-no-deprecated",
+          "slug": "property-no-deprecated",
+          "title": "property-no-deprecated",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/property-no-unknown",
+          "slug": "property-no-unknown",
+          "title": "property-no-unknown",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/selector-anb-no-unmatchable",
+          "slug": "selector-anb-no-unmatchable",
+          "title": "selector-anb-no-unmatchable",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/selector-pseudo-class-no-unknown",
+          "slug": "selector-pseudo-class-no-unknown",
+          "title": "selector-pseudo-class-no-unknown",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/selector-pseudo-element-no-unknown",
+          "slug": "selector-pseudo-element-no-unknown",
+          "title": "selector-pseudo-element-no-unknown",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/selector-type-no-unknown",
+          "slug": "selector-type-no-unknown",
+          "title": "selector-type-no-unknown",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/string-no-newline",
+          "slug": "string-no-newline",
+          "title": "string-no-newline",
+        },
+        {
+          "docsUrl": "https://stylelint.io/user-guide/rules/syntax-string-no-invalid",
+          "slug": "syntax-string-no-invalid",
+          "title": "syntax-string-no-invalid",
+        },
+      ],
+      "description": "Official Code PushUp code stylelint plugin.",
+      "docsUrl": "https://www.npmjs.com/package/@code-pushup/stylelint-plugin/",
+      "groups": [
+        {
+          "refs": [
+            {
+              "slug": "color-no-invalid-hex",
+              "weight": 1,
+            },
+            {
+              "slug": "declaration-colon-space-after",
+              "weight": 1,
+            },
+            {
+              "slug": "declaration-colon-space-before",
+              "weight": 1,
+            },
+            {
+              "slug": "indentation",
+              "weight": 1,
+            },
+            {
+              "slug": "declaration-block-trailing-semicolon",
+              "weight": 1,
+            },
+            {
+              "slug": "declaration-block-no-duplicate-properties",
+              "weight": 1,
+            },
+            {
+              "slug": "block-opening-brace-space-before",
+              "weight": 1,
+            },
+            {
+              "slug": "string-quotes",
+              "weight": 1,
+            },
+            {
+              "slug": "max-line-length",
+              "weight": 1,
+            },
+            {
+              "slug": "no-eol-whitespace",
+              "weight": 1,
+            },
+            {
+              "slug": "block-no-empty",
+              "weight": 1,
+            },
+            {
+              "slug": "no-missing-end-of-source-newline",
+              "weight": 1,
+            },
+            {
+              "slug": "declaration-block-no-redundant-longhand-properties",
+              "weight": 1,
+            },
+            {
+              "slug": "alpha-value-notation",
+              "weight": 1,
+            },
+            {
+              "slug": "at-rule-empty-line-before",
+              "weight": 1,
+            },
+            {
+              "slug": "at-rule-no-vendor-prefix",
+              "weight": 1,
+            },
+            {
+              "slug": "block-no-redundant-nested-style-rules",
+              "weight": 1,
+            },
+            {
+              "slug": "color-function-alias-notation",
+              "weight": 1,
+            },
+            {
+              "slug": "color-function-notation",
+              "weight": 1,
+            },
+            {
+              "slug": "color-hex-length",
+              "weight": 1,
+            },
+            {
+              "slug": "comment-empty-line-before",
+              "weight": 1,
+            },
+            {
+              "slug": "comment-whitespace-inside",
+              "weight": 1,
+            },
+            {
+              "slug": "container-name-pattern",
+              "weight": 1,
+            },
+            {
+              "slug": "custom-property-empty-line-before",
+              "weight": 1,
+            },
+            {
+              "slug": "custom-media-pattern",
+              "weight": 1,
+            },
+            {
+              "slug": "custom-property-pattern",
+              "weight": 1,
+            },
+            {
+              "slug": "declaration-block-single-line-max-declarations",
+              "weight": 1,
+            },
+            {
+              "slug": "declaration-empty-line-before",
+              "weight": 1,
+            },
+            {
+              "slug": "font-family-name-quotes",
+              "weight": 1,
+            },
+            {
+              "slug": "function-name-case",
+              "weight": 1,
+            },
+            {
+              "slug": "function-url-quotes",
+              "weight": 1,
+            },
+            {
+              "slug": "hue-degree-notation",
+              "weight": 1,
+            },
+            {
+              "slug": "import-notation",
+              "weight": 1,
+            },
+            {
+              "slug": "keyframe-selector-notation",
+              "weight": 1,
+            },
+            {
+              "slug": "keyframes-name-pattern",
+              "weight": 1,
+            },
+            {
+              "slug": "layer-name-pattern",
+              "weight": 1,
+            },
+            {
+              "slug": "length-zero-no-unit",
+              "weight": 1,
+            },
+            {
+              "slug": "lightness-notation",
+              "weight": 1,
+            },
+            {
+              "slug": "media-feature-name-no-vendor-prefix",
+              "weight": 1,
+            },
+            {
+              "slug": "media-feature-range-notation",
+              "weight": 1,
+            },
+            {
+              "slug": "number-max-precision",
+              "weight": 1,
+            },
+            {
+              "slug": "property-no-vendor-prefix",
+              "weight": 1,
+            },
+            {
+              "slug": "rule-empty-line-before",
+              "weight": 1,
+            },
+            {
+              "slug": "selector-attribute-quotes",
+              "weight": 1,
+            },
+            {
+              "slug": "selector-class-pattern",
+              "weight": 1,
+            },
+            {
+              "slug": "selector-id-pattern",
+              "weight": 1,
+            },
+            {
+              "slug": "selector-no-vendor-prefix",
+              "weight": 1,
+            },
+            {
+              "slug": "selector-not-notation",
+              "weight": 1,
+            },
+            {
+              "slug": "selector-pseudo-element-colon-notation",
+              "weight": 1,
+            },
+            {
+              "slug": "selector-type-case",
+              "weight": 1,
+            },
+            {
+              "slug": "shorthand-property-no-redundant-values",
+              "weight": 1,
+            },
+            {
+              "slug": "value-keyword-case",
+              "weight": 1,
+            },
+            {
+              "slug": "value-no-vendor-prefix",
+              "weight": 1,
+            },
+            {
+              "slug": "annotation-no-unknown",
+              "weight": 1,
+            },
+            {
+              "slug": "at-rule-descriptor-no-unknown",
+              "weight": 1,
+            },
+            {
+              "slug": "at-rule-descriptor-value-no-unknown",
+              "weight": 1,
+            },
+            {
+              "slug": "at-rule-no-deprecated",
+              "weight": 1,
+            },
+            {
+              "slug": "at-rule-no-unknown",
+              "weight": 1,
+            },
+            {
+              "slug": "at-rule-prelude-no-invalid",
+              "weight": 1,
+            },
+            {
+              "slug": "comment-no-empty",
+              "weight": 1,
+            },
+            {
+              "slug": "custom-property-no-missing-var-function",
+              "weight": 1,
+            },
+            {
+              "slug": "declaration-block-no-duplicate-custom-properties",
+              "weight": 1,
+            },
+            {
+              "slug": "declaration-block-no-shorthand-property-overrides",
+              "weight": 1,
+            },
+            {
+              "slug": "declaration-property-value-keyword-no-deprecated",
+              "weight": 1,
+            },
+            {
+              "slug": "declaration-property-value-no-unknown",
+              "weight": 1,
+            },
+            {
+              "slug": "font-family-no-duplicate-names",
+              "weight": 1,
+            },
+            {
+              "slug": "font-family-no-missing-generic-family-keyword",
+              "weight": 1,
+            },
+            {
+              "slug": "function-calc-no-unspaced-operator",
+              "weight": 1,
+            },
+            {
+              "slug": "keyframe-block-no-duplicate-selectors",
+              "weight": 1,
+            },
+            {
+              "slug": "keyframe-declaration-no-important",
+              "weight": 1,
+            },
+            {
+              "slug": "media-feature-name-no-unknown",
+              "weight": 1,
+            },
+            {
+              "slug": "media-feature-name-value-no-unknown",
+              "weight": 1,
+            },
+            {
+              "slug": "media-query-no-invalid",
+              "weight": 1,
+            },
+            {
+              "slug": "media-type-no-deprecated",
+              "weight": 1,
+            },
+            {
+              "slug": "named-grid-areas-no-invalid",
+              "weight": 1,
+            },
+            {
+              "slug": "nesting-selector-no-missing-scoping-root",
+              "weight": 1,
+            },
+            {
+              "slug": "no-descending-specificity",
+              "weight": 1,
+            },
+            {
+              "slug": "no-duplicate-at-import-rules",
+              "weight": 1,
+            },
+            {
+              "slug": "no-duplicate-selectors",
+              "weight": 1,
+            },
+            {
+              "slug": "no-empty-source",
+              "weight": 1,
+            },
+            {
+              "slug": "no-invalid-double-slash-comments",
+              "weight": 1,
+            },
+            {
+              "slug": "no-invalid-position-at-import-rule",
+              "weight": 1,
+            },
+            {
+              "slug": "no-invalid-position-declaration",
+              "weight": 1,
+            },
+            {
+              "slug": "no-irregular-whitespace",
+              "weight": 1,
+            },
+            {
+              "slug": "property-no-deprecated",
+              "weight": 1,
+            },
+            {
+              "slug": "property-no-unknown",
+              "weight": 1,
+            },
+            {
+              "slug": "selector-anb-no-unmatchable",
+              "weight": 1,
+            },
+            {
+              "slug": "selector-pseudo-class-no-unknown",
+              "weight": 1,
+            },
+            {
+              "slug": "selector-pseudo-element-no-unknown",
+              "weight": 1,
+            },
+            {
+              "slug": "selector-type-no-unknown",
+              "weight": 1,
+            },
+            {
+              "slug": "string-no-newline",
+              "weight": 1,
+            },
+            {
+              "slug": "syntax-string-no-invalid",
+              "weight": 1,
+            },
+          ],
+          "slug": "problems",
+          "title": "Problems",
+        },
+      ],
+      "icon": "folder-css",
+      "packageName": "@code-pushup/stylelint-plugin",
+      "slug": "stylelint",
+      "title": "Stylelint",
+    },
+  ],
+}
+`;

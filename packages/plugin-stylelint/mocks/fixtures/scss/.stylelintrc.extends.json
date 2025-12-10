@@ -1,0 +1,6 @@
+{
+  "extends": "../stylelint-config/index",
+  "rules": {
+    "color-no-invalid-hex": true
+  }
+}
