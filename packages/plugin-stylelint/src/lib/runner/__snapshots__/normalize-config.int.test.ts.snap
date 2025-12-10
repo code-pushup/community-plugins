@@ -1,0 +1,53 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`getNormalizedConfig > should get config from specified JS/TS file 1`] = `
+{
+  "config": {
+    "// we are disabling the lint because stylelint converts true to [] ": null,
+    "rules": {
+      "block-no-empty": null,
+      "color-no-invalid-hex": [
+        true,
+      ],
+      "no-descending-specificity": [
+        true,
+        {
+          "severity": "error",
+        },
+      ],
+      "no-invalid-double-slash-comments": [
+        true,
+        {
+          "severity": "error",
+        },
+      ],
+    },
+  },
+}
+`;
+
+exports[`getNormalizedConfig > should get config from specified JSON file 1`] = `
+{
+  "config": {
+    "// we are disabling the lint because stylelint converts true to [] ": null,
+    "rules": {
+      "block-no-empty": null,
+      "color-no-invalid-hex": [
+        true,
+      ],
+      "no-descending-specificity": [
+        true,
+        {
+          "severity": "error",
+        },
+      ],
+      "no-invalid-double-slash-comments": [
+        true,
+        {
+          "severity": "error",
+        },
+      ],
+    },
+  },
+}
+`;

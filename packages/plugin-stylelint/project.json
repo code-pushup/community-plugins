@@ -1,0 +1,17 @@
+{
+  "name": "@code-pushup/plugin-stylelint",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/plugin-stylelint/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "options": {
+        "additionalEntryPoints": ["packages/plugin-stylelint/src/lib/reporter.ts"]
+      }
+    },
+    "lint": {},
+    "unit-test": {},
+    "int-test": {}
+  },
+  "tags": ["scope:plugin", "type:feature", "publishable"]
+}
