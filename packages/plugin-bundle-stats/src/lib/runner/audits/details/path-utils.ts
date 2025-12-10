@@ -13,7 +13,13 @@ export function splitPathSegments(path: string): string[] {
  * Normalizes a path for pattern matching by removing leading './' and ensuring consistent format.
  */
 export function normalizePathForMatching(path: string): string {
-  return path.replace(/\.\.\//g, '').replace(/^\/+/, '');
+  // Remove all instances of ../, applying repeatedly to catch overlapping or regenerated cases
+  let prev;
+  do {
+    prev = path;
+    path = path.replace(/\.\.\//g, '');
+  } while (path !== prev);
+  return path.replace(/^\/+/, '');
 }
 
 /**
