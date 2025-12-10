@@ -16,6 +16,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@code-pushup/bundle-stats-plugin": [
+        "packages/plugin-bundle-stats/src/index.ts"
+      ],
       "@code-pushup/knip-plugin": ["packages/plugin-knip/src/index.ts"],
       "@code-pushup/stylelint-plugin": [
         "packages/plugin-stylelint/src/index.ts"
