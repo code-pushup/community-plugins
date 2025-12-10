@@ -15,9 +15,9 @@ const colorNoInvalidHexSlug = 'color-no-invalid-hex';
 const colorNoInvalidHexWarning = {
   column: 10,
   endColumn: 13,
-  endLine: 3,
+  endLine: 2,
   fix: undefined,
-  line: 3,
+  line: 2,
   rule: colorNoInvalidHexSlug,
   severity: 'error',
   text: `Unexpected invalid hex color "#34" (${colorNoInvalidHexSlug})`,

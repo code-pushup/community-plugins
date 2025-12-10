@@ -3,7 +3,7 @@
 exports[`getNormalizedConfig > should get config from specified JS/TS file 1`] = `
 {
   "config": {
-    "// we are disabling the lint because stylelint converts true to [] ": null,
+    "defaultSeverity": undefined,
     "rules": {
       "block-no-empty": null,
       "color-no-invalid-hex": [
@@ -29,7 +29,7 @@ exports[`getNormalizedConfig > should get config from specified JS/TS file 1`] =
 exports[`getNormalizedConfig > should get config from specified JSON file 1`] = `
 {
   "config": {
-    "// we are disabling the lint because stylelint converts true to [] ": null,
+    "defaultSeverity": undefined,
     "rules": {
       "block-no-empty": null,
       "color-no-invalid-hex": [

@@ -1,6 +1,5 @@
 import path from 'node:path';
 import * as process from 'node:process';
-// @ts-expect-error missing types for stylelint package after postinstall patch
 import stylelint from 'stylelint';
 import type { RcPath } from '../types.js';
 import type { NormalizedStyleLintConfig } from './model.js';
@@ -26,7 +25,10 @@ export async function getNormalizedConfig({
       throw new Error(`Could not resolve config for ${parsedStylelintrc}`);
     }
     const normalizedConfig: NormalizedStyleLintConfig = {
-      config: resolvedConfig,
+      config: {
+        rules: resolvedConfig.rules ?? {},
+        defaultSeverity: resolvedConfig.defaultSeverity,
+      },
     };
     NORMALIZED_CONFIG_CACHE.set(parsedStylelintrc, normalizedConfig);
   }
