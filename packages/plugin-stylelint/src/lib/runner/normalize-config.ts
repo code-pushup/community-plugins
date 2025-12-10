@@ -30,5 +30,7 @@ export async function getNormalizedConfig({
     };
     NORMALIZED_CONFIG_CACHE.set(parsedStylelintrc, normalizedConfig);
   }
-  return NORMALIZED_CONFIG_CACHE.get(parsedStylelintrc) as NormalizedStyleLintConfig;
+  return NORMALIZED_CONFIG_CACHE.get(
+    parsedStylelintrc,
+  ) as NormalizedStyleLintConfig;
 }

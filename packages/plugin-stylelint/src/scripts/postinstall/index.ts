@@ -16,7 +16,7 @@ export async function patchStylelint(
     if (content.includes('default as getConfigForFile')) {
       console.info('Stylelint already patched.');
     } else {
-      const updatedContent = `${content  }
+      const updatedContent = `${content}
         export { default as getConfigForFile } from './getConfigForFile.mjs';
       `;
       await writeFile(stylelintPath, updatedContent, 'utf8');

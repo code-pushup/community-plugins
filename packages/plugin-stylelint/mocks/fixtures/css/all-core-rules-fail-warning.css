@@ -10,12 +10,14 @@
 
 /* max-empty-lines */
 
-.invalid-max-empty-lines { /* Invalid: More than 1 empty line */ }
-
-
+.invalid-max-empty-lines {
+  /* Invalid: More than 1 empty line */
+}
 
 /* no-eol-whitespace */
-.invalid-eol-whitespace { color: red;   } /* Invalid: trailing whitespace */
+.invalid-eol-whitespace {
+  color: red;
+} /* Invalid: trailing whitespace */
 
 /* declaration-block-no-redundant-longhand-properties */
 .invalid-longhand {
@@ -27,17 +29,19 @@
 
 /* declaration-block-semicolon-space-after */
 .invalid-semicolon-space {
-  color: red ;background: blue; /* Invalid: no space after semicolon */
+  color: red;
+  background: blue; /* Invalid: no space after semicolon */
 }
 
 /* declaration-block-semicolon-space-before */
 .invalid-semicolon-before {
-  color : red; /* Invalid: space before semicolon */
+  color: red; /* Invalid: space before semicolon */
 }
 
 /* block-closing-brace-space-before */
 .invalid-brace-space {
-  color: red;} /* Invalid: no space before closing brace */
+  color: red;
+} /* Invalid: no space before closing brace */
 
 /* string-quotes */
 .invalid-string-quotes {
@@ -56,7 +60,7 @@
 
 /* color-hex-case */
 .invalid-hex-case {
-  color: #ABC123; /* Invalid: uppercase hex */
+  color: #abc123; /* Invalid: uppercase hex */
 }
 
 /* color-hex-length */
@@ -76,12 +80,15 @@
 
 /* value-list-comma-space-after */
 .invalid-value-list-comma-space {
-  padding: 10px,20px; /* Invalid: no space after comma */
+  padding: 10px, 20px; /* Invalid: no space after comma */
 }
 
 /* selector-list-comma-newline-after */
 .invalid-selector-list-comma-newline {
-  .class1, .class2 { color: red; } /* Invalid: no newline after comma */
+  .class1,
+  .class2 {
+    color: red;
+  } /* Invalid: no newline after comma */
 }
 
 /* comment-whitespace-inside */
@@ -90,9 +97,14 @@
 }
 
 /* keyframes-name-pattern */
-@keyframes InvalidKeyframe { /* Invalid: not kebab-case */
-  0% { opacity: 0; }
-  100% { opacity: 1; }
+@keyframes InvalidKeyframe {
+  /* Invalid: not kebab-case */
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 /* alpha-value-notation */

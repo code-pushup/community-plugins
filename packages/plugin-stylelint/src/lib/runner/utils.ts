@@ -29,7 +29,9 @@ export function stylelintResultsToAuditOutputs(
       const { rule, line, text } = warning;
 
       const existingAudit = innerMap.get(rule);
-      if (!existingAudit) {return innerMap;}
+      if (!existingAudit) {
+        return innerMap;
+      }
 
       // Create a new audit object with updated details
       const updatedAudit: AuditReport = {

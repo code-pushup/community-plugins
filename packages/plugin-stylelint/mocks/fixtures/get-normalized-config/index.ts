@@ -1,4 +1,3 @@
-
 export default {
   rules: {
     'no-descending-specificity': [true, { severity: 'error' }],

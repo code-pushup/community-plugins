@@ -108,9 +108,15 @@ describe('getSeverityFromRuleConfig', () => {
     expect(getSeverityFromRuleConfig([true], 'warning')).toBe('warning');
   });
 
-  it.each([true, 5, 'percentage', [String.raw`/\[.+]/`, 'percentage'], { a: 1 }])(
+  it.each([
+    true,
+    5,
+    'percentage',
+    [String.raw`/\[.+]/`, 'percentage'],
+    { a: 1 },
+  ])(
     'should return the default severity for a primary value %s',
-    ruleConfig => {
+    (ruleConfig) => {
       expect(
         getSeverityFromRuleConfig(ruleConfig as ActiveConfigRuleSetting),
       ).toBe('error');
@@ -140,7 +146,7 @@ describe('getSeverityFromRuleConfig', () => {
 
   it.each([null, undefined])(
     'should return the default severity for disabled rules %s',
-    ruleConfig => {
+    (ruleConfig) => {
       expect(
         getSeverityFromRuleConfig(
           ruleConfig as unknown as ActiveConfigRuleSetting,

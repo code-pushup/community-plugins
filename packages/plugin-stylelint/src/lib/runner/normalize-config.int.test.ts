@@ -39,7 +39,7 @@ describe('getNormalizedConfig', () => {
 
   it.each(Object.keys(extendedConfigUnprocessed.rules))(
     'should override rule: %s in the extendedConfigNormalized from baseConfigNormalized',
-    async rule => {
+    async (rule) => {
       const extendedConfigNormalized = await getNormalizedConfig({
         stylelintrc: extendedConfigPath,
       });
@@ -53,11 +53,11 @@ describe('getNormalizedConfig', () => {
 
   it.each(
     Object.keys(baseConfigUnprocessed.rules).filter(
-      rule => !Object.keys(extendedConfigUnprocessed.rules).includes(rule),
+      (rule) => !Object.keys(extendedConfigUnprocessed.rules).includes(rule),
     ),
   )(
     'should add rule %s from baseConfigNormalized to extendedConfigNormalized',
-    async rule => {
+    async (rule) => {
       const extendedConfigNormalized = await getNormalizedConfig({
         stylelintrc: extendedConfigPath,
       });

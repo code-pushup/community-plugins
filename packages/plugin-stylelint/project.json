@@ -6,7 +6,9 @@
   "targets": {
     "build": {
       "options": {
-        "additionalEntryPoints": ["packages/plugin-stylelint/src/lib/reporter.ts"]
+        "additionalEntryPoints": [
+          "packages/plugin-stylelint/src/lib/reporter.ts"
+        ]
       }
     },
     "lint": {},

@@ -89,7 +89,7 @@ describe('lintStyles configured for different style formats', () => {
 
   it.each([['css'], ['scss'], ['less']])(
     'should lint files correctly for %s',
-    async format => {
+    async (format) => {
       const formatRoot = path.join(fixturesDir, format);
 
       const lintResult = await lintStyles({
@@ -116,7 +116,7 @@ describe('lintStylescustom', () => {
   // it would work with ts files too, but it erases the mjs if so
   it.each([['js'], ['mjs'], ['cjs'], ['yml'], ['json']])(
     'should lint files correctly with a configFile of format %s',
-    async configFileFormat => {
+    async (configFileFormat) => {
       const formatRoot = path.join(fixturesDir, 'config-format');
       const lintResult = await lintStyles({
         configFile: path.join(formatRoot, `.stylelintrc.${configFileFormat}`),

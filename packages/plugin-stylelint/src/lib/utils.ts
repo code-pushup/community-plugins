@@ -29,7 +29,7 @@ export async function getAudits(options: RcPath): Promise<Audit[]> {
 export async function getGroups(options: RcPath) {
   const { config } = await getNormalizedConfig(options);
   const { rules, defaultSeverity } = config;
-  return GROUPS.map(group => ({
+  return GROUPS.map((group) => ({
     ...group,
     refs: Object.entries(rules)
       .filter(filterNullRules)
@@ -45,7 +45,7 @@ export async function getGroups(options: RcPath) {
         );
       })
       .map(([rule]) => ({ slug: rule, weight: 1 })),
-  })).filter(group => group.refs.length > 0);
+  })).filter((group) => group.refs.length > 0);
 }
 
 function filterNullRules<T, O extends object = object>(
