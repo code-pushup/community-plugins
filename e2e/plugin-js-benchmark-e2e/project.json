@@ -1,0 +1,17 @@
+{
+  "name": "plugin-js-benchmark-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "e2e/plugin-js-benchmark-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "lint": {},
+    "e2e": {
+      "executor": "@nx/vitest:test",
+      "options": {
+        "configFile": "{projectRoot}/vitest.e2e.config.ts"
+      }
+    }
+  },
+  "implicitDependencies": ["plugin-js-benchmark"],
+  "tags": ["scope:plugin", "type:e2e"]
+}

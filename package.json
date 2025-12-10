@@ -7,7 +7,9 @@
   "devDependencies": {
     "@code-pushup/eslint-config": "^0.14.8",
     "@code-pushup/models": "^0.92.1",
+    "@nx/devkit": "22.1.3",
     "@nx/eslint-plugin": "^22.1.3",
+    "@nx/js": "21.6.10",
     "@nx/vite": "21.6.10",
     "@nx/vitest": "^22.1.3",
     "@nx/web": "22.1.3",
@@ -16,6 +18,7 @@
     "@swc/cli": "0.6.0",
     "@swc/core": "~1.5.7",
     "@swc/helpers": "~0.5.11",
+    "@types/benchmark": "^2.1.5",
     "@types/jest": "30.0.0",
     "@types/node": "^22.19.1",
     "@typescript-eslint/eslint-plugin": "^8.48.1",
@@ -23,6 +26,7 @@
     "@vitest/coverage-v8": "^1.0.4",
     "@vitest/eslint-plugin": "^1.5.1",
     "@vitest/ui": "^1.3.1",
+    "benchmark": "^2.1.4",
     "core-js": "^3.36.1",
     "eslint": "^9.39.1",
     "eslint-config-prettier": "10.1.8",
@@ -45,9 +49,7 @@
     "typescript-eslint": "^8.48.1",
     "vite": "7.2.6",
     "vite-tsconfig-paths": "^4.3.2",
-    "vitest": "^1.3.1",
-    "@nx/devkit": "22.1.3",
-    "@nx/js": "21.6.10"
+    "vitest": "^1.3.1"
   },
   "workspaces": [
     "packages/*"
@@ -55,11 +57,13 @@
   "dependencies": {
     "@code-pushup/cli": "^0.92.1",
     "@code-pushup/core": "^0.92.1",
+    "@code-pushup/js-benchmark-plugin": "^0.0.0",
     "@code-pushup/models": "^0.92.1",
     "@code-pushup/portal-client": "^0.16.0",
     "@code-pushup/utils": "^0.92.1",
     "@poppinss/cliui": "^6.4.1",
     "ansis": "^3.8.1",
+    "benny": "^3.7.1",
     "knip": "^5.42.0",
     "memfs": "^4.17.0",
     "ora": "^9.0.0",
