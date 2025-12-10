@@ -7,7 +7,7 @@
     "build": {
       "options": {
         "additionalEntryPoints": [
-          "packages/plugin-stylelint/src/lib/reporter.ts"
+          "packages/plugin-stylelint/src/scripts/postinstall/bin.ts"
         ]
       }
     },

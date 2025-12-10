@@ -1,0 +1,73 @@
+/* Mock CSS file with various stylelint issues for e2e testing */
+
+/* Missing space after colon */
+.header {
+  color: red;
+  background-color: #ffffff;
+}
+
+/* Inconsistent indentation */
+.navigation {
+  padding: 10px;
+  margin: 5px;
+}
+
+/* Wrong unit usage */
+.footer {
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0px; /* Should use 0 instead of 0px */
+}
+
+/* Duplicate properties */
+.sidebar {
+  width: 200px;
+  width: 250px;
+  height: 100%;
+}
+
+/* Invalid hex color */
+.content {
+  color: #fff;
+  background: #12345;
+}
+
+/* Unnecessary vendor prefixes */
+.button {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+
+/* Missing space before opening brace */
+.modal {
+  position: fixed;
+  top: 50%;
+}
+
+/* Trailing whitespace and empty rules */
+.empty {
+}
+
+/* Inconsistent quotes */
+.mixed-quotes {
+  font-family: 'Arial', 'Helvetica', sans-serif;
+}
+
+/* Long line that should be wrapped */
+.long-line {
+  background: linear-gradient(
+    to right,
+    #ff0000,
+    #00ff00,
+    #0000ff,
+    #ffff00,
+    #ff00ff,
+    #00ffff
+  );
+}
+
+/* Missing final newline */
+.last-rule {
+  display: block;
+}

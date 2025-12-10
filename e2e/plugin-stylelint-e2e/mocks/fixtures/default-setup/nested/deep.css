@@ -1,0 +1,11 @@
+/* CSS file in nested directory */
+
+.nested-component {
+  position: relative;
+  z-index: 10;
+}
+
+/* Issue: missing space after colon */
+.nested-issue {
+  color: blue;
+}

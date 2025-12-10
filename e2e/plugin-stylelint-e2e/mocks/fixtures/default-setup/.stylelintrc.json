@@ -1,0 +1,18 @@
+{
+  "extends": ["stylelint-config-standard"],
+  "rules": {
+    "color-no-invalid-hex": true,
+    "declaration-colon-space-after": "always",
+    "declaration-colon-space-before": "never",
+    "indentation": 2,
+    "declaration-block-trailing-semicolon": "always",
+    "declaration-block-no-duplicate-properties": true,
+    "block-opening-brace-space-before": "always",
+    "string-quotes": "double",
+    "max-line-length": 80,
+    "no-eol-whitespace": true,
+    "block-no-empty": true,
+    "no-missing-end-of-source-newline": true,
+    "declaration-block-no-redundant-longhand-properties": true
+  }
+}
