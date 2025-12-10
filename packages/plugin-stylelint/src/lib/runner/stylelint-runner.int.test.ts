@@ -120,7 +120,7 @@ describe('lintStylescustom', () => {
       const formatRoot = path.join(fixturesDir, 'config-format');
       const lintResult = await lintStyles({
         configFile: path.join(formatRoot, `.stylelintrc.${configFileFormat}`),
-        files: `${formatRoot}/*.css`,
+        files: `${formatRoot.replace(/\\/g, '/')}/*.css`,
       });
 
       expect(lintResult).toHaveLength(1);
@@ -139,7 +139,7 @@ describe('lintStyles logic with extends', () => {
   it('should lint files correctly without extends', async () => {
     const lintResult = await lintStyles({
       configFile: path.join(formatRoot, '.stylelintrc.block-no-empty.json'),
-      files: `${formatRoot}/color-no-invalid-hex-plus-block-no-empty.css`,
+      files: `${formatRoot.replace(/\\/g, '/')}/color-no-invalid-hex-plus-block-no-empty.css`,
     });
 
     expect(lintResult).toHaveLength(1);
@@ -154,7 +154,7 @@ describe('lintStyles logic with extends', () => {
         formatRoot,
         '.stylelintrc.color-no-invalid-hex-plus-extends.json',
       ),
-      files: `${formatRoot}/color-no-invalid-hex-plus-block-no-empty.css`,
+      files: `${formatRoot.replace(/\\/g, '/')}/color-no-invalid-hex-plus-block-no-empty.css`,
     });
 
     expect(lintResult).toHaveLength(1);
