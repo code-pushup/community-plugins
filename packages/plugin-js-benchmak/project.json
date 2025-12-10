@@ -6,9 +6,7 @@
   "targets": {
     "build": {
       "options": {
-        "additionalEntryPoints": [
-          "packages/plugin-js-benchmark/src/lib/reporter.ts"
-        ]
+        "additionalEntryPoints": ["packages/plugin-js-benchmak/src/lib/runner/index.ts"]
       }
     },
     "lint": {},

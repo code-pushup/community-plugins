@@ -2,13 +2,13 @@ import { writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { Bench } from 'tinybench';
 import { ensureDirectoryExists } from '@code-pushup/utils';
-import { JS_BENCHMARK_PLUGIN_SLUG } from '../constants.js';
+import { JS_BENCHMARK_PLUGIN_SLUG } from '../lib/constants.js';
 import type {
   BenchmarkResult,
   BenchmarkRunner,
   BenchmarkRunnerOptions,
   SuiteConfig,
-} from './types.js';
+} from '../lib/runner/types.js';
 
 export const tinybenchRunner = {
   run: async (
@@ -62,9 +62,9 @@ export function benchToBenchmarkResult(
       return {
         suiteName,
         name: caseName,
-        hz: result.hz,
-        rme: result.rme,
-        samples: result.samples.length,
+        hz: result.hz ?? 0,
+        rme: result.rme ?? 0,
+        samples: result.samples?.length ?? 0,
         isTarget: targetImplementation === caseName,
         isFastest: false, // preliminary result
       } satisfies BenchmarkResult;

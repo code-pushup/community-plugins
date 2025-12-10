@@ -26,14 +26,16 @@ export async function jsBenchmarkPlugin(
   } = jsBenchmarkPluginOptionsSchema.parse(options);
 
   await ensureDirectoryExists(outputDir);
-  // load the suites at before returning the plugin config to be able to return a more dynamic config
+
   const suites = await loadSuites(targets, { tsconfig });
+  const suiteNames = suites.map(suite => suite.suiteName);
+  const audits = toAuditMetadata(suiteNames);
 
   return {
     slug: JS_BENCHMARK_PLUGIN_SLUG,
     title: 'JS Benchmarking',
     icon: 'folder-benchmark',
-    audits: toAuditMetadata(suites.map(({ suiteName }) => suiteName)),
-    runner: createRunnerFunction(suites, { outputDir, runnerPath }),
+    audits,
+    runner: createRunnerFunction(targets, { outputDir, runnerPath, tsconfig }),
   } satisfies PluginConfig;
 }

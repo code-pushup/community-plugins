@@ -1,11 +1,11 @@
 import benny from 'benny';
 import type { Summary } from 'benny/lib/internal/common-types';
-import { JS_BENCHMARK_PLUGIN_SLUG } from '../constants.js';
+import { JS_BENCHMARK_PLUGIN_SLUG } from '../lib/constants.js';
 import {
   BenchmarkResult,
   BenchmarkRunnerOptions,
   SuiteConfig,
-} from './types.js';
+} from '../lib/runner/types.js';
 
 export const bennyRunner = {
   run: async (

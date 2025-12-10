@@ -10,6 +10,26 @@
       "types": "./src/index.d.ts",
       "import": "./src/index.js",
       "default": "./src/index.js"
+    },
+    "./src/lib/runner/index.js": {
+      "types": "./src/lib/runner/index.d.ts",
+      "import": "./src/lib/runner/index.js",
+      "default": "./src/lib/runner/index.js"
+    },
+    "./src/plugins/tinybench.suite-runner.js": {
+      "types": "./src/plugins/tinybench.suite-runner.d.ts",
+      "import": "./src/plugins/tinybench.suite-runner.js",
+      "default": "./src/plugins/tinybench.suite-runner.js"
+    },
+    "./src/plugins/benchmark.suite-runner.js": {
+      "types": "./src/plugins/benchmark.suite-runner.d.ts",
+      "import": "./src/plugins/benchmark.suite-runner.js",
+      "default": "./src/plugins/benchmark.suite-runner.js"
+    },
+    "./src/plugins/benny.suite-runner.js": {
+      "types": "./src/plugins/benny.suite-runner.d.ts",
+      "import": "./src/plugins/benny.suite-runner.js",
+      "default": "./src/plugins/benny.suite-runner.js"
     }
   },
   "dependencies": {
@@ -22,6 +42,21 @@
     "vitest": "^1.3.1",
     "zod": "^3.24.1"
   },
-  "peerDependencies": {},
+  "peerDependencies": {
+    "tinybench": "^2.0.0",
+    "benchmark": "^2.1.0",
+    "benny": "^3.7.0"
+  },
+  "peerDependenciesMeta": {
+    "tinybench": {
+      "optional": true
+    },
+    "benchmark": {
+      "optional": true
+    },
+    "benny": {
+      "optional": true
+    }
+  },
   "devDependencies": {}
 }

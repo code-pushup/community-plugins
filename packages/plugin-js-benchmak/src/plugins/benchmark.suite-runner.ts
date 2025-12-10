@@ -1,13 +1,13 @@
 import Benchmark, { Event, type Suite, type Target } from 'benchmark';
 import { writeFile } from 'node:fs/promises';
 import path from 'node:path';
-import { JS_BENCHMARK_PLUGIN_SLUG } from '../constants.js';
+import { JS_BENCHMARK_PLUGIN_SLUG } from '../lib/constants.js';
 import type {
   BenchmarkResult,
   BenchmarkRunner,
   BenchmarkRunnerOptions,
   SuiteConfig,
-} from './types.js';
+} from '../lib/runner/types.js';
 
 export const benchmarkRunner = {
   run: async (
