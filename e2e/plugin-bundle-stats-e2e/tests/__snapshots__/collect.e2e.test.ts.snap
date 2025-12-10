@@ -1,0 +1,40 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`PLUGIN collect report with bundle-stats-plugin NPM package > should run plugin over CLI and creates report.json 1`] = `
+{
+  "packageName": "@code-pushup/core",
+  "plugins": [
+    {
+      "audits": [
+        {
+          "description": "Analyze bundle size and dependencies
+
+<details>
+<summary>⚙️ Configuration</summary>
+
+- **Scoring:**
+  - Total Size: >\`976.56 kB\` threshold
+
+- **Issues:**
+  - Info: \`0\` violations - Analysis only, no penalties
+
+- **Selection:**
+  - Mode: \`bundle\`
+  - Include Outputs: \`dist/**/*.js\`
+
+</details>",
+          "slug": "bundle-size",
+          "title": "Bundle Size",
+        },
+      ],
+      "description": "Official Code PushUp Bundle Stats plugin.",
+      "docsUrl": "https://npm.im/@code-pushup/bundle-stats-plugin",
+      "groups": [],
+      "icon": "folder-rules",
+      "packageName": "@code-pushup/bundle-stats-plugin",
+      "slug": "bundle-stats",
+      "title": "Bundle Stats",
+    },
+  ],
+}
+`;

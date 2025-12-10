@@ -1,0 +1,53 @@
+import { cp } from 'node:fs/promises';
+import path from 'node:path';
+import { afterAll, beforeAll, expect } from 'vitest';
+import { type Report, reportSchema } from '@code-pushup/models';
+import { nxTargetProject } from '@code-pushup/test-nx-utils';
+import {
+  E2E_ENVIRONMENTS_DIR,
+  TEST_OUTPUT_DIR,
+  omitVariableReportData,
+  restoreNxIgnoredFiles,
+  teardownTestFolder,
+} from '@code-pushup/test-utils';
+import { executeProcess, readJsonFile } from '@code-pushup/utils';
+
+describe('PLUGIN collect report with bundle-stats-plugin NPM package', () => {
+  const testFileDir = path.join(
+    E2E_ENVIRONMENTS_DIR,
+    nxTargetProject(),
+    TEST_OUTPUT_DIR,
+    'collect',
+  );
+
+  const fixturesDir = path.join('e2e', nxTargetProject(), 'mocks/fixtures');
+
+  beforeAll(async () => {
+    await cp(fixturesDir, testFileDir, { recursive: true });
+    await restoreNxIgnoredFiles(testFileDir);
+  });
+
+  afterAll(async () => {
+    await teardownTestFolder(testFileDir);
+  });
+
+  it('should run plugin over CLI and creates report.json', async () => {
+    const { code, stdout } = await executeProcess({
+      command: 'npx',
+      // verbose exposes audits with perfect scores that are hidden in the default stdout
+      args: ['@code-pushup/cli', 'collect', '--verbose'],
+      cwd: testFileDir,
+    });
+
+    expect(code).toBe(0);
+    expect(stdout).toContain('Bundle Stats audits');
+
+    const report = await readJsonFile(
+      path.join(testFileDir, '.code-pushup', 'report.json'),
+    );
+    expect(() => reportSchema.parse(report)).not.toThrowError();
+    expect(
+      omitVariableReportData(report as Report, { omitAuditData: true }),
+    ).toMatchSnapshot();
+  });
+});
