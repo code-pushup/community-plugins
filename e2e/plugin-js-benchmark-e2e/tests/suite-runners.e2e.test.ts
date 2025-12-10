@@ -22,13 +22,9 @@ describe('suite-runners', () => {
     ['fast-operation', () => 1 + 1],
     [
       'slow-operation',
-      () => {
-        let total = 0;
-        for (let i = 0; i < 50000; i++) {
-          total += Math.sqrt(Math.log(i + 1) * Math.sin(i));
-        }
-        return total;
-      },
+      () => Array.from({ length: 50_000 }, (_, i) => 
+        Math.sqrt(Math.log(i + 1) * Math.sin(i))
+      ).reduce((total, value) => total + value, 0),
     ],
   ];
 
